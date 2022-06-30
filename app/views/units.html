@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Units
+    </h1>
+
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>BF</li>
+  <li>Border Force</li>
+  <li>Border Force Draft</li>
+  <li>Border Force QA</li>
+  <li>Border Force Triage</li>
+  <li>Borders Immigration and Citizenship Policy and Strategy Group</li>
+  <li>Capabilities and Resources</li>
+  <li>Capabilities and Resources Commercial</li>
+  <li>Capabilities and Resources Finance and Estates</li>
+  <li>Capabilities and Resources Security, Science and Innovation</li>
+  <li>Communication</li>
+  <li>COMP Unit</li>
+  <li>Crime, Policing and Fire Group Analysis and Insight</li>
+  <li>Crime, Policing and Fire Group Crime Directorate</li>
+  <li>Crime, Policing and Fire Group Data and Identity Directorate</li>
+  <li>Crime, Policing and Fire Group Emergency Services Mobile Communications Programme</li>
+  <li>Crime, Policing and Fire Group Fire and Resilience Directorate</li>
+  <li>Crime, Policing and Fire Group Policing and Fire Services Directorate</li>
+  <li>Crime, Policing and Fire Group Policing Directorate</li>
+  <li>Crime, Policing and Fire Group Resources, Planning and Performance</li>
+  <li>Crime, Policing and Fire Group Safeguarding and Vulnerability Directorate</li>
+  <li>Crime, Policing and Fire Group Strategy Directorate</li>
+  <li>DCU</li>
+  <li>etc</li>
+  <li>etc</li>
+
+
+
+</ul>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

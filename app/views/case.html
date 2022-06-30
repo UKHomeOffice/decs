@@ -1,0 +1,218 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Case details
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+      <h1 class="govuk-heading-l govuk-!-margin-bottom-0">Case details</h1>
+      <span class="govuk-caption-l govuk-!-margin-bottom-4">FOI/0123456/22</span>
+
+      {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+      {{ govukAccordion({
+        id: "accordion-default",
+        items: [
+          {
+            heading: {
+              text: "Case creation"
+            },
+            content: {
+              html: "<p class='govuk-body'>This is the content.</p>"
+            }
+          },
+          {
+            heading: {
+              text: "Allocation"
+            },
+            content: {
+              html: "<p class='govuk-body'>This is the content.</p>"
+            }
+          }
+        ]
+      }) }}
+
+      <h1 class="govuk-heading-m">Allocate</h1>
+
+      <p><a href="#" class="govuk-link--no-visited-state">Allocate to me</a></p>
+
+
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+      {{ govukSelect({
+        id: "sort",
+        name: "sort",
+        classes: "govuk-!-width-full",
+        label: {
+          text: "Allocate to a team member",
+          classes: "govuk-!-font-weight-bold"
+        },
+        items: [
+          {
+            value: "",
+            text: ""
+          },
+          {
+            value: "published",
+            text: "DECS Regression"
+          },
+          {
+            value: "updated",
+            text: "FOI Regression"
+          },
+          {
+            value: "views",
+            text: "FOI User"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      <div class="govuk-button-group">
+        {{ govukButton({
+          text: "Allocate"
+        }) }}
+
+        <a class="govuk-link--no-visited-state" href="#">Cancel</a>
+      </div>
+
+    </div>
+
+
+    <div class="govuk-grid-column-two-thirds">
+      {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+      {% from "govuk/components/table/macro.njk" import govukTable %}
+
+      {% set documentsHtml %}
+      <h2 class="govuk-heading-l">Documents</h2>
+      {{ govukTable({
+      head: [
+        {
+          text: "Request"
+        },
+        {
+          text: ""
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "text.txt"
+          },
+          {
+            html: '<a href="#" class="govuk-link--no-visited-state">Download</a>',
+            format: "numeric"
+          }
+        ]
+      ]
+      }) }}
+
+      {{ govukTable({
+      head: [
+        {
+          text: "Initial response"
+        },
+        {
+          text: ""
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "None"
+          },
+          {
+            text: ""
+          }
+        ]
+      ]
+      }) }}
+
+      {{ govukTable({
+      head: [
+        {
+          text: "Draft response"
+        },
+        {
+          text: ""
+        }
+      ],
+      rows: [
+        [
+          {
+            text: "None"
+          },
+          {
+            text: ""
+          }
+        ]
+      ]
+      }) }}
+
+      {% endset -%}
+
+      {% set summaryHtml %}
+      <h2 class="govuk-heading-l">Summary</h2>
+
+      {% endset -%}
+
+      {% set timelineHtml %}
+      <h2 class="govuk-heading-l">Timeline</h2>
+
+      {% endset -%}
+
+      {% set actionsHtml %}
+      <h2 class="govuk-heading-l">Actions</h2>
+
+      {% endset -%}
+
+      {{ govukTabs({
+      items: [
+        {
+          label: "Documents",
+          id: "documents",
+          panel: {
+            html: documentsHtml
+          }
+        },
+        {
+          label: "Summary",
+          id: "summary",
+          panel: {
+            html: summaryHtml
+          }
+        },
+        {
+          label: "Timeline",
+          id: "timeline",
+          panel: {
+            html: timelineHtml
+          }
+        },
+        {
+          label: "Actions",
+          id: "actions",
+          panel: {
+            html: actionsHtml
+          }
+        }
+      ]
+      }) }}
+    </div>
+
+
+
+
+  </div>
+
+{% endblock %}

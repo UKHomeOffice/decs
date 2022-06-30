@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="#">Section</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">Subsection</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+    <div class="govuk-grid-row">
+
+      <div class="govuk-grid-column-full">
+        <h2 class="govuk-heading-l">Appeal actions</h2>
+
+        <h3 class="govuk-heading-m">Decision notes</h3>
+
+      <p class="govuk-body"><a href="#">Record decion note</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Extensions</h3>
+
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list--no-border govuk-!-margin-bottom-2',
+
+        rows: [
+          {
+            key: {
+              text: "Current due date"
+            },
+            value: {
+              text: "12 June 2022"
+            }
+          }
+        ]
+      }) }}
+      <p><a href="#">Extend this appeal</a></p>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+
+      <h3 class="govuk-heading-m">Record interest</h3>
+
+    <p><a href="#">Record interest</a></p>
+  </div>
+  </div>
+
+
+
+</div>
+
+
+
+  </div>
+{% endblock %}
