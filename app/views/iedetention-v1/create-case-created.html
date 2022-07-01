@@ -1,0 +1,31 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Create single case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Case created",
+        html: "Reference number<br><a href='case-start' class='govuk-link govuk-link--inverse'><strong>IEDET/0172175/22</strong></a>"
+      }) }}
+    </div>
+  </div>
+{% endblock %}

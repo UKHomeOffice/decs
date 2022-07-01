@@ -23,11 +23,12 @@ $govuk-page-width: 2280px;
 .margin-0 {margin-bottom: 0}
 .border-bottom {border-bottom: 1px solid #b1b4b6;}
 
-
 html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
 dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
 a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
 strong, sub, sup, tt, var, legend, fieldset, label {
 //font-family: "helvetica neue",Arial,Helvetica,sans-serif!important;
-font-family: arial,helvetica,sans-serif!important;
-}
+font-family: arial,helvetica,sans-serif!important;}
+
+#mockDoc {background: #EFEFEF; border: 1px solid #CCC; padding: 10px; margin-bottom: 20px}
+#mockDoc p {font-family: courier,courier new!important;}

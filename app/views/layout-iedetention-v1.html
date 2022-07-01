@@ -40,52 +40,12 @@
 {% endblock %}
 
 {% block header %}
-<header class="govuk-header " role="banner" data-module="govuk-header">
-  <div class="govuk-header__container govuk-width-container">
-    <div class="govuk-header__logo">
-      <a href="/" class="govuk-header__link govuk-header__link--homepage">
-        <span class="govuk-header__logotype-text">
-          Correspondence system
-        </span>
-      </a>
-    </div>
-    <div class="govuk-header__content">
-      <nav aria-label="Menu" class="govuk-header__navigation ">
-        <button type="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide menu">Menu</button>
-
-        <ul id="navigation" class="govuk-header__navigation-list">
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="/iedetention-v1/create-single-case">
-              Create single case
-            </a>
-          </li>
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="#2">
-              Create bulk cases
-            </a>
-          </li>
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="#3">
-              View standard lines
-            </a>
-          </li>
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="#4">
-              Search
-            </a>
-          </li>
-          <li class="govuk-header__navigation-item">
-            <a class="govuk-header__link" href="#4">
-              Logout
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</header>
+  {% include "includes/header-iedetention-v1.html" %}
 {% endblock %}
 
+{% block phasebanner %}
+  {% include "includes/header-iedetention-v1.html" %}
+{% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
