@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="/">Dashboard</a>
+    <a class="govuk-back-link" href="/iedetention-v1">Dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -42,22 +42,23 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Allocate</h2>
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Allocate to me</a></p>
+    <!--<p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Allocate to me</a></p>-->
 
     {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+
 
     {{ govukSelect({
       id: "sort",
       name: "sort",
       label: {
-        classes: "govuk-!-font-weight-bold",
-        text: "Allocate to a team member"
+        classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+        text: "Allocate"
       },
       items: [
         {
           value: "",
-          text: ""
+          text: "Me"
         },
         {
           value: "",
@@ -82,8 +83,6 @@
       text: "Allocate",
       href: "/url/to/next/page"
     }) }}
-
-
   </div>
 
 
@@ -104,12 +103,58 @@
         <p>Vulputate quis leo vitae pulvinar. Curabitur dictum non turpis sit amet volutpat. Cras iaculis a orci id euismod. Fusce id justo consequat, laoreet ex at, feugiat ex. Nam sed libero diam. Curabitur luctus augue et metus finibus malesuada.</p>
     </div>
 
-    <h2 class="govuk-heading-m">To document</h2>
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds"><p class="govuk-!-margin-bottom-0">document.doc</p></div>
-      <div class="govuk-grid-column-one-third"><p class="govuk-body govuk-!-margin-bottom-0 govuk-!-text-align-right"><a class="govuk-link" href="">Download</a></p></div>
+    <div id="IEDETform" class="js-hidden">
+        <img src="/public/images/iedetform.png" alt-"IE Detention form">
     </div>
+
+    <h2 class="govuk-heading-m">To document</h2>
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><p>document.doc</p></div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link js-hidden" id="docLink" onclick="myFunction2()" href="#">Preview</a>
+        </p>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link govuk-!-text-align-right" href="#">Download</a></p>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><p>ie-detention-form-scan.pdf</p></div>
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+            <a class="govuk-link" id="scanLink" onclick="myFunction1()" href="#">Preview</a></p>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link govuk-!-text-align-right" href="#">Download</a></p>
+      </div>
+    </div>
+
     <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <script>
+      function myFunction2() {
+        document.getElementById("IEDETform").style.display = "none";
+        document.getElementById("mockDoc").style.display = "block";
+        document.getElementById("scanLink").style.display = "block";
+        document.getElementById("docLink").style.display = "none";
+      }
+    function myFunction1() {
+      document.getElementById("IEDETform").style.display = "block";
+      document.getElementById("mockDoc").style.display = "none";
+      document.getElementById("scanLink").style.display = "none";
+      document.getElementById("docLink").style.display = "block";
+    }
+    </script>
+
 
     <h2 class="govuk-heading-m">Public correspondence</h2>
     <p>None</p>
@@ -159,7 +204,7 @@
 
 
     {% set summaryHtml %}
-    <h2 class="govuk-heading-m">Active stage: registration</h2>
+    <h2 class="govuk-heading-m">Active stage – registration</h2>
     {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
       {{ govukSummaryList({
@@ -220,13 +265,67 @@
     {% endset -%}
 
     {% set timelineHtml %}
-    <h2 class="govuk-heading-l">Timeline</h2>
 
+    {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+    {% set timelineCasenoteHtml %}
+
+    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {{ govukCharacterCount({
+      name: "timelineCasenote",
+      id: "timelineCasenote",
+      maxlength: 2000,
+      label: {
+        text: "Case note",
+        classes: "govuk-label--s",
+        isPageHeading: true
+      }
+      }) }}
+
+      {{ govukButton({
+        text: "Add",
+        href: "/url/to/next/page"
+      }) }}
+
+    {% endset %}
+
+    {{ govukDetails({
+      summaryText: "Add case note",
+      text: "[Add text area here]",
+      html: timelineCasenoteHtml
+    }) }}
+
+    <div class="timeline">
+      <ul>
+        <!--<li class="">
+          <p><strong>Allocated to iedet user</strong></p>
+          <p>Stage: Registration</p>
+          <p><span>1 July 2022 at 15:10</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Allocated to the IE Detention</strong></p>
+          <p>Stage: Registration</p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>-->
+        <li class="">
+          <p><strong>Stage: Registration Started</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Document: document.doc Created</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Case Created</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+      </ul>
+    </div>
 
     {% endset -%}
 
-    {% set actionsHtml %}
-    <h2 class="govuk-heading-l">Actions</h2>
+    {% set peopleHtml %}
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage people</a></p>
 
     {% endset -%}
 
@@ -257,7 +356,7 @@
         label: "People",
         id: "actions",
         panel: {
-          html: actionsHtml
+          html: peopleHtml
         }
       }
     ]
@@ -268,4 +367,5 @@
 
 
 </div>
+
 {% endblock %}
