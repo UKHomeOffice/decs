@@ -1,7 +1,7 @@
 {% extends "layout-iedetention-v1.html" %}
 
 {% block pageTitle %}
-  Create single case – {{ serviceName }}
+  Case – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="/iedetention-v1">Dashboard</a>
+    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -53,7 +53,7 @@
       name: "sort",
       label: {
         classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
-        text: "Allocate"
+        text: "Allocate to"
       },
       items: [
         {
@@ -95,20 +95,24 @@
 
     <div id="mockDoc">
         <p>Ref: 2635497618214</p>
-
+        <p></p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus consectetur libero, ut ornare sapien placerat nec. In leo augue, dignissim ut diam rutrum, rutrum semper augue. Donec vel sem dolor. Cras venenatis congue ex, et pretium lacus volutpat rhoncus.</p>
 
         <p>Maecenas commodo magna quis nibh lacinia congue. Nulla imperdiet lacus at justo varius fermentum. Suspendisse neque tortor, consequat ac nisl interdum, tristique pellentesque urna. Donec sollicitudin euismod nibh, in accumsan tellus interdum a.</p>
 
         <p>Vulputate quis leo vitae pulvinar. Curabitur dictum non turpis sit amet volutpat. Cras iaculis a orci id euismod. Fusce id justo consequat, laoreet ex at, feugiat ex. Nam sed libero diam. Curabitur luctus augue et metus finibus malesuada.</p>
+
+        <p>Yours Sincerely</p>
+
+        <p>Joe Bloggs</p>
     </div>
 
     <div id="IEDETform" class="js-hidden">
-        <img src="/public/images/iedetform.png" alt-"IE Detention form">
+        <img src="/public/images/iedetform.png" alt-"IE Detention DC9 form">
     </div>
 
     <h2 class="govuk-heading-m">To document</h2>
-    
+
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-one-half"><p>document.doc</p></div>
 
@@ -127,7 +131,7 @@
     <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
 
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half"><p>ie-detention-form-scan.pdf</p></div>
+      <div class="govuk-grid-column-one-half"><p>DC9-form-scan.pdf</p></div>
       <div class="govuk-grid-column-one-quarter">
         <p class="govuk-body govuk-!-text-align-right">
             <a class="govuk-link" id="scanLink" onclick="myFunction1()" href="#">Preview</a></p>
