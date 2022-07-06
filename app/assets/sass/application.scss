@@ -31,6 +31,10 @@ strong, sub, sup, tt, var, legend, fieldset, label {
 font-family: arial,helvetica,sans-serif!important;}
 .js-enabled .js-hidden {display: none;}
 
+.govuk-back-link {
+    margin-bottom: 0;
+}
+
 .dashboard__teams {
     list-style-type: none;
     padding: 0;
