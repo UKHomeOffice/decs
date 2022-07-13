@@ -1,0 +1,73 @@
+<h2 class="govuk-heading-m">Active stage – registration</h2>
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list',
+    rows: [
+      {
+        key: {
+          text: "Team"
+        },
+        value: {
+          text: "IE Detention"
+        }
+      },
+      {
+        key: {
+          text: "User"
+        },
+        value: {
+          classes: "summary-tab-user",
+          text: "iedet user"
+        }
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Case summary</h2>
+
+  {% set correspondentdatahtml %}
+      <p class="govuk-body">{{ data['fullname'] }}<br>{{ data['telephone'] }}<br>{{ data['email'] }}</p>
+    {% endset %}
+
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-summary-list',
+      rows: [
+        {
+          key: {
+            text: "Created"
+          },
+          value: {
+            text: "01/07/2022"
+          }
+        },
+        {
+          key: {
+            text: "Deadline"
+          },
+          value: {
+            text: "29/07/2022"
+          }
+        },
+        {
+          key: {
+            classes: 'summary-tab-correspondent-label',
+            text: "Primary correspondent"
+          },
+          value: {
+             classes: "summary-tab-correspondent-data",
+             html: correspondentdatahtml
+           }
+        },
+        {
+          key: {
+            text: "Correspondence received"
+          },
+          value: {
+            text: "01/07/2022"
+          }
+        }
+      ]
+    }) }}

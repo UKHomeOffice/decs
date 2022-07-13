@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
+    <!--<a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>-->
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -22,73 +22,67 @@
 
 {% block content %}
 <style>
-.summary-tab-user {display:none;}
-.summary-tab-correspondent-label {display: none;}
-.summary-tab-correspondent-data {display: none;}
-</style>
 
+</style>
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l">IEDET/0172177/22</h1>
-    <h2 class="govuk-heading-m">Case details</h2>
-    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+    <h1 class="govuk-heading-l margin-0">Complaint correspondents</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
 
-    {{ govukAccordion({
-      id: "accordion-default",
-      items: [
+    <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
+
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+    {% set namehtml %}
+    <div class="govuk-form-group govuk-!-margin-bottom-0">
+    <fieldset class="govuk-fieldset">
+      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="document1" name="documentlist" type="radio" value="document1">
+          <label class="govuk-label govuk-radios__label" for="document1">{{ data['fullname'] }}</label>
+        </div>
+      </div>
+    </fieldset>
+    </div>
+    {% endset %}
+
+    {% set edithtml %}
+      <p class="govuk-body govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="correspondents-add">Edit</a></p>
+    {% endset %}
+
+    {% set removehtml %}
+      <p><a class="govuk-link--no-visited-state" href="#">Remove</a></p>
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
         {
-          heading: {
-            text: "Registration"
+          key: {
+            classes: 'govuk-!-width-one-half',
+            html: namehtml
           },
-          content: {
-            html: "<h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>01/07/2022</p>"
+          value: {
+            classes: "",
+            html: edithtml
+          },
+          actions: {
+            items: [
+              {
+              html: removehtml
+              }
+            ]
           }
         }
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Allocate</h2>
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
-
-    {% from "govuk/components/select/macro.njk" import govukSelect %}
-
-    {{ govukSelect({
-      id: "sort",
-      name: "sort",
-      label: {
-        classes: "govuk-!-font-weight-bold",
-        text: "Allocate to a team member"
-      },
-      items: [
-        {
-          value: "",
-          text: ""
-        },
-        {
-          value: "",
-          text: "Team member 1 (teammember1@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 2 (teammember2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 3 (teammember3@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 4 (teammember4@homeoffice.gov.uk)"
-        }
-      ]
-    }) }}
+    <p><a class="govuk-link--no-visited-state" href="#">Add a correspondent</a></p>
 
     {{ govukButton({
-      text: "Allocate",
-      href: "#"
+      text: "Continue",
+        classes: 'govuk-!-margin-top-6',
+      href: "complaint-selection"
     }) }}
-
   </div>
 
 

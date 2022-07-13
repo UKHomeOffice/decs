@@ -19,6 +19,8 @@ Example usage:
 
 module.exports = {
 
-  // Insert values here
-
+  "current-year": "2022",
+  "current-month-digit": "7",
+  "current-month-alpha": "July",
+  "current-day": "13"
 }

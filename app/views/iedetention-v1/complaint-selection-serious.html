@@ -21,159 +21,52 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% block content %}
-<style>
-.summary-tab-correspondent-label {display: none;}
-.summary-tab-correspondent-data {display: none;}
-</style>
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l">Record correspondent details</h1>
+    <h1 class="govuk-heading-l margin-0">Complaint selection</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
 
-    <form class="form" action="correspondents-added" method="post">
-      {% from "govuk/components/select/macro.njk" import govukSelect %}
-      {% from "govuk/components/input/macro.njk" import govukInput %}
+    <form class="form" action="#" method="post">
 
-      {{ govukSelect({
-        id: "correspondenttype",
-        name: "correspondenttype",
-        label: {
-          classes: "govuk-!-font-weight-bold",
-          text: "Correspondent type"
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      {{ govukCheckboxes({
+        idPrefix: "serious",
+        name: "serious",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Serious misconduct category",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--m"
+          }
         },
         items: [
           {
-            value: "",
-            text: ""
+            value: "theft",
+            text: "Theft"
           },
           {
-            value: "complainant",
-            text: "Complainant"
+            value: "assault",
+            text: "Assault"
           },
           {
-            value: "thirdparty",
-            text: "Third party representative"
+            value: "sexualassault",
+            text: "Sexual assault"
+          },
+          {
+            value: "fraud",
+            text: "Fraud / corruption"
+          },
+          {
+            value: "racism",
+            text: "Racism and other discrimination"
           }
         ]
       }) }}
 
-      <!--<div class="govuk-form-group">
-      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-          What is the name of the event?
-        </label>
-      </h1>
-      <input class="fullname" id="event-name" name="fullname" type="text" value="{{ data['fullname'] }}">
-    </div>-->
-
-      {{ govukInput({
-        label: {
-          text: "Full name",
-          classes: "govuk-label--s"
-        },
-        id: "fullname",
-        name: "fullname"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Organisation",
-          classes: "govuk-label--s"
-        },
-        id: "organisation",
-        name: "organisation"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Building",
-          classes: "govuk-label--s"
-        },
-        id: "building",
-        name: "building"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Street",
-          classes: "govuk-label--s"
-        },
-        id: "street",
-        name: "street"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Town or city",
-          classes: "govuk-label--s"
-        },
-        id: "town",
-        name: "town"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Postcode",
-          classes: "govuk-label--s"
-        },
-        id: "postode",
-        name: "postcode"
-      }) }}
-
-      {{ govukSelect({
-        id: "country",
-        name: "country",
-        label: {
-          classes: "govuk-!-font-weight-bold",
-          text: "Country"
-        },
-        items: [
-          {
-            value: "",
-            text: ""
-          },
-          {
-            value: "unitedkingdom",
-            text: "United Kingdom"
-          },
-          {
-            value: "other",
-            text: "Other"
-          }
-        ]
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Telephone",
-          classes: "govuk-label--s"
-        },
-        id: "telephone",
-        name: "telephone"
-      }) }}
-
-      {{ govukInput({
-        label: {
-          text: "Email",
-          classes: "govuk-label--s"
-        },
-        id: "email",
-        name: "email"
-      }) }}
-
-      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-      {{ govukCharacterCount({
-        name: "referencesgiven",
-        id: "with-hint",
-        maxlength: 4000,
-        label: {
-          text: "Enter any references given",
-          classes: "govuk-label--s",
-          isPageHeading: true
-        }
-      }) }}
-
-      <button class="govuk-button" data-module="govuk-button">Add</button>
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
 
     </form>
   </div>

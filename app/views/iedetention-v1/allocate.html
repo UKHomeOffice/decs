@@ -1,0 +1,376 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">IEDET/0172177/22</h1>
+    <h2 class="govuk-heading-m">Case details</h2>
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "Registration"
+          },
+          content: {
+            html: "<h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>01/07/2022</p>"
+          }
+        }
+      ]
+    }) }}
+
+    <!--<p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Allocate to me</a></p>-->
+
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+        text: "Allocate to"
+      },
+      items: [
+        {
+          value: "",
+          text: "Me"
+        },
+        {
+          value: "",
+          text: "Team member 1 (teammember1@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 2 (teammember2@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 3 (teammember3@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 4 (teammember4@homeoffice.gov.uk)"
+        }
+      ]
+    }) }}
+
+{{ govukButton({
+      text: "Continue",
+      href: "correspondents"
+    }) }}
+
+
+
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+    {% set documentsHtml %}
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage documents</a></p>
+
+    <div id="mockDoc">
+        <p>Ref: 2635497618214</p>
+        <p></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus consectetur libero, ut ornare sapien placerat nec. In leo augue, dignissim ut diam rutrum, rutrum semper augue. Donec vel sem dolor. Cras venenatis congue ex, et pretium lacus volutpat rhoncus.</p>
+
+        <p>Maecenas commodo magna quis nibh lacinia congue. Nulla imperdiet lacus at justo varius fermentum. Suspendisse neque tortor, consequat ac nisl interdum, tristique pellentesque urna. Donec sollicitudin euismod nibh, in accumsan tellus interdum a.</p>
+
+        <p>Vulputate quis leo vitae pulvinar. Curabitur dictum non turpis sit amet volutpat. Cras iaculis a orci id euismod. Fusce id justo consequat, laoreet ex at, feugiat ex. Nam sed libero diam. Curabitur luctus augue et metus finibus malesuada.</p>
+
+        <p>Yours Sincerely</p>
+
+        <p>Joe Bloggs</p>
+    </div>
+
+    <div id="IEDETform" class="js-hidden">
+        <img src="/public/images/iedetform.png" alt-"IE Detention DC9 form">
+    </div>
+
+    <h2 class="govuk-heading-m">To document</h2>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><p>document.doc</p></div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link js-hidden" id="docLink" onclick="myFunction2()" href="#">Preview</a>
+        </p>
+      </div>
+
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link govuk-!-text-align-right" href="#">Download</a></p>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><p>DC9-form-scan.pdf</p></div>
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+            <a class="govuk-link" id="scanLink" onclick="myFunction1()" href="#">Preview</a></p>
+      </div>
+      <div class="govuk-grid-column-one-quarter">
+        <p class="govuk-body govuk-!-text-align-right">
+          <a class="govuk-link govuk-!-text-align-right" href="#">Download</a></p>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <script>
+      function myFunction2() {
+        document.getElementById("IEDETform").style.display = "none";
+        document.getElementById("mockDoc").style.display = "block";
+        document.getElementById("scanLink").style.display = "block";
+        document.getElementById("docLink").style.display = "none";
+      }
+    function myFunction1() {
+      document.getElementById("IEDETform").style.display = "block";
+      document.getElementById("mockDoc").style.display = "none";
+      document.getElementById("scanLink").style.display = "none";
+      document.getElementById("docLink").style.display = "block";
+    }
+    </script>
+
+
+    <h2 class="govuk-heading-m">Public correspondence</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Complaint leaflet</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Complaint letter</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Email</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">CRF</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">DRAFT</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Acknowledgement letter</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Interim response</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Final response</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Appeal leaflet</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">IMB letter</h2>
+    <p>None</p>
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    {% endset -%}
+
+
+    {% set summaryHtml %}
+    <h2 class="govuk-heading-m">Active stage – registration</h2>
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+      {{ govukSummaryList({
+        classes: 'govuk-summary-list',
+        rows: [
+          {
+            key: {
+              text: "Team"
+            },
+            value: {
+              text: "IE Detention"
+            }
+          },
+          {
+            key: {
+              text: "User"
+            },
+            value: {
+              text: ""
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Case summary</h2>
+      {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+        {{ govukSummaryList({
+          classes: 'govuk-summary-list',
+          rows: [
+            {
+              key: {
+                text: "Created"
+              },
+              value: {
+                text: "01/07/2022"
+              }
+            },
+            {
+              key: {
+                text: "Deadline"
+              },
+              value: {
+                text: "29/07/2022"
+              }
+            },
+            {
+              key: {
+                text: "When was the correspondence received?"
+              },
+              value: {
+                text: "01/07/2022"
+              }
+            }
+          ]
+        }) }}
+
+    {% endset -%}
+
+    {% set timelineHtml %}
+
+    {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+    {% set timelineCasenoteHtml %}
+
+    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+      {{ govukCharacterCount({
+      name: "timelineCasenote",
+      id: "timelineCasenote",
+      maxlength: 2000,
+      label: {
+        text: "Case note",
+        classes: "govuk-label--s",
+        isPageHeading: true
+      }
+      }) }}
+
+      {{ govukButton({
+        text: "Add",
+        href: "/url/to/next/page"
+      }) }}
+
+    {% endset %}
+
+    {{ govukDetails({
+      summaryText: "Add case note",
+      text: "[Add text area here]",
+      html: timelineCasenoteHtml
+    }) }}
+
+    <div class="timeline">
+      <ul>
+        <!--<li class="">
+          <p><strong>Allocated to iedet user</strong></p>
+          <p>Stage: Registration</p>
+          <p><span>1 July 2022 at 15:10</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Allocated to the IE Detention</strong></p>
+          <p>Stage: Registration</p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>-->
+        <li class="">
+          <p><strong>Stage: Registration Started</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Document: document.doc Created</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+        <li class="">
+          <p><strong>Case Created</strong></p>
+          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
+        </li>
+      </ul>
+    </div>
+
+    {% endset -%}
+
+    {% set peopleHtml %}
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage people</a></p>
+
+    {% endset -%}
+
+    {{ govukTabs({
+    items: [
+      {
+        label: "Documents",
+        id: "documents",
+        panel: {
+          html: documentsHtml
+        }
+      },
+      {
+        label: "Summary",
+        id: "summary",
+        panel: {
+          html: summaryHtml
+        }
+      },
+      {
+        label: "Timeline",
+        id: "timeline",
+        panel: {
+          html: timelineHtml
+        }
+      },
+      {
+        label: "People",
+        id: "actions",
+        panel: {
+          html: peopleHtml
+        }
+      }
+    ]
+    }) }}
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}
