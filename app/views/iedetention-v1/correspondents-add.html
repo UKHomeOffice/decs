@@ -24,6 +24,7 @@
 <style>
 .summary-tab-correspondent-label {display: none;}
 .summary-tab-correspondent-data {display: none;}
+.complainant {display: none}
 </style>
 <div class="govuk-grid-row">
 
@@ -57,21 +58,14 @@
         ]
       }) }}
 
-      <!--<div class="govuk-form-group">
-      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-          What is the name of the event?
-        </label>
-      </h1>
-      <input class="fullname" id="event-name" name="fullname" type="text" value="{{ data['fullname'] }}">
-    </div>-->
-
       {{ govukInput({
         label: {
           text: "Full name",
           classes: "govuk-label--s"
         },
         id: "fullname",
-        name: "fullname"
+        name: "fullname",
+        value: data['fullname']
       }) }}
 
       {{ govukInput({
@@ -80,7 +74,8 @@
           classes: "govuk-label--s"
         },
         id: "organisation",
-        name: "organisation"
+        name: "organisation",
+        value: data['organisation']
       }) }}
 
       {{ govukInput({
@@ -89,7 +84,8 @@
           classes: "govuk-label--s"
         },
         id: "building",
-        name: "building"
+        name: "building",
+        value: data['building']
       }) }}
 
       {{ govukInput({
@@ -98,7 +94,8 @@
           classes: "govuk-label--s"
         },
         id: "street",
-        name: "street"
+        name: "street",
+        value: data['street']
       }) }}
 
       {{ govukInput({
@@ -107,7 +104,8 @@
           classes: "govuk-label--s"
         },
         id: "town",
-        name: "town"
+        name: "town",
+        value: data['town']
       }) }}
 
       {{ govukInput({
@@ -116,7 +114,8 @@
           classes: "govuk-label--s"
         },
         id: "postode",
-        name: "postcode"
+        name: "postcode",
+        value: data['postcode']
       }) }}
 
       {{ govukSelect({
@@ -148,7 +147,8 @@
           classes: "govuk-label--s"
         },
         id: "telephone",
-        name: "telephone"
+        name: "telephone",
+        value: data['telephone']
       }) }}
 
       {{ govukInput({
@@ -157,7 +157,8 @@
           classes: "govuk-label--s"
         },
         id: "email",
-        name: "email"
+        name: "email",
+        value: data['email']
       }) }}
 
       {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
@@ -170,7 +171,8 @@
           text: "Enter any references given",
           classes: "govuk-label--s",
           isPageHeading: true
-        }
+        },
+        value: data['referencesgiven']
       }) }}
 
       <button class="govuk-button" data-module="govuk-button">Add</button>
@@ -192,68 +194,11 @@
     {% endset -%}
 
     {% set timelineHtml %}
-
-    {% from "govuk/components/details/macro.njk" import govukDetails %}
-
-    {% set timelineCasenoteHtml %}
-
-    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-      {{ govukCharacterCount({
-      name: "timelineCasenote",
-      id: "timelineCasenote",
-      maxlength: 2000,
-      label: {
-        text: "Case note",
-        classes: "govuk-label--s",
-        isPageHeading: true
-      }
-      }) }}
-
-      {{ govukButton({
-        text: "Add",
-        href: "/url/to/next/page"
-      }) }}
-
-    {% endset %}
-
-    {{ govukDetails({
-      summaryText: "Add case note",
-      text: "[Add text area here]",
-      html: timelineCasenoteHtml
-    }) }}
-
-    <div class="timeline">
-      <ul>
-        <!--<li class="">
-          <p><strong>Allocated to iedet user</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:10</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Allocated to the IE Detention</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>-->
-        <li class="">
-          <p><strong>Stage: Registration Started</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Document: document.doc Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Case Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-      </ul>
-    </div>
-
+      {% include "includes/timeline-iedetention-v1.html" %}
     {% endset -%}
 
     {% set peopleHtml %}
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage people</a></p>
-
+      {% include "includes/people-iedetention-v1.html" %}
     {% endset -%}
 
     {{ govukTabs({

@@ -228,68 +228,11 @@
     {% endset -%}
 
     {% set timelineHtml %}
-
-    {% from "govuk/components/details/macro.njk" import govukDetails %}
-
-    {% set timelineCasenoteHtml %}
-
-    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-      {{ govukCharacterCount({
-      name: "timelineCasenote",
-      id: "timelineCasenote",
-      maxlength: 2000,
-      label: {
-        text: "Case note",
-        classes: "govuk-label--s",
-        isPageHeading: true
-      }
-      }) }}
-
-      {{ govukButton({
-        text: "Add",
-        href: "/url/to/next/page"
-      }) }}
-
-    {% endset %}
-
-    {{ govukDetails({
-      summaryText: "Add case note",
-      text: "[Add text area here]",
-      html: timelineCasenoteHtml
-    }) }}
-
-    <div class="timeline">
-      <ul>
-        <!--<li class="">
-          <p><strong>Allocated to iedet user</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:10</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Allocated to the IE Detention</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>-->
-        <li class="">
-          <p><strong>Stage: Registration Started</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Document: document.doc Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Case Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-      </ul>
-    </div>
-
+      {% include "includes/timeline-iedetention-v1.html" %}
     {% endset -%}
 
     {% set peopleHtml %}
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage people</a></p>
-
+      {% include "includes/people-iedetention-v1.html" %}
     {% endset -%}
 
     {{ govukTabs({

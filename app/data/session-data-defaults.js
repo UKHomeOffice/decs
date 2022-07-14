@@ -20,7 +20,10 @@ Example usage:
 module.exports = {
 
   "current-year": "2022",
-  "current-month-digit": "7",
+  "current-month-digit": "07",
   "current-month-alpha": "July",
-  "current-day": "13"
+  "current-day": "14",
+  "current-date-digit": "14/07/2022",
+  "current-date-alpha": "14 July 2022",
+  "2weeks-date-digit": "28/07/2022"
 }

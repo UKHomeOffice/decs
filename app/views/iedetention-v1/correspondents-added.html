@@ -32,49 +32,32 @@
 
     <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
 
-    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-    {% set namehtml %}
-    <div class="govuk-form-group govuk-!-margin-bottom-0">
-    <fieldset class="govuk-fieldset">
-      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="document1" name="documentlist" type="radio" value="document1">
-          <label class="govuk-label govuk-radios__label" for="document1">{{ data['fullname'] }}</label>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-form-group govuk-!-margin-top-2 govuk-!-margin-bottom-1">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="document1" name="documentlist" type="radio" value="document1" checked>
+              <label class="govuk-label govuk-radios__label" for="document1">{{ data['fullname'] }}</label>
+            </div>
+          </div>
+        </fieldset>
         </div>
       </div>
-    </fieldset>
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="correspondents-add">Edit</a></p>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="#">Remove</a></p>
+          </div>
+        </div>
+      </div>
     </div>
-    {% endset %}
 
-    {% set edithtml %}
-      <p class="govuk-body govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="correspondents-add">Edit</a></p>
-    {% endset %}
-
-    {% set removehtml %}
-      <p><a class="govuk-link--no-visited-state" href="#">Remove</a></p>
-    {% endset %}
-
-    {{ govukSummaryList({
-      rows: [
-        {
-          key: {
-            classes: 'govuk-!-width-one-half',
-            html: namehtml
-          },
-          value: {
-            classes: "",
-            html: edithtml
-          },
-          actions: {
-            items: [
-              {
-              html: removehtml
-              }
-            ]
-          }
-        }
-      ]
-    }) }}
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-4">
 
     <p><a class="govuk-link--no-visited-state" href="#">Add a correspondent</a></p>
 
@@ -99,68 +82,11 @@
     {% endset -%}
 
     {% set timelineHtml %}
-
-    {% from "govuk/components/details/macro.njk" import govukDetails %}
-
-    {% set timelineCasenoteHtml %}
-
-    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-      {{ govukCharacterCount({
-      name: "timelineCasenote",
-      id: "timelineCasenote",
-      maxlength: 2000,
-      label: {
-        text: "Case note",
-        classes: "govuk-label--s",
-        isPageHeading: true
-      }
-      }) }}
-
-      {{ govukButton({
-        text: "Add",
-        href: "/url/to/next/page"
-      }) }}
-
-    {% endset %}
-
-    {{ govukDetails({
-      summaryText: "Add case note",
-      text: "[Add text area here]",
-      html: timelineCasenoteHtml
-    }) }}
-
-    <div class="timeline">
-      <ul>
-        <!--<li class="">
-          <p><strong>Allocated to iedet user</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:10</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Allocated to the IE Detention</strong></p>
-          <p>Stage: Registration</p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>-->
-        <li class="">
-          <p><strong>Stage: Registration Started</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Document: document.doc Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-        <li class="">
-          <p><strong>Case Created</strong></p>
-          <p><span>1 July 2022 at 15:03</span><span>iedet user</span></p>
-        </li>
-      </ul>
-    </div>
-
+      {% include "includes/timeline-iedetention-v1.html" %}
     {% endset -%}
 
     {% set peopleHtml %}
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="">Manage people</a></p>
-
+      {% include "includes/people-iedetention-v1.html" %}
     {% endset -%}
 
     {{ govukTabs({

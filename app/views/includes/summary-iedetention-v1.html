@@ -1,8 +1,11 @@
-<h2 class="govuk-heading-m">Active stage – registration</h2>
+<h2 class="govuk-heading-m">Active stage</h2>
+
+<h3 class="govuk-heading-s">Registration</h3>
+
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
   {{ govukSummaryList({
-    classes: 'govuk-summary-list',
+    classes: 'govuk-summary-list govuk-!-margin-left-3',
     rows: [
       {
         key: {
@@ -24,23 +27,31 @@
     ]
   }) }}
 
-  <h2 class="govuk-heading-m">Case summary</h2>
-
+  <h2 class="govuk-heading-m">Case</h2>
+  <h3 class="govuk-heading-s">Summary</h3>
   {% set correspondentdatahtml %}
       <p class="govuk-body">{{ data['fullname'] }}<br>{{ data['telephone'] }}<br>{{ data['email'] }}</p>
-    {% endset %}
+  {% endset %}
+
+  {% set todaydateHtml %}
+      {{ data['current-date-digit'] }}
+  {% endset %}
+
+  {% set 2weeksHtml %}
+      {{ data['2weeks-date-digit'] }}
+  {% endset %}
 
   {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
     {{ govukSummaryList({
-      classes: 'govuk-summary-list',
+      classes: 'govuk-summary-list govuk-!-margin-left-3',
       rows: [
         {
           key: {
             text: "Created"
           },
           value: {
-            text: "01/07/2022"
+            html: todaydateHtml
           }
         },
         {
@@ -48,7 +59,7 @@
             text: "Deadline"
           },
           value: {
-            text: "29/07/2022"
+            html: 2weeksHtml
           }
         },
         {
@@ -66,7 +77,7 @@
             text: "Correspondence received"
           },
           value: {
-            text: "01/07/2022"
+            html: todaydateHtml
           }
         }
       ]

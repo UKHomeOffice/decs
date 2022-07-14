@@ -23,7 +23,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
-    <form action="#" method="POST" enctype="multipart/form-data">
+    <form action="/search/reference" method="POST" enctype="multipart/form-data">
 
       {% from "govuk/components/input/macro.njk" import govukInput %}
 
@@ -60,40 +60,19 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">Dashboard</h1>
+      <h1 class="govuk-heading-l">Dashboard [Make this more realistic]</h1>
       <h2 class="govuk-heading-m">My Cases</h2>
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
-          <a class="card__body" href="#">
-            <span class="govuk-!-font-size-48">0</span>
+          <a class="card__body" href="/workstack/user">
+            <span class="govuk-!-font-size-48">61</span>
             <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></a>
-            <!--<div class="card__footer">
+            <div class="card__footer">
               <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">57 Overdue</span>
-            </div>-->
+            </div>
           </li>
         </ul>
 
-        <h2 class="govuk-heading-m">Team Cases</h2>
-        <ul class="govuk-grid-row dashboard__teams">
-          <li class="card govuk-body govuk-grid-column-one-quarter">
-            <a class="card__body" href="#">
-            <span class="govuk-!-font-size-48">1</span>
-            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Complaint Registration</span></a>
-          <div class="card__footer">
-            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">1 Unallocated</span>
-            <!--<span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">1106 Overdue</span>-->
-          </div>
-        </li>
-          <!--<li class="card govuk-body govuk-grid-column-one-quarter">
-            <a class="card__body" href="/workstack/team/241845c6-8fe4-4b0a-8409-c0613b5acae0">
-              <span class="govuk-!-font-size-48">1026</span>
-              <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a>
-              <div class="card__footer"><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">885 Unallocated</span>
-                <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">917 Overdue</span>
-              </div>
-            </li>-->
-          </ul>
-        </div>
-      </div>
+        <h2 class="govuk-heading-m">Team Cases</h2><ul class="govuk-grid-row dashboard__teams"><li class="card govuk-body govuk-grid-column-one-quarter"><a class="card__body" href="/workstack/team/08e30ffd-1106-fdb7-61bf-2be7e9fb2472"><span class="govuk-!-font-size-48">1191</span><span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Complaint Registration</span></a><div class="card__footer"><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">796 Unallocated</span><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">1106 Overdue</span></div></li><li class="card govuk-body govuk-grid-column-one-quarter"><a class="card__body" href="/workstack/team/241845c6-8fe4-4b0a-8409-c0613b5acae0"><span class="govuk-!-font-size-48">1026</span><span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a><div class="card__footer"><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">885 Unallocated</span><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">917 Overdue</span></div></li></ul></div></div>
 
 {% endblock %}
