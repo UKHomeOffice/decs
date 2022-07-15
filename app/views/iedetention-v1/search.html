@@ -13,6 +13,17 @@
       },
       html: ''
     }) }}
+
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          Search
+        </li>
+      </ol>
+    </div>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -21,7 +32,12 @@
 
 {% block content %}
 
-<div class="govuk-grid-row"><div class="govuk-grid-column-one-half"><h1 class="govuk-heading-l">Search</h1><form action="/search/results" method="POST" enctype="multipart/form-data"><div class="govuk-form-group "><label for="correspondent" id="correspondent-label" class="govuk-label govuk-label--s">Correspondent full name</label><div><input class="govuk-input" id="correspondent" type="text" name="correspondent" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentPostcode" id="correspondentPostcode-label" class="govuk-label govuk-label--s">Correspondent postcode</label><div><input class="govuk-input" id="correspondentPostcode" type="text" name="correspondentPostcode" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentEmail" id="correspondentEmail-label" class="govuk-label govuk-label--s">Correspondent email address</label><div><input class="govuk-input" id="correspondentEmail" type="text" name="correspondentEmail" maxlength="4000" value=""></div></div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half"><h1 class="govuk-heading-l">Search</h1>
+
+  <form action="search-results" method="POST" enctype="multipart/form-data">
+    <div class="govuk-form-group ">
+      <label for="correspondent" id="correspondent-label" class="govuk-label govuk-label--s">Correspondent full name</label><div><input class="govuk-input" id="correspondent" type="text" name="correspondent" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentPostcode" id="correspondentPostcode-label" class="govuk-label govuk-label--s">Correspondent postcode</label><div><input class="govuk-input" id="correspondentPostcode" type="text" name="correspondentPostcode" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentEmail" id="correspondentEmail-label" class="govuk-label govuk-label--s">Correspondent email address</label><div><input class="govuk-input" id="correspondentEmail" type="text" name="correspondentEmail" maxlength="4000" value=""></div></div>
 
   <div class="govuk-form-group"><fieldset id="ComplainantDOB" class="govuk-fieldset" role="group">
     <legend class="govuk-fieldset__legend govuk-label--s">Complainant date of birth</legend>
