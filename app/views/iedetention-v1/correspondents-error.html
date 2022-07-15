@@ -22,7 +22,10 @@
 
 {% block content %}
 <style>
-
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
 </style>
 <div class="govuk-grid-row">
 
@@ -30,41 +33,28 @@
     <h1 class="govuk-heading-l margin-0">Complaint correspondents</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
 
-    <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-one-half">
-        <div class="govuk-form-group govuk-!-margin-top-2 govuk-!-margin-bottom-1">
-        <fieldset class="govuk-fieldset">
-          <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="document1" name="documentlist" type="radio" value="document1" checked>
-              <label class="govuk-label govuk-radios__label" for="document1">{{ data['fullname'] }}</label>
-            </div>
-          </div>
-        </fieldset>
-        </div>
-      </div>
-      <div class="govuk-grid-column-one-half">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-half">
-            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="correspondents-add">Edit</a></p>
-          </div>
-          <div class="govuk-grid-column-one-half">
-            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="#">Remove</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Who is the primary correspondent? is required",
+          href: "#Correspondents"
+        }
+      ]
+    }) }}
 
-    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-4">
-
-    <p><a class="govuk-link--no-visited-state" href="#">Add a correspondent</a></p>
+    <div class="govuk-form-group govuk-form-group--error">
+      <fieldset id="Correspondents" class="govuk-fieldset ">
+        <legend id="Correspondents-legend" class="govuk-fieldset__legend">
+          <span class="govuk-fieldset__heading govuk-label--m">Who is the primary correspondent?</span></legend>
+          <span id="Correspondents-error" class="govuk-error-message">Who is the primary correspondent? is required</span>
+          <p><a class="govuk-link--no-visited-state" href="correspondents-add">Add a correspondent</a></p></fieldset></div>
 
     {{ govukButton({
       text: "Continue",
-        classes: 'govuk-!-margin-top-6',
-      href: "complaint-selection"
+      href: "#"
     }) }}
   </div>
 
