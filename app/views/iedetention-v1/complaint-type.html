@@ -1,7 +1,7 @@
 {% extends "layout-iedetention-v1.html" %}
 
 {% block pageTitle %}
-  Case – {{ serviceName }}
+  Complaint type – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,10 +24,10 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint selection</h1>
+    <h1 class="govuk-heading-l margin-0">Complaint type</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
 
-    <form class="form" action="complaint-input" method="post">
+    <form class="form" action="complaint-type-channel" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
@@ -41,7 +41,7 @@
             legend: {
               text: "Category",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-fieldset__legend--s  govuk-!-padding-top-2"
             }
           },
           items: [
@@ -60,10 +60,6 @@
             {
               value: "wrong",
               text: "Wrong information"
-            },
-            {
-              value: "property",
-              text: "Properties and lost documents"
             },
             {
               value: "physical",
@@ -90,6 +86,10 @@
               text: "Custody (BF)"
             },
             {
+              value: "property",
+              text: "Property or documents - lost"
+            },
+            {
               value: "propertywitheld",
               text: "Property or documents - withheld"
             },
@@ -111,7 +111,7 @@
             legend: {
               text: "Category",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-fieldset__legend--s  govuk-!-padding-top-2"
             }
           },
           items: [
@@ -125,7 +125,7 @@
             },
             {
               value: "other",
-              text: "Other unprofessional"
+              text: "Other unprofessionalism"
             },
             {
               value: "detained",
@@ -143,8 +143,7 @@
           fieldset: {
             legend: {
               text: "Category",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--s"
+              classes: "govuk-fieldset__legend--s govuk-!-padding-top-2"
             }
           },
           items: [
@@ -166,7 +165,7 @@
             },
             {
               value: "racism",
-              text: "Racism and other discrimination"
+              text: "Racism / discrimination"
             }
           ]
         }) }}
@@ -178,11 +177,6 @@
         idPrefix: "complainttype",
         name: "complainttype",
         fieldset: {
-          legend: {
-            text: "Complaint type",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--m"
-          }
         },
         items: [
           {

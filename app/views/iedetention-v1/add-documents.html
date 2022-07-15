@@ -1,0 +1,107 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Create single case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Add documents</h1>
+      <form class="form" action="/iedetention-v1/case-start" method="post">
+
+        {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+        {{ govukSelect({
+          id: "documenttype",
+          name: "documenttype",
+          label: {
+            classes: "govuk-!-font-weight-bold",
+            text: "Document type"
+          },
+          items: [
+            {
+              value: "",
+              text: ""
+            },
+            {
+              value: "",
+              text: "To document"
+            },
+            {
+              value: "",
+              text: "Public correspondence"
+            },
+            {
+              value: "",
+              text: "Complaint leaflet"
+            },
+            {
+              value: "",
+              text: "Complaint letter"
+            },
+            {
+              value: "",
+              text: "Email"
+            },
+            {
+              value: "",
+              text: "CRF"
+            },
+            {
+              value: "",
+              text: "DRAFT"
+            },
+            {
+              value: "",
+              text: "Acknowledgement letter"
+            },
+            {
+              value: "",
+              text: "Interim response"
+            },
+            {
+              value: "",
+              text: "Final response"
+            },
+            {
+              value: "",
+              text: "Appeal leaflet"
+            },
+            {
+              value: "",
+              text: "IMB letter"
+            }
+          ]
+        }) }}
+
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          name: "file-upload-1",
+          label: {
+            classes: "govuk-!-font-weight-bold",
+            text: "Documents"
+          }
+        }) }}
+
+        <button class="govuk-button" data-module="govuk-button">Add</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

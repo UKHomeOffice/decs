@@ -35,6 +35,11 @@
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l">IEDET/0172177/22</h1>
     <h2 class="govuk-heading-m">Case details</h2>
+
+    {% set accordianHtml %}
+      <h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>{{ data['current-date-digit'] }}</p>
+    {% endset -%}
+
     {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
 
     {{ govukAccordion({
@@ -45,12 +50,46 @@
             text: "Registration"
           },
           content: {
-            html: "<h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>01/07/2022</p>"
+            html: accordianHtml
           }
         }
       ]
     }) }}
 
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+            text: "Allocate to"
+          },
+          items: [
+            {
+              value: "",
+              text: "Me"
+            },
+            {
+              value: "",
+              text: "Team member 1 (teammember1@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "Team member 2 (teammember2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "Team member 3 (teammember3@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "Team member 4 (teammember4@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
+
+    <!--
     <h2 class="govuk-heading-m">Allocate</h2>
     <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
 
@@ -85,11 +124,11 @@
           text: "Team member 4 (teammember4@homeoffice.gov.uk)"
         }
       ]
-    }) }}
+    }) }}-->
 
     {{ govukButton({
       text: "Allocate",
-      href: "#"
+      href: "correspondents"
     }) }}
 
   </div>
