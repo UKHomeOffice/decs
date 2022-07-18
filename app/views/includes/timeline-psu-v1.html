@@ -1,0 +1,65 @@
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set timelineCasenoteHtml %}
+
+{% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+  {{ govukCharacterCount({
+  name: "timelineCasenote",
+  id: "timelineCasenote",
+  maxlength: 2000,
+  label: {
+    text: "Case note",
+    classes: "govuk-label--s",
+    isPageHeading: true
+  }
+  }) }}
+
+  {{ govukButton({
+    text: "Add",
+    href: "#"
+  }) }}
+
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Add case note",
+  text: "[Add text area here]",
+  html: timelineCasenoteHtml
+}) }}
+
+<div class="timeline">
+  <ul>
+
+    <!--Adding correspondent-->
+    <li class="timelineStage2">
+      <p><strong>Correspondent: {{ data['fullname'] }} added</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:14</span><span>IE Detention user 1</span></p>
+    </li>
+
+    <!--Allocate to me-->
+    <li class="timelineStage1">
+      <p><strong>Allocated to IE Detention user 1</strong></p>
+      <p>Stage: Registration</p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:06</span><span>IE Detention user 1</span></p>
+    </li>
+
+    <!--Create case-->
+    <li class="">
+      <p><strong>Allocated to the IE Detention</strong></p>
+      <p>Stage: Registration</p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+    </li>
+    <li class="">
+      <p><strong>Stage: Registration started</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+    </li>
+    <li class="">
+      <p><strong>Document: {{ data['docname'] }} created</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+    </li>
+    <li class="">
+      <p><strong>Case Created</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+    </li>
+  </ul>
+</div>

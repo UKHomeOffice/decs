@@ -40,7 +40,7 @@
 {% endblock %}
 
 {% block header %}
-  {% include "includes/header-iedetention-v1.html" %}
+  {% include "includes/header-psu-v1.html" %}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
@@ -58,7 +58,10 @@
             href: "/",
             text: "Index"
           },
-
+          {
+            href: "/iedetention-v1/allocate",
+            text: "Allocate"
+          },
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"

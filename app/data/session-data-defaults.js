@@ -18,7 +18,9 @@ Example usage:
 */
 
 module.exports = {
-
+/*
+iedetention-v1
+*/
   "current-year": "2022",
   "current-month-digit": "07",
   "current-month-alpha": "July",
@@ -26,5 +28,10 @@ module.exports = {
   "current-date-digit": "18/07/2022",
   "current-date-alpha": "18 July 2022",
   "2weeks-date-digit": "28/07/2022",
-  "docname": "joe-bloggs.pdf"
+  "docname": "joe-bloggs.pdf",
+
+  /*
+  psu-v1
+  */
+  "case-ref-psu": "IEDET/0000000/22"
 }

@@ -1,0 +1,99 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  Dashboard – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <form action="case-start" method="POST" enctype="multipart/form-data">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          text: "Load case",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "For example ABC/1234567/12"
+        },
+        id: "event-name",
+        name: "event-name"
+      }) }}
+    </form>
+  </div>
+</div>
+
+<!-- DECS code
+<div class="govuk-grid-row">
+  <div µclass="govuk-grid-column-one-third">
+    <form action="/search/reference" method="POST" enctype="multipart/form-data">
+      <div class="govuk-form-group ">
+        <label for="case-reference" id="case-reference-label" class="govuk-label govuk-label--s">Load Case</label>
+        <span class="govuk-hint">For example ABC/1234567/12</span>
+        <div>
+          <input type="text" class="govuk-input" id="case-reference" name="case-reference" maxlength="4000" value="">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>-->
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Dashboard</h1>
+      <h2 class="govuk-heading-m">My Cases</h2>
+      <ul class="govuk-grid-row dashboard__teams">
+        <li class="card govuk-body govuk-grid-column-one-quarter">
+          <a class="card__body" href="#">
+            <span class="govuk-!-font-size-48">0</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></a>
+            <!--<div class="card__footer">
+              <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">57 Overdue</span>
+            </div>-->
+          </li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Team Cases</h2>
+        <ul class="govuk-grid-row dashboard__teams">
+          <li class="card govuk-body govuk-grid-column-one-quarter">
+            <a class="card__body" href="#">
+            <span class="govuk-!-font-size-48">1</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Complaint Registration</span></a>
+          <div class="card__footer">
+            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">1 Unallocated</span>
+            <!--<span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">1106 Overdue</span>-->
+          </div>
+        </li>
+          <!--<li class="card govuk-body govuk-grid-column-one-quarter">
+            <a class="card__body" href="/workstack/team/241845c6-8fe4-4b0a-8409-c0613b5acae0">
+              <span class="govuk-!-font-size-48">1026</span>
+              <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a>
+              <div class="card__footer"><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">885 Unallocated</span>
+                <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">917 Overdue</span>
+              </div>
+            </li>-->
+          </ul>
+        </div>
+      </div>
+
+{% endblock %}
