@@ -25,5 +25,6 @@ module.exports = {
   "current-day": "18",
   "current-date-digit": "18/07/2022",
   "current-date-alpha": "18 July 2022",
-  "2weeks-date-digit": "28/07/2022"
+  "2weeks-date-digit": "28/07/2022",
+  "docname": "joe-bloggs.pdf"
 }
