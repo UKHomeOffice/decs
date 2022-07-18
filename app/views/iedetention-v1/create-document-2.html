@@ -1,0 +1,107 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Create single case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Create single case</h1>
+      <form class="form" action="/iedetention-v1/create-case-created" method="post">
+
+        <!--Nunjucks date
+          {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "received",
+          namePrefix: "received",
+          fieldset: {
+            legend: {
+              text: "When was the correspondence received?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "For example, 30 6 2022"
+          }
+        }) }}
+        -->
+
+        <!--HTML date-->
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+                When was the correspondence received?
+            </legend>
+            <div id="passport-issued-hint" class="govuk-hint">
+              For example, 30 6 2022
+            </div>
+            <div class="govuk-date-input" id="passport-issued">
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                    Day
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric" value="{{ data['current-day'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                    Month
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric" value="{{ data['current-month-digit'] }}">
+                </div>
+              </div>
+              <div class="govuk-date-input__item">
+                <div class="govuk-form-group">
+                  <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                    Year
+                  </label>
+                  <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric" value="{{ data['current-year'] }}">
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-1">
+          Are there any documents to include?
+        </label>
+        <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" value="fileUploaded">
+      </div>
+
+        <!--{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+        {{ govukFileUpload({
+          id: "file-upload-1",
+          name: "file-upload-1",
+          label: {
+            classes: "govuk-!-font-weight-bold",
+            text: "Are there any documents to include?"
+          }
+        }) }}-->
+
+        <button class="govuk-button" data-module="govuk-button">Create case</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
