@@ -56,40 +56,9 @@
       ]
     }) }}
 
-    {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-        {{ govukSelect({
-          id: "sort",
-          name: "sort",
-          label: {
-            classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
-            text: "Allocate to"
-          },
-          items: [
-            {
-              value: "",
-              text: "Me"
-            },
-            {
-              value: "",
-              text: "Team member 1 (teammember1@homeoffice.gov.uk)"
-            },
-            {
-              value: "",
-              text: "Team member 2 (teammember2@homeoffice.gov.uk)"
-            },
-            {
-              value: "",
-              text: "Team member 3 (teammember3@homeoffice.gov.uk)"
-            },
-            {
-              value: "",
-              text: "Team member 4 (teammember4@homeoffice.gov.uk)"
-            }
-          ]
-        }) }}
 
-    <!--
+
     <h2 class="govuk-heading-m">Allocate</h2>
     <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
 
@@ -109,26 +78,18 @@
         },
         {
           value: "",
-          text: "Team member 1 (teammember1@homeoffice.gov.uk)"
+          text: "IE Detention user 2 (iedetuser2@homeoffice.gov.uk)"
         },
         {
           value: "",
-          text: "Team member 2 (teammember2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 3 (teammember3@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 4 (teammember4@homeoffice.gov.uk)"
+          text: "IE Detention user 3 (iedetuser3@homeoffice.gov.uk)"
         }
       ]
-    }) }}-->
+    }) }}
 
     {{ govukButton({
       text: "Allocate",
-      href: "correspondents"
+      href: "#"
     }) }}
 
   </div>

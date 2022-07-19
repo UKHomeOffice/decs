@@ -22,13 +22,151 @@
 
 {% block content %}
 <style>
-
+.summary-tab-user {display:none;}
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage1 {display: none!important}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
 </style>
 
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l">{{ data['case-ref-psu'] }}</h1>
+
+
+    <dl class="govuk-summary-list">
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Complaint received
+        </dt>
+        <dd class="govuk-summary-list__value">
+          18 July 2022
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Case created
+        </dt>
+        <dd class="govuk-summary-list__value">
+          18 July 2022
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Deadline
+        </dt>
+        <dd class="govuk-summary-list__value">
+          28 July 2022
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Complainant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Joe Bloggs
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          1 January 2020
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Gender
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Male
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Nationality
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Iranian
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Complaint type
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Serious misconduct
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Complaint category
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Theft
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Owning CSU
+        </dt>
+        <dd class="govuk-summary-list__value">
+          IE Detention
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Complaint origin
+        </dt>
+        <dd class="govuk-summary-list__value">
+          Place name - Needed?
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Channel
+        </dt>
+        <dd class="govuk-summary-list__value">
+          DCF9 complaint form
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Port reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          xxxx
+        </dd>
+      </div>
+
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home office reference
+        </dt>
+        <dd class="govuk-summary-list__value">
+          xxxx
+        </dd>
+      </div>
+
+
+
+    </dl>
 
 
     {% from "govuk/components/select/macro.njk" import govukSelect %}
