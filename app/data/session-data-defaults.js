@@ -24,9 +24,9 @@ iedetention-v1
   "current-year": "2022",
   "current-month-digit": "07",
   "current-month-alpha": "July",
-  "current-day": "18",
-  "current-date-digit": "18/07/2022",
-  "current-date-alpha": "18 July 2022",
+  "current-day": "20",
+  "current-date-digit": "20/07/2022",
+  "current-date-alpha": "20 July 2022",
   "2weeks-date-digit": "28/07/2022",
   "docname": "joe-bloggs.pdf",
 

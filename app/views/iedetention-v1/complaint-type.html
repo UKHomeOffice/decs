@@ -27,149 +27,12 @@
     <h1 class="govuk-heading-l margin-0">Complaint type</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
 
-    <form class="form" action="complaint-type-channel" method="post">
+    <form class="form" action="complaint-category" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-      {% set serviceHtml %}
-        {{ govukCheckboxes({
-          idPrefix: "service",
-          name: "service",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "Category",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--s  govuk-!-padding-top-2"
-            }
-          },
-          items: [
-            {
-              value: "delay",
-              text: "Delay"
-            },
-            {
-              value: "admin",
-              text: "Admin / process error"
-            },
-            {
-              value: "poor",
-              text: "Poor communication"
-            },
-            {
-              value: "wrong",
-              text: "Wrong information"
-            },
-            {
-              value: "physical",
-              text: "CC - Physical environment"
-            },
-            {
-              value: "availability",
-              text: "CC - Availability of service"
-            },
-            {
-              value: "minors",
-              text: "CC - Provision for minors"
-            },
-            {
-              value: "complainthandling",
-              text: "CC - Complaint Handling"
-            },
-            {
-              value: "damage",
-              text: "Damage (BF)"
-            },
-            {
-              value: "custody",
-              text: "Custody (BF)"
-            },
-            {
-              value: "property",
-              text: "Property or documents - lost"
-            },
-            {
-              value: "propertywitheld",
-              text: "Property or documents - withheld"
-            },
-            {
-              value: "propertystolen",
-              text: "Property or documents - stolen"
-            }
-          ]
-        }) }}
-      {% endset -%}
 
-
-      {% set minorHtml %}
-        {{ govukCheckboxes({
-          idPrefix: "minor",
-          name: "minor",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "Category",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--s  govuk-!-padding-top-2"
-            }
-          },
-          items: [
-            {
-              value: "rudeness",
-              text: "Rudeness"
-            },
-            {
-              value: "unfair",
-              text: "Unfair treatment"
-            },
-            {
-              value: "other",
-              text: "Other unprofessionalism"
-            },
-            {
-              value: "detained",
-              text: "Detained individual on detained individual"
-            }
-          ]
-        }) }}
-      {% endset -%}
-
-      {% set seriousHtml %}
-        {{ govukCheckboxes({
-          idPrefix: "serious",
-          name: "serious",
-          classes: "govuk-checkboxes--small",
-          fieldset: {
-            legend: {
-              text: "Category",
-              classes: "govuk-fieldset__legend--s govuk-!-padding-top-2"
-            }
-          },
-          items: [
-            {
-              value: "theft",
-              text: "Theft"
-            },
-            {
-              value: "assault",
-              text: "Assault"
-            },
-            {
-              value: "sexualassault",
-              text: "Sexual assault"
-            },
-            {
-              value: "fraud",
-              text: "Fraud / corruption"
-            },
-            {
-              value: "racism",
-              text: "Racism / discrimination"
-            }
-          ]
-        }) }}
-      {% endset -%}
 
 
       {{ govukRadios({
@@ -181,24 +44,15 @@
         items: [
           {
             value: "service",
-            text: "Service",
-            conditional: {
-              html: serviceHtml
-            }
+            text: "Service"
           },
           {
             value: "minor",
-            text: "Minor misconduct",
-            conditional: {
-              html: minorHtml
-            }
+            text: "Minor misconduct"
           },
           {
             value: "serious",
-            text: "Serious misconduct",
-            conditional: {
-              html: seriousHtml
-            }
+            text: "Serious misconduct"
           }
         ]
       }) }}

@@ -1,0 +1,232 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Complaint type – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint category</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">IEDET/0172177/22</span>
+
+    <p class="govuk-body">Select all that apply.</p>
+
+    <form class="form" action="complaint-type-channel" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Service",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "delay",
+              text: "Delay"
+            },
+            {
+              value: "admin",
+              text: "Admin / process error"
+            },
+            {
+              value: "poor",
+              text: "Poor communication"
+            },
+            {
+              value: "wrong",
+              text: "Wrong information"
+            },
+            {
+              value: "physical",
+              text: "CC - Physical environment"
+            },
+            {
+              value: "availability",
+              text: "CC - Availability of service"
+            },
+            {
+              value: "minors",
+              text: "CC - Provision for minors"
+            },
+            {
+              value: "complainthandling",
+              text: "CC - Complaint Handling"
+            },
+            {
+              value: "property",
+              text: "Property or documents - lost"
+            },
+            {
+              value: "propertywitheld",
+              text: "Property or documents - withheld"
+            },
+            {
+              value: "propertystolen",
+              text: "Property or documents - stolen"
+            }
+          ]
+        }) }}
+
+        <!-- Damage. Custody.-->
+
+        {{ govukCheckboxes({
+          idPrefix: "minor",
+          name: "minor",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Serious and minor misconduct",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "rudeness",
+              text: "Rudeness"
+            },
+            {
+              value: "unfair",
+              text: "Unfair treatment"
+            },
+            {
+              value: "other",
+              text: "Other unprofessionalism"
+            },
+            {
+              value: "detained",
+              text: "Detained individual on detained individual"
+            }
+          ]
+        }) }}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "serious",
+          name: "Serious",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Serious misconduct",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "theft",
+              text: "Theft"
+            },
+            {
+              value: "assault",
+              text: "Assault"
+            },
+            {
+              value: "sexualassault",
+              text: "Sexual assault"
+            },
+            {
+              value: "fraud",
+              text: "Fraud / corruption"
+            },
+            {
+              value: "racism",
+              text: "Racism / discrimination"
+            }
+          ]
+        }) }}
+
+
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </form>
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+    {% set documentsHtml %}
+      {% include "includes/documents-tab-iedetention-v1-1doc.html" %}
+    {% endset -%}
+
+    {% set summaryHtml %}
+      {% include "includes/summary-iedetention-v1.html" %}
+    {% endset -%}
+
+    {% set timelineHtml %}
+      {% include "includes/timeline-iedetention-v1.html" %}
+    {% endset -%}
+
+    {% set peopleHtml %}
+      {% include "includes/people-iedetention-v1.html" %}
+    {% endset -%}
+
+    {{ govukTabs({
+    items: [
+      {
+        label: "Documents",
+        id: "documents",
+        panel: {
+          html: documentsHtml
+        }
+      },
+      {
+        label: "Summary",
+        id: "summary",
+        panel: {
+          html: summaryHtml
+        }
+      },
+      {
+        label: "Timeline",
+        id: "timeline",
+        panel: {
+          html: timelineHtml
+        }
+      },
+      {
+        label: "People",
+        id: "actions",
+        panel: {
+          html: peopleHtml
+        }
+      }
+    ]
+    }) }}
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}

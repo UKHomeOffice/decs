@@ -40,20 +40,6 @@
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 
-{% set acceptHtml %}
-{{ govukInput({
-  id: "psu-internal-ref",
-  name: "psu-internal-ref",
-  type: "text",
-  autocomplete: "email",
-  spellcheck: false,
-  classes: "govuk-!-width-full",
-  label: {
-    text: "Internal PSU reference"
-  }
-}) }}
-{% endset -%}
-
 {% set rejectHtml %}
 
 {{ govukRadios({
@@ -95,6 +81,11 @@
   idPrefix: "contact",
   name: "contact",
   fieldset: {
+    legend: {
+     text: "[Select]",
+     isPageHeading: true,
+     classes: "govuk-fieldset__legend--s"
+   }
   },
   items: [
     {
@@ -113,6 +104,20 @@
     }
   ]
 }) }}
+
+{{ govukInput({
+  id: "psu-internal-ref",
+  name: "psu-internal-ref",
+  type: "text",
+  autocomplete: "email",
+  spellcheck: false,
+  classes: "govuk-!-width-full",
+  label: {
+    classes: "govuk-label--s",
+    text: "Internal PSU reference"
+  }
+}) }}
+
 
     {{ govukButton({
       text: "Continue",
