@@ -35,89 +35,89 @@
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Triage</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
-
+    <!--
 
     {% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/input/macro.njk" import govukInput %}
+    {% from "govuk/components/input/macro.njk" import govukInput %}
 
-{% set rejectHtml %}
+    {% set rejectHtml %}
 
-{{ govukRadios({
-  classes: "govuk-radios--small",
-  idPrefix: "rejectcategory",
-  name: "rejectcategory",
-  fieldset: {
-    legend: {
-      text: "Re-categorise",
-      classes: "govuk-fieldset__legend--s"
-    }
-  },
-  items: [
-    {
-      value: "category1",
-      text: "Category 1"
-    },
-    {
-      value: "category2",
-      text: "Category 2"
-    }
-    ,
-    {
-      value: "category3",
-      text: "Category 3"
-    }
-    ,
-    {
-      value: "category4",
-      text: "Category 4"
-    }
-  ]
-}) }}
+    {{ govukRadios({
+      classes: "govuk-radios--small",
+      idPrefix: "rejectcategory",
+      name: "rejectcategory",
+      fieldset: {
+        legend: {
+          text: "Re-categorise",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "category1",
+          text: "Category 1"
+        },
+        {
+          value: "category2",
+          text: "Category 2"
+        }
+        ,
+        {
+          value: "category3",
+          text: "Category 3"
+        }
+        ,
+        {
+          value: "category4",
+          text: "Category 4"
+        }
+      ]
+    }) }}
 
-{% endset -%}
+    {% endset -%}
 
-{{ govukRadios({
-  classes: "govuk-radios--small",
-  idPrefix: "contact",
-  name: "contact",
-  fieldset: {
-    legend: {
-     text: "[Select]",
-     isPageHeading: true,
-     classes: "govuk-fieldset__legend--s"
-   }
-  },
-  items: [
-    {
-      value: "accept",
-      text: "Accept",
-      conditional: {
-        html: acceptHtml
+    {{ govukRadios({
+      classes: "govuk-radios--small",
+      idPrefix: "contact",
+      name: "contact",
+      fieldset: {
+        legend: {
+         text: "[Select]",
+         isPageHeading: true,
+         classes: "govuk-fieldset__legend--s"
+       }
+      },
+      items: [
+        {
+          value: "accept",
+          text: "Accept",
+          conditional: {
+            html: acceptHtml
+          }
+        },
+        {
+          value: "reject",
+          text: "Reject",
+          conditional: {
+            html: rejectHtml
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukInput({
+      id: "psu-internal-ref",
+      name: "psu-internal-ref",
+      type: "text",
+      autocomplete: "email",
+      spellcheck: false,
+      classes: "govuk-!-width-full",
+      label: {
+        classes: "govuk-label--s",
+        text: "Internal PSU reference"
       }
-    },
-    {
-      value: "reject",
-      text: "Reject",
-      conditional: {
-        html: rejectHtml
-      }
-    }
-  ]
-}) }}
-
-{{ govukInput({
-  id: "psu-internal-ref",
-  name: "psu-internal-ref",
-  type: "text",
-  autocomplete: "email",
-  spellcheck: false,
-  classes: "govuk-!-width-full",
-  label: {
-    classes: "govuk-label--s",
-    text: "Internal PSU reference"
-  }
-}) }}
-
+    }) }}
+    -->
 
     {{ govukButton({
       text: "Continue",
