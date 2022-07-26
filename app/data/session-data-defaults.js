@@ -33,5 +33,5 @@ iedetention-v1
   /*
   psu-v1
   */
-  "case-ref-psu": "IEDET/0000000/22"
+  "case-ref-psu": "IEDET/1234567/22"
 }

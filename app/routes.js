@@ -20,4 +20,23 @@ router.post('/juggling-balls-answer', function (req, res) {
 
 })
 
+
+// Run this code when a form is submitted to 'triage-decision'
+router.post('/triage-decision', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var triageDecision = req.session.data['serious']
+
+  // Check whether the variable matches a condition
+  if (triageDecision == "yes"){
+    // Send user to next page
+    res.redirect('/psu-v1/outcome')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/psu-v1/reclassify')
+  }
+
+})
+
+
 module.exports = router

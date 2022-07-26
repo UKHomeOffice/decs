@@ -1,0 +1,222 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  Complaint outcome – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-user {display:none;}
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage1 {display: none!important}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Reclassify complaint</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <p class="govuk-body">Select all that apply.</p>
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+      {{ govukCheckboxes({
+        idPrefix: "service",
+        name: "service",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Service",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "delay",
+            text: "Delay"
+          },
+          {
+            value: "admin",
+            text: "Admin / process error"
+          },
+          {
+            value: "poor",
+            text: "Poor communication"
+          },
+          {
+            value: "wrong",
+            text: "Wrong information"
+          },
+          {
+            value: "physical",
+            text: "CC - Physical environment"
+          },
+          {
+            value: "availability",
+            text: "CC - Availability of service"
+          },
+          {
+            value: "minors",
+            text: "CC - Provision for minors"
+          },
+          {
+            value: "complainthandling",
+            text: "CC - Complaint Handling"
+          },
+          {
+            value: "property",
+            text: "Property or documents - lost"
+          },
+          {
+            value: "propertywitheld",
+            text: "Property or documents - withheld"
+          },
+          {
+            value: "propertystolen",
+            text: "Property or documents - stolen"
+          }
+        ]
+      }) }}
+
+      <!-- Damage. Custody.-->
+
+      {{ govukCheckboxes({
+        idPrefix: "minor",
+        name: "minor",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Minor misconduct",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "rudeness",
+            text: "Rudeness"
+          },
+          {
+            value: "unfair",
+            text: "Unfair treatment"
+          },
+          {
+            value: "other",
+            text: "Other unprofessionalism"
+          },
+          {
+            value: "detained",
+            text: "Detained individual on detained individual"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "psu-reclassify-notes",
+        id: "psu-reclassify-notes",
+        maxlength: 2000,
+        label: {
+          text: "Any other notes",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        },
+        hint: {
+          text: "This will be seen by an IE Detention case worker"
+        },
+        value: data['psu-outcome-notes']
+      }) }}
+
+      {{ govukButton({
+        text: "Return case to IE Detention",
+        href: "#"
+      }) }}
+
+
+  </div>
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+    {% set documentsHtml %}
+      {% include "includes/documents-tab-iedetention-v1-1doc.html" %}
+    {% endset -%}
+
+    {% set summaryHtml %}
+      {% include "includes/summary-psu-v1.html" %}
+    {% endset -%}
+
+    {% set timelineHtml %}
+      {% include "includes/timeline-psu-v1.html" %}
+    {% endset -%}
+
+    {% set peopleHtml %}
+      {% include "includes/people-psu-v1.html" %}
+    {% endset -%}
+
+    {{ govukTabs({
+    items: [
+      {
+        label: "Documents",
+        id: "documents",
+        panel: {
+          html: documentsHtml
+        }
+      },
+      {
+        label: "Summary",
+        id: "summary",
+        panel: {
+          html: summaryHtml
+        }
+      },
+      {
+        label: "Timeline",
+        id: "timeline",
+        panel: {
+          html: timelineHtml
+        }
+      },
+      {
+        label: "People",
+        id: "actions",
+        panel: {
+          html: peopleHtml
+        }
+      }
+    ]
+    }) }}
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}

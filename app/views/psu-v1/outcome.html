@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Triage complaint – {{ serviceName }}
+  Complaint outcome – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <!--<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>-->
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -30,54 +30,77 @@
 .complainant {display: none}
 </style>
 
-<form class="form" action="/triage-decision" method="post">
-
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Triage complaint</h1>
+    <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    {{ govukInput({
-      id: "psu-internal-ref",
-      name: "psu-internal-ref",
-      type: "text",
-      autocomplete: "off",
-      spellcheck: false,
-      classes: "govuk-!-width-full",
-      value: data['psu-internal-ref'],
-      label: {
-        classes: "govuk-label--s",
-        text: "Internal PSU reference"
-      }
-    }) }}
+    <div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index'>exit the case</a> and come back later
+    </div>
 
+    <form class="form" action="index" method="post">
     {{ govukRadios({
       classes: "govuk-radios--small",
-      idPrefix: "serious",
-      name: "serious",
+      idPrefix: "outcome",
+      name: "outcome",
       fieldset: {
-        legend: {
-         text: "Is this a serious misconduct case?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
-      },
+    legend: {
+      text: "Outcome",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--s"
+    }
+  },
       items: [
         {
-          value: "yes",
-          text: "Yes"
+          value: "substantiated",
+          text: "Substantiated"
         },
         {
-          value: "no",
-          text: "No"
+          value: "partially",
+          text: "Partially substantiated"
+        },
+        {
+          value: "unsubstantiated",
+          text: "Unsubstantiated"
+        },
+        {
+          value: "withdrawn",
+          text: "Withdrawn"
         }
       ]
     }) }}
 
-    <button class="govuk-button" data-module="govuk-button">Continue</button>
+    <div class="govuk-form-group">
+    <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-psu-outcome">
+      Upload final documents
+    </label>
+    <input class="govuk-file-upload" id="file-upload-psu-outcome" name="file-upload-psu-outcome" type="file" value="psu-outcome-fileUploaded">
+  </div>
 
-  </form>
+  {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+  {{ govukCharacterCount({
+    name: "psu-outcome-notes",
+    id: "psu-outcome-notes",
+    maxlength: 4000,
+    label: {
+      text: "Any other notes",
+      classes: "govuk-label--s",
+      isPageHeading: true
+    },
+    value: data['psu-outcome-notes']
+  }) }}
+
+  {% from "govuk/components/button/macro.njk" import govukButton %}
+
+  <div class="govuk-button-group">
+    {{ govukButton({
+      text: "Close case"
+    }) }}
+
+    <!--<a class="govuk-link govuk-link--no-visited-state" href="index">I'll come back to this later</a>-->
+  </div>
 
   </div>
 
