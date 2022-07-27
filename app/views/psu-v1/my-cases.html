@@ -1,0 +1,116 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  My cases – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">My cases</h1>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "Case filter",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              },
+              id: "case-filter",
+              name: "case-filter",
+              autocomplete: "off"
+            }) }}
+          </div>
+        </div>
+
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>4</strong> of <strong>4</strong> cases</p>
+
+        <table class="govuk-table" data-module="moj-sortable-table">
+          <tr class="govuk-table__row">
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="0">Reference</button>
+          </th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="1">Name</button>
+          </th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="2">Team</button>
+          </th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="3">Current stage</button>
+          </th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="4">Received</button>
+          </th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="4">Due</button>
+          </th>
+
+        </tr>
+
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">IDET/0123456/22</a></td>
+              <td class="govuk-table__cell">Joe Bloggs</td>
+              <td class="govuk-table__cell">IE Detention</td>
+              <td class="govuk-table__cell">New</td>
+              <td class="govuk-table__cell">25 Jul 2022</td>
+              <td class="govuk-table__cell">16 Sep 2022</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">BF/0123456/22</a></td>
+              <td class="govuk-table__cell">John Smith</td>
+              <td class="govuk-table__cell">Border Force</td>
+              <td class="govuk-table__cell">Triage</td>
+              <td class="govuk-table__cell">25 Jul 2022</td>
+              <td class="govuk-table__cell">16 Sep 2022</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">POGR/0123456/22</a></td>
+              <td class="govuk-table__cell">Penny Black</td>
+              <td class="govuk-table__cell">HM Passport Office</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
+              <td class="govuk-table__cell">25 Jul 2022</td>
+              <td class="govuk-table__cell">16 Sep 2022</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">COMP/0123456/22</a></td>
+              <td class="govuk-table__cell">Clarke Kent</td>
+              <td class="govuk-table__cell">UKVI</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
+              <td class="govuk-table__cell">25 Jul 2022</td>
+              <td class="govuk-table__cell">16 Sep 2022</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+
+{% endblock %}
