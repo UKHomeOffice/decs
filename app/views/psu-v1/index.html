@@ -66,7 +66,14 @@
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
           <a class="card__body" href="my-cases">
-            <span class="govuk-!-font-size-48">4</span>
+            <span class="govuk-!-font-size-48">
+
+              {% if 'case-closed' in data %}
+                  3
+                  {% else %}
+                    4
+                  {% endif %} 
+            </span>
             <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></a>
             <!--<div class="card__footer">
               <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">57 Overdue</span>

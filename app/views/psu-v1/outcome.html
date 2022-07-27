@@ -96,7 +96,8 @@
 
   <div class="govuk-button-group">
     {{ govukButton({
-      text: "Close case"
+      text: "Close case",
+      value: data['case-closed']
     }) }}
 
     <!--<a class="govuk-link govuk-link--no-visited-state" href="index">I'll come back to this later</a>-->
@@ -158,10 +159,6 @@
     ]
     }) }}
   </div>
-
-
-
-
 </div>
 
 {% endblock %}

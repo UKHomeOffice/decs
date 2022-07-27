@@ -3,6 +3,17 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+
+router.use((req, res, next) => {
+      const log = {
+        method: req.method,
+        url: req.originalUrl,
+        data: req.session.data
+      }
+      console.log(JSON.stringify(log, null, 2))
+    next()
+  })
+
 // Run this code when a form is submitted to 'juggling-balls-answer'
 router.post('/juggling-balls-answer', function (req, res) {
 
