@@ -36,8 +36,8 @@
     <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    <div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index'>exit the case</a> and come back later
-    </div>
+    <!--<div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index'>exit the case</a> and come back later
+    </div>-->
 
     <form class="form" action="index" method="post">
     {{ govukRadios({
@@ -100,7 +100,7 @@
       value: data['case-closed']
     }) }}
 
-    <!--<a class="govuk-link govuk-link--no-visited-state" href="index">I'll come back to this later</a>-->
+    <a class="govuk-link govuk-link--no-visited-state" href="index">I'll come back to this later</a>
   </div>
 
   </div>
