@@ -30,31 +30,8 @@
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint details</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
-
-    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
-
-{{ govukSummaryList({
-  rows: [
-    {
-      key: {
-        text: "Type"
-      },
-      value: {
-        text: "Serious misconduct"
-      }
-    },
-    {
-      key: {
-        text: "Categories"
-      },
-      value: {
-        html: '<p class="govuk-body">Assault</p>
-        <p class="govuk-body">Other unprofessionalism</p>
-        <p class="govuk-body">Poor communication</p>'
-      }
-    }
-  ]
-}) }}
+    
+{% include "includes/complaint-categories-psu-v1.html" %}
 
 <p class="govuk-body">Full complaint details in <a class="govuk-link" href="#summary">summary</a>.</p>
 

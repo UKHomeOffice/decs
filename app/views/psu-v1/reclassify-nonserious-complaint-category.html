@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Complaint outcome – {{ serviceName }}
+  New complaint categories – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,76 +33,12 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Reclassify complaint</h1>
+    <h1 class="govuk-heading-l margin-0">Reclassify complaint categories</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    <p class="govuk-body">Select all that apply.</p>
+    <form class="form" action="index" method="post">
 
-    {% from "govuk/components/radios/macro.njk" import govukRadios %}
-    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
-
-      {{ govukCheckboxes({
-        idPrefix: "service",
-        name: "service",
-        classes: "govuk-checkboxes--small",
-        fieldset: {
-          legend: {
-            text: "Service",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--s"
-          }
-        },
-        items: [
-          {
-            value: "delay",
-            text: "Delay"
-          },
-          {
-            value: "admin",
-            text: "Admin / process error"
-          },
-          {
-            value: "poor",
-            text: "Poor communication"
-          },
-          {
-            value: "wrong",
-            text: "Wrong information"
-          },
-          {
-            value: "physical",
-            text: "CC - Physical environment"
-          },
-          {
-            value: "availability",
-            text: "CC - Availability of service"
-          },
-          {
-            value: "minors",
-            text: "CC - Provision for minors"
-          },
-          {
-            value: "complainthandling",
-            text: "CC - Complaint Handling"
-          },
-          {
-            value: "property",
-            text: "Property or documents - lost"
-          },
-          {
-            value: "propertywitheld",
-            text: "Property or documents - withheld"
-          },
-          {
-            value: "propertystolen",
-            text: "Property or documents - stolen"
-          }
-        ]
-      }) }}
-
-      <!-- Damage. Custody.-->
-
+     <p class="govuk-body">Select all that apply.</p>
       {{ govukCheckboxes({
         idPrefix: "minor",
         name: "minor",
@@ -134,28 +70,68 @@
         ]
       }) }}
 
-      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Service",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "delay",
+              text: "Delay"
+            },
+            {
+              value: "admin",
+              text: "Admin / process error"
+            },
+            {
+              value: "poor",
+              text: "Poor communication"
+            },
+            {
+              value: "wrong",
+              text: "Wrong information"
+            },
+            {
+              value: "physical",
+              text: "CC - Physical environment"
+            },
+            {
+              value: "availability",
+              text: "CC - Availability of service"
+            },
+            {
+              value: "minors",
+              text: "CC - Provision for minors"
+            },
+            {
+              value: "complainthandling",
+              text: "CC - Complaint Handling"
+            },
+            {
+              value: "property",
+              text: "Property or documents - lost"
+            },
+            {
+              value: "propertywitheld",
+              text: "Property or documents - withheld"
+            },
+            {
+              value: "propertystolen",
+              text: "Property or documents - stolen"
+            }
+          ]
+        }) }}
 
-      {{ govukCharacterCount({
-        name: "psu-reclassify-notes",
-        id: "psu-reclassify-notes",
-        maxlength: 2000,
-        label: {
-          text: "Any other notes",
-          classes: "govuk-label--s",
-          isPageHeading: true
-        },
-        hint: {
-          text: "This will be seen by an IE Detention case worker"
-        },
-        value: data['psu-outcome-notes']
-      }) }}
+    <button class="govuk-button" data-module="govuk-button">Send back to IE Detention</button>
 
-      {{ govukButton({
-        text: "Return case to IE Detention",
-        href: "#"
-      }) }}
-
+  </form>
 
   </div>
 

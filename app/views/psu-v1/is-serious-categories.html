@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Triage complaint – {{ serviceName }}
+  Complaint categories – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <!--<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>-->
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -30,64 +30,25 @@
 .complainant {display: none}
 </style>
 
-<form class="form" action="/triage-decision" method="post">
+<form class="form" action="/is-serious-recategorise" method="post">
 
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Triage complaint</h1>
+    <h1 class="govuk-heading-l margin-0">Review complaint categories</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    {{ govukInput({
-      id: "psu-internal-ref",
-      name: "psu-internal-ref",
-      type: "text",
-      autocomplete: "off",
-      spellcheck: false,
-      classes: "govuk-!-width-full",
-      value: data['psu-internal-ref'],
-      label: {
-        classes: "govuk-label--s",
-        text: "Internal PSU reference"
-      }
-    }) }}
-
-    {% set notseriousHtml %}
+    {% include "includes/complaint-categories-psu-v1.html" %}
 
     {{ govukRadios({
       classes: "govuk-radios--small",
-      idPrefix: "notserious",
-      name: "notserious",
+      idPrefix: "recategorise-serious",
+      name: "recategorise-serious",
       fieldset: {
         legend: {
-         text: "What is it?",
+         text: "Do you want to recategorise the complaint?",
          isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
-      },
-      items: [
-        {
-          value: "minor",
-          text: "Minor misconduct"
-        },
-        {
-          value: "service",
-          text: "Service"
-        }
-      ]
-    }) }}
-
-    {% endset -%}
-
-    {{ govukRadios({
-      classes: "govuk-radios--small",
-      idPrefix: "serious",
-      name: "serious",
-      fieldset: {
-        legend: {
-         text: "Is this a serious misconduct case?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
+         classes: "govuk-fieldset__legend--m"
        }
       },
       items: [
@@ -97,20 +58,39 @@
         },
         {
           value: "no",
-          text: "No",
-          conditional: {
-          html: notseriousHtml
-        }
-        },
-        {
-           divider: "or"
-         },
-        {
-          value: "not-decs",
-          text: "Send to team not on DECS"
+          text: "No"
         }
       ]
     }) }}
+
+    <!--
+        <dl class="govuk-summary-list">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Serious misconduct
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Assault
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Minor misconduct
+            </dt>
+            <dd class="govuk-summary-list__value">
+              -
+            </dd>
+          </div>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Service
+            </dt>
+            <dd class="govuk-summary-list__value">
+              Poor communication
+            </dd>
+          </div>
+        </dl>
+    -->
 
     <button class="govuk-button" data-module="govuk-button">Submit</button>
 

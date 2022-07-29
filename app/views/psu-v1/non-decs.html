@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Triage complaint – {{ serviceName }}
+  DECS – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <!--<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>-->
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -30,65 +30,19 @@
 .complainant {display: none}
 </style>
 
-<form class="form" action="/triage-decision" method="post">
-
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Triage complaint</h1>
+    <h1 class="govuk-heading-l margin-0">Send to team not on DECS?</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    {{ govukInput({
-      id: "psu-internal-ref",
-      name: "psu-internal-ref",
-      type: "text",
-      autocomplete: "off",
-      spellcheck: false,
-      classes: "govuk-!-width-full",
-      value: data['psu-internal-ref'],
-      label: {
-        classes: "govuk-label--s",
-        text: "Internal PSU reference"
-      }
-    }) }}
-
-    {% set notseriousHtml %}
-
+    <form class="form" action="/team-not-on-decs" method="post">
+      
     {{ govukRadios({
       classes: "govuk-radios--small",
-      idPrefix: "notserious",
-      name: "notserious",
+      idPrefix: "non-decs-team",
+      name: "non-decs-team",
       fieldset: {
-        legend: {
-         text: "What is it?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
-      },
-      items: [
-        {
-          value: "minor",
-          text: "Minor misconduct"
-        },
-        {
-          value: "service",
-          text: "Service"
-        }
-      ]
-    }) }}
-
-    {% endset -%}
-
-    {{ govukRadios({
-      classes: "govuk-radios--small",
-      idPrefix: "serious",
-      name: "serious",
-      fieldset: {
-        legend: {
-         text: "Is this a serious misconduct case?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
       },
       items: [
         {
@@ -97,22 +51,12 @@
         },
         {
           value: "no",
-          text: "No",
-          conditional: {
-          html: notseriousHtml
-        }
-        },
-        {
-           divider: "or"
-         },
-        {
-          value: "not-decs",
-          text: "Send to team not on DECS"
+          text: "No"
         }
       ]
     }) }}
 
-    <button class="govuk-button" data-module="govuk-button">Submit</button>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
 
   </form>
 
