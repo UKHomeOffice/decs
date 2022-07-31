@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Reclassify complaint – {{ serviceName }}
+  New complaint categories – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,39 +33,12 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Reclassify complaint</h1>
+    <h1 class="govuk-heading-l margin-0">Reclassify complaint categories</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
     <form class="form" action="index" method="post">
 
-
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-      {{ govukRadios({
-        classes: "govuk-radios--small",
-        idPrefix: "complainttype",
-        name: "complainttype",
-        fieldset: {
-          legend: {
-            text: "New complaint type",
-            isPageHeading: falso,
-            classes: "govuk-fieldset__legend--m"
-          }
-        },
-        items: [
-        {
-          value: "minor",
-          text: "Minor misconduct"
-        },
-        {
-            value: "service",
-            text: "Service"
-          }
-        ]
-      }) }}
-
-    <h2>Select categories that apply</h2>
-
+     <p class="govuk-body">Select all that apply.</p>
       {{ govukCheckboxes({
         idPrefix: "minor",
         name: "minor",

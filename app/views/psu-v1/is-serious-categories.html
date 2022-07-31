@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  Complaint categories – {{ serviceName }}
+  Review complaint categories – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -30,7 +30,7 @@
 .complainant {display: none}
 </style>
 
-<form class="form" action="/is-serious-recategorise" method="post">
+
 
 <div class="govuk-grid-row">
 
@@ -38,61 +38,145 @@
     <h1 class="govuk-heading-l margin-0">Review complaint categories</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    {% include "includes/complaint-categories-psu-v1.html" %}
+    <form class="form" action="/is-serious-recategorise" method="post">
 
-    {{ govukRadios({
-      classes: "govuk-radios--small",
-      idPrefix: "recategorise-serious",
-      name: "recategorise-serious",
-      fieldset: {
-        legend: {
-         text: "Do you want to recategorise the complaint?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--m"
-       }
-      },
-      items: [
-        {
-          value: "yes",
-          text: "Yes"
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+      <p class-"govuk-body">Placeholder – some instructions hcan go here if needed.</p>
+
+
+      {{ govukCheckboxes({
+        idPrefix: "serious",
+        name: "Serious",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Serious misconduct",
+            classes: "govuk-fieldset__legend--s"
+          }
         },
-        {
-          value: "no",
-          text: "No"
-        }
-      ]
-    }) }}
+        items: [
+          {
+            value: "theft",
+            text: "Theft"
+          },
+          {
+            value: "assault",
+            text: "Assault",
+            checked: true
+          },
+          {
+            value: "sexualassault",
+            text: "Sexual assault"
+          },
+          {
+            value: "fraud",
+            text: "Fraud / corruption"
+          },
+          {
+            value: "racism",
+            text: "Racism / discrimination"
+          }
+        ]
+      }) }}
 
-    <!--
-        <dl class="govuk-summary-list">
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Serious misconduct
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Assault
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Minor misconduct
-            </dt>
-            <dd class="govuk-summary-list__value">
-              -
-            </dd>
-          </div>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              Service
-            </dt>
-            <dd class="govuk-summary-list__value">
-              Poor communication
-            </dd>
-          </div>
-        </dl>
-    -->
+      {{ govukCheckboxes({
+        idPrefix: "minor",
+        name: "minor",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Minor misconduct",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "rudeness",
+            text: "Rudeness"
+          },
+          {
+            value: "unfair",
+            text: "Unfair treatment"
+          },
+          {
+            value: "other",
+            text: "Other unprofessionalism",
+            checked: true
+          },
+          {
+            value: "detained",
+            text: "Detained individual on detained individual"
+          }
+        ]
+      }) }}
 
-    <button class="govuk-button" data-module="govuk-button">Submit</button>
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Service",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "delay",
+              text: "Delay"
+            },
+            {
+              value: "admin",
+              text: "Admin / process error"
+            },
+            {
+              value: "poor",
+              text: "Poor communication",
+              checked: true
+            },
+            {
+              value: "wrong",
+              text: "Wrong information"
+            },
+            {
+              value: "physical",
+              text: "CC - Physical environment"
+            },
+            {
+              value: "availability",
+              text: "CC - Availability of service"
+            },
+            {
+              value: "minors",
+              text: "CC - Provision for minors"
+            },
+            {
+              value: "complainthandling",
+              text: "CC - Complaint Handling"
+            },
+            {
+              value: "property",
+              text: "Property or documents - lost"
+            },
+            {
+              value: "propertywitheld",
+              text: "Property or documents - withheld"
+            },
+            {
+              value: "propertystolen",
+              text: "Property or documents - stolen"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Finish",
+          href: "index"
+        }) }}
 
   </form>
 
