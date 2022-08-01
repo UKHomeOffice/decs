@@ -36,7 +36,7 @@ router.post('/juggling-balls-answer', function (req, res) {
 router.post('/triage-decision', function (req, res) {
 
   // Make a variable and give it the value from 'serious' radios
-  var triageDecision = req.session.data['serious']
+  var triageDecision = req.session.data['serious-triage']
 
   // Check whether the variable matches a condition.
   if (triageDecision == "yes"){
@@ -69,21 +69,5 @@ router.post('/team-not-on-decs', function (req, res) {
 
 })
 
-// Run this code when a form is submitted to '/is-serious-recategorise' on is-serious-categories.html
-router.post('/is-serious-recategorise', function (req, res) {
-
-  // Make a variable and give it the value from 'non-decs-team' radios
-  var recategoriseSerious = req.session.data['recategorise-serious']
-
-  // Check whether the variable matches a condition.
-  if (recategoriseSerious == "yes"){
-    // Send user to dashboard??
-    res.redirect('/psu-v1/reclassify-serious-complaint-type')
-  } else {
-    // Send user to complaint type page
-    res.redirect('/psu-v1/index')
-  }
-
-})
 
 module.exports = router

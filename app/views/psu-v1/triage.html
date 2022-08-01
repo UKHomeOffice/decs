@@ -30,14 +30,13 @@
 .complainant {display: none}
 </style>-->
 
-<form class="form" action="/triage-decision" method="post">
-
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Triage complaint</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
+    <form class="form" action="/triage-decision" method="post">
     {{ govukInput({
       id: "psu-internal-ref",
       name: "psu-internal-ref",
@@ -55,7 +54,7 @@
     {{ govukRadios({
       classes: "govuk-radios--small",
       idPrefix: "serious",
-      name: "serious",
+      name: "serious-triage",
       fieldset: {
         legend: {
          text: "Is this a serious misconduct case for PSU to investigate?",

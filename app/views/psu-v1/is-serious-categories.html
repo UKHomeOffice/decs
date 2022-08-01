@@ -38,8 +38,6 @@
     <h1 class="govuk-heading-l margin-0">Review complaint categories</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    <form class="form" action="/is-serious-recategorise" method="post">
-
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
@@ -47,8 +45,8 @@
 
 
       {{ govukCheckboxes({
-        idPrefix: "serious",
-        name: "Serious",
+        idPrefix: "seriousselection",
+        name: "seriousselection",
         classes: "govuk-checkboxes--small",
         fieldset: {
           legend: {
@@ -82,8 +80,8 @@
       }) }}
 
       {{ govukCheckboxes({
-        idPrefix: "minor",
-        name: "minor",
+        idPrefix: "minorselection",
+        name: "minorselection",
         classes: "govuk-checkboxes--small",
         fieldset: {
           legend: {
@@ -114,8 +112,8 @@
       }) }}
 
         {{ govukCheckboxes({
-          idPrefix: "service",
-          name: "service",
+          idPrefix: "serviceselection",
+          name: "serviceselection",
           classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
@@ -173,12 +171,14 @@
           ]
         }) }}
 
+
+        {% from "govuk/components/button/macro.njk" import govukButton %}
+
         {{ govukButton({
           text: "Finish",
-          href: "index"
+          href: "index",
+          value: "case-closed-yes"
         }) }}
-
-  </form>
 
   </div>
 
