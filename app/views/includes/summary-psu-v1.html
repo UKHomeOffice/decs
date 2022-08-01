@@ -1,4 +1,7 @@
-<h2 class="govuk-heading-m">Case details</h2>
+<p class="DECSquestion">This needs looking at...</p>
+
+
+<h2 class="govuk-heading-m">Deadline</h2>
 
 <dl class="govuk-summary-list">
 
@@ -7,7 +10,7 @@
       Complaint received
     </dt>
     <dd class="govuk-summary-list__value">
-      18 July 2022
+      {{ data['current-date-alpha'] }}
     </dd>
   </div>
 
@@ -16,22 +19,60 @@
       Case created
     </dt>
     <dd class="govuk-summary-list__value">
-      18 July 2022
+      {{ data['current-date-alpha'] }}
     </dd>
   </div>
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Deadline
+      Due
     </dt>
     <dd class="govuk-summary-list__value">
-      28 July 2022
+      {{ data['2weeks-date-alpha'] }}
+    </dd>
+  </div>
+</dl>
+
+<h2 class="govuk-heading-m">Complaint categories</h2>
+
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Complaint type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Serious misconduct
     </dd>
   </div>
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Complainant
+      Category
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Assault
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Other categories selected
+    </dt>
+    <dd class="govuk-summary-list__value">
+      Other unprofessionalism (minor misconduct)<br><br>
+      Poor communication (service)
+    </dd>
+  </div>
+</dl>
+
+<h2 class="govuk-heading-m">Complainant</h2>
+
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Name
     </dt>
     <dd class="govuk-summary-list__value">
       Joe Bloggs
@@ -43,7 +84,7 @@
       Date of birth
     </dt>
     <dd class="govuk-summary-list__value">
-      1 January 2020
+      14 May 1984
     </dd>
   </div>
 
@@ -64,24 +105,13 @@
       Iranian
     </dd>
   </div>
+</dl>
 
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Complaint type
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Serious misconduct
-    </dd>
-  </div>
+<h2 class="govuk-heading-m">Other details</h2>
 
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Complaint category
-    </dt>
-    <dd class="govuk-summary-list__value">
-      Theft
-    </dd>
-  </div>
+<p class="DECSquestion">Better header needed</p>
+
+<dl class="govuk-summary-list">
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -97,7 +127,7 @@
       Complaint origin
     </dt>
     <dd class="govuk-summary-list__value">
-      Place name - Needed?
+      IRC – Brook House
     </dd>
   </div>
 
@@ -112,22 +142,44 @@
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Port reference
+      Home office reference
     </dt>
     <dd class="govuk-summary-list__value">
-      xxxx
+      66389
     </dd>
   </div>
 
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Home office reference
+      Port reference
     </dt>
     <dd class="govuk-summary-list__value">
-      xxxx
+      -
+    </dd>
+  </div>
+</dl>
+
+<h2 class="govuk-heading-m">Active stage – Triage</h2>
+<p class="DECSquestion">What are the active stages?</p>
+<dl class="govuk-summary-list">
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
     </dd>
   </div>
 
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      -
+    </dd>
+  </div>
 
 
 </dl>

@@ -21,14 +21,14 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% block content %}
-<style>
+<!--<style>
 .summary-tab-user {display:none;}
 .summary-tab-correspondent-label {display: none;}
 .summary-tab-correspondent-data {display: none;}
 .timelineStage1 {display: none!important}
 .timelineStage2 {display: none!important}
 .complainant {display: none}
-</style>
+</style>-->
 
 
 
@@ -43,7 +43,7 @@
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
       {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 
-      <p class-"govuk-body">Current categories are selected, recategorise if necessary before finishing.</p>
+      <p class-"govuk-body">Current categories are selected – recategorise if necessary before finishing.</p>
 
 
       {{ govukCheckboxes({
@@ -188,7 +188,7 @@
     {% from "govuk/components/table/macro.njk" import govukTable %}
 
     {% set documentsHtml %}
-      {% include "includes/documents-tab-iedetention-v1-1doc.html" %}
+      {% include "includes/documents-psu-v1.html" %}
     {% endset -%}
 
     {% set summaryHtml %}

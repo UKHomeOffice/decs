@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  My cases – {{ serviceName }}
+  Team cases – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,7 +13,16 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="index">Dashboard</a>
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          Team cases
+        </li>
+      </ol>
+    </div>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
