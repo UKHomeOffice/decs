@@ -73,10 +73,6 @@
           </th>
 
           <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="3">Allocated to</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
             <button type="button" data-index="4">Received</button>
           </th>
 
@@ -87,21 +83,33 @@
         </tr>
 
           <tbody class="govuk-table__body">
+
+            {% if 'yes' in data['stillserious'] %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joe Bloggs</td>
+              <td class="govuk-table__cell">IE Detention</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+            {% else %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="case-start">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joe Bloggs</td>
               <td class="govuk-table__cell">IE Detention</td>
               <td class="govuk-table__cell">-</td>
-              <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
             </tr>
+            {% endif %}
+
+
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">BF/0123456/22</a></td>
               <td class="govuk-table__cell">John Smith</td>
               <td class="govuk-table__cell">Border Force</td>
-              <td class="govuk-table__cell">Investigation</td>
-              <td class="govuk-table__cell">Ian A</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
               <td class="govuk-table__cell">21 Jul 2022</td>
               <td class="govuk-table__cell">19 Aug 2022</td>
             </tr>
@@ -109,8 +117,7 @@
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">POGR/0123456/22</a></td>
               <td class="govuk-table__cell">Penny Black</td>
               <td class="govuk-table__cell">IE Detention</td>
-              <td class="govuk-table__cell">Investigation</td>
-              <td class="govuk-table__cell">Claire B</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
               <td class="govuk-table__cell">18 Jul 2022</td>
               <td class="govuk-table__cell">16 Aug 2022</td>
             </tr>
@@ -118,8 +125,7 @@
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#">COMP/0123456/22</a></td>
               <td class="govuk-table__cell">Clarke Kent</td>
               <td class="govuk-table__cell">UKVI</td>
-              <td class="govuk-table__cell">Investigation</td>
-              <td class="govuk-table__cell">Jane C</td>
+              <td class="govuk-table__cell">Awaiting outcome</td>
               <td class="govuk-table__cell">15 Jul 2022</td>
               <td class="govuk-table__cell">13 Aug 2022</td>
             </tr>
