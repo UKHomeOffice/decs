@@ -1,7 +1,7 @@
 {% extends "layout-psu-v1.html" %}
 
 {% block pageTitle %}
-  New complaint categories – {{ serviceName }}
+  Reclassify complaint – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,15 +33,42 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Reclassify complaint categories</h1>
+    <h1 class="govuk-heading-l margin-0">Reclassify complaint</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
     <form class="form" action="index" method="post">
 
-     <p class="govuk-body">Select all that apply.</p>
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "complainttype",
+        name: "outcome-complainttype",
+        fieldset: {
+          legend: {
+            text: "Complaint type",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "minor",
+          text: "Minor misconduct"
+        },
+        {
+            value: "service",
+            text: "Service"
+          }
+        ]
+      }) }}
+
+    <h2>Select categories that apply</h2>
+
       {{ govukCheckboxes({
         idPrefix: "minor",
-        name: "minor",
+        name: "outcome-minor",
         classes: "govuk-checkboxes--small",
         fieldset: {
           legend: {
@@ -65,14 +92,14 @@
           },
           {
             value: "detained",
-            text: "Detained individual on detained individual"
+            text: "Detainee on detainee"
           }
         ]
       }) }}
 
         {{ govukCheckboxes({
           idPrefix: "service",
-          name: "service",
+          name: "outcome-service",
           classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
@@ -100,19 +127,19 @@
             },
             {
               value: "physical",
-              text: "CC - Physical environment"
+              text: "Physical environment"
             },
             {
               value: "availability",
-              text: "CC - Availability of service"
+              text: "Availability of service"
             },
             {
               value: "minors",
-              text: "CC - Provision for minors"
+              text: "Provision for minors"
             },
             {
               value: "complainthandling",
-              text: "CC - Complaint Handling"
+              text: "Complaint Handling"
             },
             {
               value: "property",
@@ -130,6 +157,21 @@
         }) }}
 
     <button class="govuk-button" data-module="govuk-button">Send back to IE Detention</button>
+
+    {{ govukCheckboxes({
+      idPrefix: "stillserious",
+      name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
 
   </form>
 

@@ -158,6 +158,21 @@
 
     <button class="govuk-button" data-module="govuk-button">Send back to IE Detention</button>
 
+    {{ govukCheckboxes({
+      idPrefix: "stillserious",
+      name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+
   </form>
 
   </div>

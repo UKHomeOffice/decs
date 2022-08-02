@@ -83,13 +83,20 @@
         <ul class="govuk-grid-row dashboard__teams">
           <li class="card govuk-body govuk-grid-column-one-quarter">
             <a class="card__body" href="team-cases">
-              <span class="govuk-!-font-size-48">4</span>
+
+              {% if 'yes' in data['stillserious'] %}
+                <span class="govuk-!-font-size-48">4</span>
+              {% elif 'no' in data['stillserious'] %}
+                <span class="govuk-!-font-size-48">3</span>
+              {% else  %}
+                <span class="govuk-!-font-size-48">4</span>
+              {% endif %}
+
               <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
             </a>
-          <div class="card__footer">
+          <!--<div class="card__footer">
             <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">xxxx unallocated</span>
-            <!--<span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">1106 Overdue</span>-->
-          </div>
+          </div>-->
         </li>
           <!--<li class="card govuk-body govuk-grid-column-one-quarter">
             <a class="card__body" href="/workstack/team/241845c6-8fe4-4b0a-8409-c0613b5acae0">

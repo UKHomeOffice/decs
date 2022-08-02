@@ -47,7 +47,7 @@
       value: data['psu-internal-ref'],
       label: {
         classes: "govuk-label--m",
-        text: "Internal PSU reference"
+        text: "PSU reference"
       }
     }) }}
 
@@ -78,84 +78,23 @@
       ]
     }) }}
 
-
-    <!--
-
-    {{ govukInput({
-      id: "psu-internal-ref",
-      name: "psu-internal-ref",
-      type: "text",
-      autocomplete: "off",
-      spellcheck: false,
-      classes: "govuk-!-width-full",
-      value: data['psu-internal-ref'],
-      label: {
-        classes: "govuk-label--s",
-        text: "Internal PSU reference"
-      }
-    }) }}
-
-    {% set notseriousHtml %}
-
-    {{ govukRadios({
-      classes: "govuk-radios--small",
-      idPrefix: "notserious",
-      name: "notserious",
-      fieldset: {
-        legend: {
-         text: "What is it?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
-      },
-      items: [
-        {
-          value: "minor",
-          text: "Minor misconduct"
-        },
-        {
-          value: "service",
-          text: "Service"
-        }
-      ]
-    }) }}
-
-    {% endset -%}
-
-    {{ govukRadios({
-      classes: "govuk-radios--small",
-      idPrefix: "serious",
-      name: "serious",
-      fieldset: {
-        legend: {
-         text: "Is this a serious misconduct case for PSU?",
-         isPageHeading: false,
-         classes: "govuk-fieldset__legend--s"
-       }
-      },
-      items: [
-        {
-          value: "yes",
-          text: "Yes"
-        },
-        {
-          value: "no",
-          text: "No – send back to IE Detention",
-          conditional: {
-          html: notseriousHtml
-        }
-        },
-        {
-          value: "not-decs",
-          text: "No – send to team not on DECS"
-        }
-      ]
-    }) }}
-
-    -->
-
     <button class="govuk-button" data-module="govuk-button">Submit</button>
 
+    {{ govukCheckboxes({
+      idPrefix: "stillserious",
+      name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+    
   </form>
 
   </div>

@@ -52,19 +52,19 @@ router.post('/triage-decision', function (req, res) {
 
 })
 
-// Run this code when a form is submitted to '/team-not-on-decs' on non-decs.html
-router.post('/team-not-on-decs', function (req, res) {
+// Run this code when a form is submitted to '/psu-outcome' on outcome.html
+router.post('/psu-outcome', function (req, res) {
 
-  // Make a variable and give it the value from 'non-decs-team' radios
-  var nonDecs = req.session.data['non-decs-team']
+  // Make a variable and give it the value from 'psu-outcome' radios
+  var psuOutcome = req.session.data['psu-outcome']
 
   // Check whether the variable matches a condition.
-  if (nonDecs == "yes"){
-    // Send user to dashboard??
-    res.redirect('/psu-v1/index')
+  if (psuOutcome == "notserious"){
+    // Send user to recatogorise screen
+    res.redirect('/psu-v1/outcome-reclassify-nonserious-complaint-category')
   } else {
-    // Send user to complaint type page
-    res.redirect('/psu-v1/reclassify-nonserious-complaint-type')
+    // Send user to final-response.html
+    res.redirect('/psu-v1/final-response')
   }
 
 })

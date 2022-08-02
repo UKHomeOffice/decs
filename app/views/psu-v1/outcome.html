@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+    <a class="govuk-back-link" href="index">Back to dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -21,14 +21,6 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% block content %}
-<!--<style>
-.summary-tab-user {display:none;}
-.summary-tab-correspondent-label {display: none;}
-.summary-tab-correspondent-data {display: none;}
-.timelineStage1 {display: none!important}
-.timelineStage2 {display: none!important}
-.complainant {display: none}
-</style>-->
 
 <div class="govuk-grid-row">
 
@@ -39,17 +31,12 @@
     <!--<div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index'>exit the case</a> and come back later
     </div>-->
 
-    <form class="form" action="index" method="post">
+    <form class="form" action="/psu-outcome" method="post">
     {{ govukRadios({
       classes: "govuk-radios--small",
-      idPrefix: "outcome",
-      name: "outcome",
+      idPrefix: "psu-outcome",
+      name: "psu-outcome",
       fieldset: {
-    legend: {
-      text: "Outcome",
-      isPageHeading: true,
-      classes: "govuk-fieldset__legend--s"
-    }
   },
       items: [
         {
@@ -67,41 +54,18 @@
         {
           value: "withdrawn",
           text: "Withdrawn"
+        },
+        {
+          value: "notserious",
+          text: "Not serious – send back to IE Detention"
         }
       ]
     }) }}
 
-    <div class="govuk-form-group">
-    <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-psu-outcome">
-      Upload final documents
-    </label>
-    <input class="govuk-file-upload" id="file-upload-psu-outcome" name="file-upload-psu-outcome" type="file" value="psu-outcome-fileUploaded">
-  </div>
-
-  {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-  {{ govukCharacterCount({
-    name: "psu-outcome-notes",
-    id: "psu-outcome-notes",
-    maxlength: 4000,
-    label: {
-      text: "Any other notes",
-      classes: "govuk-label--s",
-      isPageHeading: true
-    },
-    value: data['psu-outcome-notes']
-  }) }}
-
-  {% from "govuk/components/button/macro.njk" import govukButton %}
-
-  <div class="govuk-button-group">
     {{ govukButton({
-      text: "Close case",
+      text: "Submit",
       value: data['case-closed']
     }) }}
-
-    <a class="govuk-link govuk-link--no-visited-state" href="index">I'll come back to this later</a>
-  </div>
 
   </div>
 
