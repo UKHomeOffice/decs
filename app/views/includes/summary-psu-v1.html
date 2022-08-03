@@ -72,7 +72,7 @@
       Name
     </dt>
     <dd class="govuk-summary-list__value">
-      Joe Bloggs
+      Joseph Bloggs
     </dd>
   </div>
 
@@ -154,9 +154,10 @@
   </div>
 </dl>
 
+<div class="summaryPSU1">
+  <!--Triage - not allocated-->
 <h2 class="govuk-heading-m">Active stage – Triage</h2>
 <dl class="govuk-summary-list">
-
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Team
@@ -174,6 +175,77 @@
       -
     </dd>
   </div>
-
-
 </dl>
+</div>
+
+<div class="summaryPSU2">
+  <!--Triage - allocated-->
+<h2 class="govuk-heading-m">Active stage – Triage</h2>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['PSU-PSU-username'] }}
+    </dd>
+  </div>
+</dl>
+</div>
+
+<div class="summaryPSU3">
+  <!--Triage - completed - not allocated-->
+<h2 class="govuk-heading-m">Active stage – Triage completed</h2>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      -
+    </dd>
+  </div>
+</dl>
+</div>
+
+<div class="summaryPSU4">
+  <!--Record outcome - allocated-->
+<h2 class="govuk-heading-m">Active stage – Record outcome</h2>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['PSU-PSU-username'] }}
+    </dd>
+  </div>
+</dl>
+</div>

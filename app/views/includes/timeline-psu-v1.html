@@ -30,48 +30,60 @@
 <div class="timeline">
   <ul>
 
-    <!--Allocating to PSU-->
-    <li class="timelineStage2">
-      <p class="DECSquestion"><strong>TIMELINE EVENTS NEEDED</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:18</span><span>xxxxx xxx xxxxxx</span></p>
+    <li class="timelineStagePSU3">
+      <p><strong>Allocated to {{ data['PSU-PSU-username'] }}</strong></p>
+      <p>Stage: Record outcome</p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:48</span><span>{{ data['PSU-PSU-username'] }}</span></p>
     </li>
 
-    <!--Allocating to PSU-->
+    <li class="timelineStagePSU2">
+      <p><strong>Stage: Triage completed</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:43</span><span>{{ data['PSU-PSU-username'] }}</span></p>
+    </li>
+
+    <li class="timelineStagePSU1">
+      <p><strong>Allocated to {{ data['PSU-PSU-username'] }}</strong></p>
+      <p>Stage: Triage</p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:39</span><span>{{ data['PSU-PSU-username'] }}</span></p>
+    </li>
+
     <li class="timelineStage2">
       <p><strong>Allocated to PSU</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:17</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:17</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
 
-    <!--Adding correspondent-->
+    <li class="timelineStage2">
+      <p><strong>Stage: Registration completed</strong></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:14</span><span>{{ data['PSU-IE-username'] }}</span></p>
+    </li>
+
     <li class="timelineStage2">
       <p><strong>Correspondent: Joseph Bloggs added</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:14</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:14</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
 
-    <!--Allocate to me-->
     <li class="timelineStage1">
-      <p><strong>Allocated to IE Detention user 1</strong></p>
+      <p><strong>Allocated to {{ data['PSU-IE-username'] }}</strong></p>
       <p>Stage: Registration</p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:06</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:06</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
 
-    <!--Create case-->
     <li class="">
       <p><strong>Allocated to IE Detention</strong></p>
       <p>Stage: Registration</p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
     <li class="">
       <p><strong>Stage: Registration started</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
     <li class="">
       <p><strong>Document: {{ data['docname'] }} created</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
     <li class="">
       <p><strong>Case Created</strong></p>
-      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>IE Detention user 1</span></p>
+      <p><span>{{ data['current-date-alpha'] }} at 09:03</span><span>{{ data['PSU-IE-username'] }}</span></p>
     </li>
   </ul>
 </div>

@@ -16,7 +16,16 @@
 
   <p class="govuk-body">Go back to:</p>
 
-  <p class="govuk-body"><a href="/iedetention-v1/">IE Detention</a></p>
-    <p class="govuk-body"><a href="/psu-v1/">PSU</a></p>
+  {{ govukButton({
+    text: "IE Detention",
+    href: "/iedetention-v1/",
+    classes: "govuk-!-margin-right-3"
+  }) }}
+
+  {{ govukButton({
+    text: "PSU",
+    href: "/psu-v1/"
+  }) }}
+
 
 {% endblock %}

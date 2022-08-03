@@ -63,52 +63,52 @@
 
         <table class="govuk-table" data-module="moj-sortable-table">
           <tr class="govuk-table__row">
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="0">Reference</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="1">Name</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="2">Sent by</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="3">Current stage</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="4">Received</button>
-          </th>
-
-          <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="4">Response due</button>
-          </th>
-
-        </tr>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="0">Reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="1">Name</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="2">Sent by</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="3">Current stage</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="4">PSU reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="5">Received</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="6">Response due</button>
+            </th>
+          </tr>
 
           <tbody class="govuk-table__body">
 
             {% if 'yes' in data['stillserious'] %}
+              <!--display case in investigation state-->
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
-              <td class="govuk-table__cell">Joe Bloggs</td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">IE Detention</td>
               <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
             </tr>
             {% elseif 'no' in data['stillserious'] %}
-
+              <!--display nothing-->
             {% else %}
+              <!--starting state of case-->
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="case-start">{{ data['case-ref-psu'] }}</a></td>
-              <td class="govuk-table__cell">Joe Bloggs</td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">IE Detention</td>
               <td class="govuk-table__cell">Triage</td>
+              <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
             </tr>
@@ -118,6 +118,7 @@
               <td class="govuk-table__cell">John Smith</td>
               <td class="govuk-table__cell">Border Force</td>
               <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157385</td>
               <td class="govuk-table__cell">21 Jul 2022</td>
               <td class="govuk-table__cell">13 Oct 2022</td>
             </tr>
@@ -126,6 +127,7 @@
               <td class="govuk-table__cell">Penny Black</td>
               <td class="govuk-table__cell">IE Detention</td>
               <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157379</td>
               <td class="govuk-table__cell">18 Jul 2022</td>
               <td class="govuk-table__cell">10 Oct 2022</td>
             </tr>
@@ -134,6 +136,7 @@
               <td class="govuk-table__cell">Clarke Kent</td>
               <td class="govuk-table__cell">UKVI</td>
               <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157365</td>
               <td class="govuk-table__cell">15 Jul 2022</td>
               <td class="govuk-table__cell">7 Oct 2022</td>
             </tr>
