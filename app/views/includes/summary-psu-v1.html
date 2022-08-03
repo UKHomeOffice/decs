@@ -48,7 +48,13 @@
       Category
     </dt>
     <dd class="govuk-summary-list__value">
+      {% if 'yes' in data['stillserious'] %}
+      <!--display case in investigation state-->
+      {{ data['reclassify-serious-serious'] }}
+      {% else %}
+      <!--starting state of case-->
       Assault
+      {% endif %}
     </dd>
   </div>
 
@@ -57,8 +63,13 @@
       Other categories selected
     </dt>
     <dd class="govuk-summary-list__value">
-      Other unprofessionalism (minor misconduct)<br><br>
-      Poor communication (service)
+      {% if 'yes' in data['stillserious'] %}
+      <!--display case in investigation state-->
+      {{ data['reclassify-serious-minor'] }}<br>{{ data['reclassify-serious-service'] }}
+      {% else %}
+      <!--starting state of case-->
+      Rudeness (minor misconduct)<br>Poor communication (service)
+      {% endif %}
     </dd>
   </div>
 </dl>
