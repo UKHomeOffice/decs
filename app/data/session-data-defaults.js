@@ -34,6 +34,7 @@ iedetention-v1
   /*
   psu-v1
   */
+  "serious-triage": "",
   "case-ref-psu": "IEDET/0172177/22",
   "psu-internal-ref": "",
   "PSU-IE-username": "Ian Dieterman",
