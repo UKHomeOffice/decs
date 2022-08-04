@@ -4,6 +4,13 @@
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
+{% set userHtml %}
+  {{ data['IEDET-user1'] }}
+{% endset %}
+{% set teamHtml %}
+  {{ data['IEDET-team'] }}
+{% endset %}
+
   {{ govukSummaryList({
     classes: 'govuk-summary-list govuk-!-margin-left-3',
     rows: [
@@ -12,7 +19,7 @@
           text: "Team"
         },
         value: {
-          text: "IE Detention"
+          html: teamHtml
         }
       },
       {
@@ -21,7 +28,7 @@
         },
         value: {
           classes: "summary-tab-user",
-          text: "iedet user"
+          html: userHtml
         }
       }
     ]

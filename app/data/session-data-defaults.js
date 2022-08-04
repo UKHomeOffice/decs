@@ -31,6 +31,9 @@ iedetention-v1
   "2weeks-date-alpha": "28 Oct 2022",
   "docname": "joseph-bloggs.pdf",
   "stillserious": "",
+  "IEDET-case-reference": "IEDET/0172177/22",
+  "IEDET-user1": "IEDET user 1",
+  "IEDET-team": "IE Detention",
   /*
   psu-v1
   */
