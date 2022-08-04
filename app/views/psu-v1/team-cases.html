@@ -93,7 +93,7 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
-              <td class="govuk-table__cell">IE Detention</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
@@ -106,7 +106,7 @@
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="case-start">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
-              <td class="govuk-table__cell">IE Detention</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Triage</td>
               <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
