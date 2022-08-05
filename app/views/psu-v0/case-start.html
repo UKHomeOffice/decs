@@ -31,45 +31,48 @@
 .summaryPSU4  {display: none!important}
 </style>
 
-<!--button.govuk-accordion__show-all {display: none!important}-->
-
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Awaiting triage</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
 
-    <h2 class="govuk-heading-m">Case details</h2>
+    <h2 class="govuk-heading-m">Complaint summary</h2>
 
-    <!-- Accordian -->
-      {% include "psu-v1/includes/accordian-triage.html" %}
-    <!-- end -->
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+{% include "psu-v0/includes/complaint-categories.html" %}
+
+<p class="govuk-body">Full complaint details in <a class="govuk-link govuk-link--no-visited-state" href="#summary">summary</a>.</p>
+
+<hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
     {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-    {{ govukSelect({
-      id: "sort",
-      name: "sort",
-      label: {
-        classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
-        text: "Allocate case to"
-      },
-      items: [
-        {
-          value: "",
-          text: "Me"
-        },
-        {
-          value: "",
-          text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
-        }
-      ]
-    }) }}
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+            text: "Allocate case to"
+          },
+          items: [
+            {
+              value: "",
+              text: "Me"
+            },
+            {
+              value: "",
+              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
 
+        
     {{ govukButton({
       text: "Allocate",
       href: "triage"
@@ -80,7 +83,7 @@
   <div class="govuk-grid-column-two-thirds">
 
   <!-- Tabs and tabs content -->
-    {% include "psu-v1/includes/tabs.html" %}
+    {% include "psu-v0/includes/tabs.html" %}
   <!-- end -->
 
   </div>

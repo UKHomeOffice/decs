@@ -123,9 +123,7 @@
     <dd class="govuk-summary-list__value">
       {% if 'yes' in data['stillserious'] %}
       <!--display case in investigation state-->
-      {% for item in data['reclassify-serious-serious'] %}
-        <p class="govuk-body">{{item}}</p>
-      {% endfor %}
+      {{ data['reclassify-serious-serious'] }}
       {% else %}
       <!--starting state of case-->
       Assault
@@ -140,15 +138,7 @@
     <dd class="govuk-summary-list__value">
       {% if 'yes' in data['stillserious'] %}
       <!--display case in investigation state-->
-
-      {% for item in data['reclassify-serious-minor'] %}
-        <p class="govuk-body">{{item}} (minor misconduct)</p>
-      {% endfor %}
-
-      {% for item in data['reclassify-serious-service'] %}
-        <p class="govuk-body">{{item}} (service)</p>
-      {% endfor %}
-
+      {{ data['reclassify-serious-minor'] }}<br>{{ data['reclassify-serious-service'] }}
       {% else %}
       <!--starting state of case-->
       Rudeness (minor misconduct)<br>Poor communication (service)

@@ -1,0 +1,188 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  Reclassify complaint – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+  .timelineStagePSU2  {display: none!important}
+  .timelineStagePSU3  {display: none!important}
+
+  .summaryPSU1  {display: none!important}
+  .summaryPSU3  {display: none!important}
+  .summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Reclassify complaint</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <form class="form" action="index" method="post">
+
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "complainttype",
+        name: "complainttype",
+        fieldset: {
+          legend: {
+            text: "Complaint type",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+        {
+          value: "minor",
+          text: "Minor misconduct"
+        },
+        {
+            value: "service",
+            text: "Service"
+          }
+        ]
+      }) }}
+
+    <h2>Select categories that apply</h2>
+
+      {{ govukCheckboxes({
+        idPrefix: "minor",
+        name: "minor",
+        classes: "govuk-checkboxes--small",
+        fieldset: {
+          legend: {
+            text: "Minor misconduct",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "rudeness",
+            text: "Rudeness"
+          },
+          {
+            value: "unfair",
+            text: "Unfair treatment"
+          },
+          {
+            value: "other",
+            text: "Other unprofessionalism"
+          },
+          {
+            value: "detained",
+            text: "Detainee on detainee"
+          }
+        ]
+      }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Service",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "delay",
+              text: "Delay"
+            },
+            {
+              value: "admin",
+              text: "Admin / process error"
+            },
+            {
+              value: "poor",
+              text: "Poor communication"
+            },
+            {
+              value: "wrong",
+              text: "Wrong information"
+            },
+            {
+              value: "physical",
+              text: "Physical environment"
+            },
+            {
+              value: "availability",
+              text: "Availability of service"
+            },
+            {
+              value: "minors",
+              text: "Provision for minors"
+            },
+            {
+              value: "complainthandling",
+              text: "Complaint handling"
+            },
+            {
+              value: "property",
+              text: "Property or documents - lost"
+            },
+            {
+              value: "propertywitheld",
+              text: "Property or documents - withheld"
+            },
+            {
+              value: "propertystolen",
+              text: "Property or documents - stolen"
+            }
+          ]
+        }) }}
+
+    <button class="govuk-button" data-module="govuk-button">Send back to IE Detention</button>
+
+    {{ govukCheckboxes({
+      idPrefix: "stillserious",
+      name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+
+  </form>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v0/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+
+</div>
+
+{% endblock %}

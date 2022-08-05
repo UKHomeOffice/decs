@@ -29,18 +29,12 @@
   .summaryPSU4  {display: none!important}
 </style>
 
+
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Record outcome</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
-
-    <h2 class="govuk-heading-m">Case details</h2>
-
-    <!-- Accordian -->
-    {% include "psu-v1/includes/accordian-outcome.html" %}
-    <!-- end -->
-
 
     {% from "govuk/components/select/macro.njk" import govukSelect %}
 
@@ -66,45 +60,7 @@
             }
           ]
         }) }}
-<!--
 
-
-    <h2 class="govuk-heading-m">Allocate</h2>
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
-
-    {% from "govuk/components/select/macro.njk" import govukSelect %}
-
-    {{ govukSelect({
-      id: "sort",
-      name: "sort",
-      label: {
-        classes: "govuk-!-font-weight-bold",
-        text: "Allocate to a team member"
-      },
-      items: [
-        {
-          value: "",
-          text: ""
-        },
-        {
-          value: "",
-          text: "Team member 1 (teammember1@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 2 (teammember2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 3 (teammember3@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "Team member 4 (teammember4@homeoffice.gov.uk)"
-        }
-      ]
-    }) }}
--->
     {{ govukButton({
       text: "Allocate",
       href: "outcome"
@@ -114,7 +70,7 @@
 
   <div class="govuk-grid-column-two-thirds">
     <!-- Tabs and tabs content -->
-      {% include "psu-v1/includes/tabs.html" %}
+      {% include "psu-v0/includes/tabs.html" %}
     <!-- end -->
   </div>
   

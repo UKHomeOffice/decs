@@ -1,0 +1,122 @@
+{% set accordianHtml %}
+<span class="govuk-body full-width"><strong>When was the correspondence received?: </strong>{{ data['current-date-digit'] }}</span><br><br>
+<span class="govuk-body full-width"><strong>Which is the primary correspondent?: </strong>Joseph Bloggs</span><br><br>
+<span class="govuk-body full-width"><strong>Date of Birth: </strong>14/05/1984</span><br><br>
+<span class="govuk-body full-width"><strong>Gender: </strong>Male</span><br><br>
+<span class="govuk-body full-width"><strong>Nationality: </strong>Ethiopia</span><br><br>
+<span class="govuk-body full-width"><strong>Home Office reference: </strong>66389</span><br><br>
+<span class="govuk-body full-width"><strong>Complaint type: </strong>Serious misconduct</span><br><br>
+<span class="govuk-body full-width"><strong>Poor communication: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Rudeness: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Assault: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Channel: </strong>DCF9 Complaint Form</span><br><br>
+<span class="govuk-body full-width"><strong>Complaint origin: </strong>IRC - Brook House</span><br><br>
+<span class="govuk-body full-width"><strong>Owning CSU: </strong>IE Detention</span><br><br>
+<span class="govuk-body full-width"><strong>Case summary: </strong>Alleged assault</span>
+{% endset -%}
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "Registration"
+      },
+      content: {
+        html: accordianHtml
+      }
+    }
+  ]
+}) }}
+  <!--
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">When was the correspondence received?</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">05/08/2022</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Which is the primary correspondent?</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Joseph Bloggs</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Date of Birth</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">14/05/1984</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Gender</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Male</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Nationality</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Ethiopia</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Home Office Reference</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">66389</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Complaint Type</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Minor Misconduct </p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Channel</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">DCF9 Complaint Form</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Case Summary<Complaint Origin/h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Alleged assault</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Poor Communication</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Yes</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Rudeness</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Yes</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Assault</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Yes</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half"><h2 class="govuk-heading-s">Owning CSU</h2></div>
+      <div class="govuk-grid-column-one-half"><p class="govuk-body">Yes</p></div>
+    </div>
+    
+    <hr class="govuk-section-break govuk-section-break--visible govuk-!-margin-bottom-3">
+    -->

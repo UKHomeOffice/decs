@@ -1,0 +1,150 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  Team cases – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          Team cases
+        </li>
+      </ol>
+    </div>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Serious misconduct cases</h1>
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "Case filter",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              },
+              id: "case-filter",
+              name: "case-filter",
+              autocomplete: "off"
+            }) }}
+          </div>
+        </div>
+
+        {% if 'yes' in data['stillserious'] %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>4</strong> of <strong>4</strong> cases</p>
+        {% elseif 'no' in data['stillserious'] %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>3</strong> of <strong>3</strong> cases</p>
+        {% else %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>4</strong> of <strong>4</strong> cases</p>
+        {% endif %}
+
+
+
+        <table class="govuk-table" data-module="moj-sortable-table">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="0">Reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="1">Name</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="2">Sent by</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="3">Current stage</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="4">PSU reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="5">Received</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="6">Response due</button>
+            </th>
+          </tr>
+
+          <tbody class="govuk-table__body">
+
+            {% if 'yes' in data['stillserious'] %}
+              <!--display case in investigation state-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+            {% elseif 'no' in data['stillserious'] %}
+              <!--display nothing-->
+            {% else %}
+              <!--starting state of case-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="case-start">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
+              <td class="govuk-table__cell">Triage</td>
+              <td class="govuk-table__cell">-</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+            {% endif %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">BF/0123456/22</a></td>
+              <td class="govuk-table__cell">John Smith</td>
+              <td class="govuk-table__cell">Border Force</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157385</td>
+              <td class="govuk-table__cell">21 Jul 2022</td>
+              <td class="govuk-table__cell">13 Oct 2022</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">IEDET/0172129/22</a></td>
+              <td class="govuk-table__cell">Penny Black</td>
+              <td class="govuk-table__cell">IE Detention</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157379</td>
+              <td class="govuk-table__cell">18 Jul 2022</td>
+              <td class="govuk-table__cell">10 Oct 2022</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">COMP/0123456/22</a></td>
+              <td class="govuk-table__cell">Clarke Kent</td>
+              <td class="govuk-table__cell">UKVI</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">157365</td>
+              <td class="govuk-table__cell">15 Jul 2022</td>
+              <td class="govuk-table__cell">7 Oct 2022</td>
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+    </div>
+
+{% endblock %}

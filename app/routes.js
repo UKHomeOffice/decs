@@ -31,6 +31,42 @@ router.post('/juggling-balls-answer', function (req, res) {
 
 })
 
+// Run this code when a form is submitted to '/triage-decision-v0' form on triage.html v0
+router.post('/triage-decision-v0', function (req, res) {
+
+  // Make a variable and give it the value from 'serious' radios
+  var triageDecision = req.session.data['serious-triage']
+
+  // Check whether the variable matches a condition.
+  if (triageDecision == "yes"){
+    // Send user to categories page
+    res.redirect('/psu-v0/is-serious-categories')
+  } else if (triageDecision == "no"){
+    // Send user to page that asks to recategorise
+    res.redirect('/psu-v0/reclassify-nonserious-complaint-category')
+  } else {
+    // Send user to page that asks whether the non-DECS team needs to look at it
+    res.redirect('/psu-v0/index')
+  }
+
+})
+
+// Run this code when a form is submitted to '/psu-outcome-v0' on outcome.html
+router.post('/psu-outcome-v0', function (req, res) {
+
+  // Make a variable and give it the value from 'psu-outcome' radios
+  var psuOutcome = req.session.data['psu-outcome']
+
+  // Check whether the variable matches a condition.
+  if (psuOutcome == "notserious"){
+    // Send user to recatogorise screen
+    res.redirect('/psu-v0/outcome-reclassify-nonserious-complaint-category')
+  } else {
+    // Send user to final-response.html
+    res.redirect('/psu-v0/final-response')
+  }
+
+})
 
 // Run this code when a form is submitted to '/triage-decision' form on triage.html
 router.post('/triage-decision', function (req, res) {

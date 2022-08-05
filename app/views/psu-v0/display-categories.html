@@ -1,0 +1,115 @@
+{% extends "layout-psu-v1.html" %}
+
+{% block pageTitle %}
+  Category test – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index">Back to dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.timelineStagePSU1  {display: none!important}
+.timelineStagePSU2  {display: none!important}
+.timelineStagePSU3  {display: none!important}
+
+.summaryPSU2  {display: none!important}
+.summaryPSU3  {display: none!important}
+.summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Test - Display categories</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <h2 class="govuk-heading-m">Complaint categories</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    
+    <p>{{ data['reclassify-serious-serious'] }}<br>
+        {{ data['reclassify-serious-minor'] }}<br>
+        {{ data['reclassify-serious-service'] }}
+    </p>
+    <p></p>
+
+
+    </div>
+
+
+
+
+  <div class="govuk-grid-column-two-thirds">
+    {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+    {% set documentsHtml %}
+      {% include "includes/documents-psu-v1.html" %}
+    {% endset -%}
+
+    {% set summaryHtml %}
+      {% include "includes/summary-psu-v1.html" %}
+    {% endset -%}
+
+    {% set timelineHtml %}
+      {% include "includes/timeline-psu-v1.html" %}
+    {% endset -%}
+
+    {% set peopleHtml %}
+      {% include "includes/people-psu-v1.html" %}
+    {% endset -%}
+
+    {{ govukTabs({
+    items: [
+      {
+        label: "Documents",
+        id: "documents",
+        panel: {
+          html: documentsHtml
+        }
+      },
+      {
+        label: "Summary",
+        id: "summary",
+        panel: {
+          html: summaryHtml
+        }
+      },
+      {
+        label: "Timeline",
+        id: "timeline",
+        panel: {
+          html: timelineHtml
+        }
+      },
+      {
+        label: "People",
+        id: "actions",
+        panel: {
+          html: peopleHtml
+        }
+      }
+    ]
+    }) }}
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}
