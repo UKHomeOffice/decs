@@ -37,9 +37,6 @@ button.govuk-accordion__show-all {display: none!important}
     <h1 class="govuk-heading-l">{{ data['BF-case-reference'] }}</h1>
     <h2 class="govuk-heading-m">Case details</h2>
 
-
-
-
     {% set accordianHtml %}
     <span class="govuk-body full-width"><strong>When was the correspondence received?: </strong>{{ data['current-date-digit'] }}</span>
     {% endset -%}
@@ -81,6 +78,10 @@ button.govuk-accordion__show-all {display: none!important}
                 {
                   value: "",
                   text: "Border Force user 3 (bfuser3@homeoffice.gov.uk)"
+                },
+                {
+                  value: "",
+                  text: "Border Force user 4 (bfuser4@homeoffice.gov.uk)"
                 }
               ]
             }) }}

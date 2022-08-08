@@ -1,0 +1,195 @@
+Return-Path: <tom@subfusion.com>
+Received: from pontus5 ([192.168.110.87])
+	by triton11 with LMTP id OG8kNCc08WLEcwAAlT9ARA
+	; Mon, 08 Aug 2022 17:04:55 +0100
+Received: from hermes.hosts.co.uk ([192.168.110.87])
+	by pontus5 with LMTP id wLkGNCc08WLiVQIAPZkW+A
+	; Mon, 08 Aug 2022 17:04:55 +0100
+Delivery-date: Mon, 08 Aug 2022 17:04:55 +0100
+Received: from smtp.hosts.co.uk ([85.233.160.19])
+	by hermes.hosts.co.uk with esmtps  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+	(Exim)
+	(envelope-from <tom@subfusion.com>)
+	id 1oL5FP-0009jB-P2
+	for tom@subfusion.com;
+	Mon, 08 Aug 2022 17:04:55 +0100
+Received: from [94.6.135.49] (helo=[192.168.0.2])
+	by smtp.hosts.co.uk with esmtpa (Exim)
+	(envelope-from <tom@subfusion.com>)
+	id 1oL5FP-0000wh-Eb
+	for tom@subfusion.com;
+	Mon, 08 Aug 2022 17:04:55 +0100
+User-Agent: Microsoft-MacOutlook/16.63.22070801
+Date: Mon, 08 Aug 2022 17:04:54 +0100
+Subject: Test email
+From: Tom Mearns <tom@subfusion.com>
+To: Tom Mearns <tom@subfusion.com>
+Message-ID: <00AB390C-57BB-4785-B8D4-9DCE27D470BE@subfusion.com>
+Thread-Topic: Test email
+Mime-version: 1.0
+Content-type: multipart/alternative;
+	boundary="B_3742823095_3499304326"
+X-Spam-Score: -14.7 (--------------) 
+ Symbol: RCVD_TLS_LAST(0.00)
+ Symbol: RCVD_VIA_SMTP_AUTH(0.00)
+ Symbol: GENERIC_REPUTATION(-0.96)
+ Symbol: RCVD_IN_DNSWL_LOW(-0.20)
+ Symbol: FROM_HAS_DN(0.00)
+ Symbol: NETWORK_REPUTATION_HAM(-0.66)
+ Symbol: TO_MATCH_ENVRCPT_ALL(0.00)
+ Symbol: IP_REPUTATION_HAM(-1.33)
+ Symbol: MIME_GOOD(-0.10)
+ Symbol: R_SPF_ALLOW(-0.20)
+ Symbol: ARC_NA(0.00)
+ Symbol: RCPT_COUNT_ONE(0.00)
+ Symbol: SPF_REPUTATION_HAM(-0.94)
+ Symbol: DMARC_NA(0.00)
+ Symbol: TO_DN_ALL(0.00)
+ Symbol: ASN_REPUTATION_HAM(-0.33)
+ Symbol: TRUSTED_NET(-10.00)
+ Symbol: FROM_EQ_ENVFROM(0.00)
+ Symbol: R_DKIM_NA(0.00)
+ Symbol: MIME_TRACE(0.00)
+ Symbol: ASN(0.00)
+ Symbol: RCVD_COUNT_TWO(0.00)
+ Symbol: MID_RHS_MATCH_FROM(0.00)
+ Symbol: TO_EQ_FROM(0.00)
+ Message-ID: 00AB390C-57BB-4785-B8D4-9DCE27D470BE@subfusion.com
+X-Actual-Recipient: tom@subfusion.com
+X-Original-To: tom@subfusion.com
+X-Spam-Threshold: 6.0
+X-Spam-Flag: NO
+
+> This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+--B_3742823095_3499304326
+Content-type: text/plain;
+	charset="UTF-8"
+Content-transfer-encoding: 7bit
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+ 
+
+
+--B_3742823095_3499304326
+Content-type: text/html;
+	charset="UTF-8"
+Content-transfer-encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:schema=
+s-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/office/20=
+04/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta http-equiv=3DC=
+ontent-Type content=3D"text/html; charset=3Dutf-8"><meta name=3DGenerator content=3D=
+"Microsoft Word 15 (filtered medium)"><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:"Open Sans";
+	panose-1:2 11 6 6 3 5 4 2 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	font-family:"Calibri",sans-serif;
+	color:windowtext;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	font-family:"Calibri",sans-serif;
+	mso-fareast-language:EN-US;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style></head><body lang=3DEN-GB link=3D"#0563C1" vlink=3D"#954F72" style=3D'wo=
+rd-wrap:break-word'><div class=3DWordSection1><p class=3DMsoNormal><span style=3D'=
+font-size:10.5pt;font-family:"Open Sans",sans-serif;color:black;background:w=
+hite;mso-fareast-language:EN-GB'>Lorem ipsum dolor sit amet, consectetur adi=
+piscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali=
+qua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi=
+ ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit =
+in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur si=
+nt occaecat cupidatat non proident, sunt in culpa qui officia deserunt molli=
+t anim id est laborum.</span><span style=3D'mso-fareast-language:EN-GB'><o:p><=
+/o:p></span></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal><=
+span style=3D'font-size:10.5pt;font-family:"Open Sans",sans-serif;color:black;=
+background:white;mso-fareast-language:EN-GB'>Lorem ipsum dolor sit amet, con=
+sectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolo=
+re magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco =
+laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in re=
+prehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. =
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia de=
+serunt mollit anim id est laborum.</span><span style=3D'mso-fareast-language:E=
+N-GB'><o:p></o:p></span></p><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=
+=3DMsoNormal><span style=3D'font-size:10.5pt;font-family:"Open Sans",sans-serif;=
+color:black;background:white;mso-fareast-language:EN-GB'>Lorem ipsum dolor s=
+it amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut la=
+bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat=
+ion ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure=
+ dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat null=
+a pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qu=
+i officia deserunt mollit anim id est laborum.</span><span style=3D'mso-fareas=
+t-language:EN-GB'><o:p></o:p></span></p><p class=3DMsoNormal><o:p>&nbsp;</o:p>=
+</p><p class=3DMsoNormal><span style=3D'font-size:10.5pt;font-family:"Open Sans"=
+,sans-serif;color:black;background:white;mso-fareast-language:EN-GB'>Lorem i=
+psum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor inci=
+didunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostr=
+ud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Dui=
+s aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu=
+ fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt=
+ in culpa qui officia deserunt mollit anim id est laborum.</span><span style=
+=3D'mso-fareast-language:EN-GB'><o:p></o:p></span></p><p class=3DMsoNormal><o:p>=
+&nbsp;</o:p></p><p class=3DMsoNormal><span style=3D'font-size:10.5pt;font-family=
+:"Open Sans",sans-serif;color:black;background:white;mso-fareast-language:EN=
+-GB'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod=
+ tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam=
+, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo co=
+nsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cill=
+um dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non pr=
+oident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span=
+><span style=3D'mso-fareast-language:EN-GB'><o:p></o:p></span></p><p class=3DMso=
+Normal><o:p>&nbsp;</o:p></p><p class=3DMsoNormal><span style=3D'font-size:10.5pt=
+;font-family:"Open Sans",sans-serif;color:black;background:white;mso-fareast=
+-language:EN-GB'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, se=
+d do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad =
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex e=
+a commodo consequat. Duis aute irure dolor in reprehenderit in voluptate vel=
+it esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupi=
+datat non proident, sunt in culpa qui officia deserunt mollit anim id est la=
+borum.</span><span style=3D'mso-fareast-language:EN-GB'><o:p></o:p></span></p>=
+<p class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>
+
+--B_3742823095_3499304326--
+
+

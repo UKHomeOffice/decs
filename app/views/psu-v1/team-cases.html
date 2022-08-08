@@ -35,7 +35,24 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">Serious misconduct cases</h1>
         <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-half">
+          
+          <ul class="govuk-grid-row dashboard__teams">
+            <li class="card govuk-body govuk-grid-column-one-quarter">
+              <a class="card__body" href="team-cases">
+  
+                {% if 'yes' in data['stillserious'] %}
+                  <span class="govuk-!-font-size-48">4</span>
+                {% elif 'no' in data['stillserious'] %}
+                  <span class="govuk-!-font-size-48">3</span>
+                {% else  %}
+                  <span class="govuk-!-font-size-48">4</span>
+                {% endif %}
+                <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
+              </a>
+          </li>
+            </ul>
+
+          <div class="govuk-grid-column-one-third">
             {% from "govuk/components/input/macro.njk" import govukInput %}
 
             {{ govukInput({
@@ -64,6 +81,9 @@
         <table class="govuk-table" data-module="moj-sortable-table">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header" aria-sort="none">
+              Select
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
               <button type="button" data-index="0">Reference</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
@@ -91,6 +111,12 @@
             {% if 'yes' in data['stillserious'] %}
               <!--display case in investigation state-->
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
@@ -104,6 +130,12 @@
             {% else %}
               <!--starting state of case-->
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="case-start">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
@@ -114,6 +146,12 @@
             </tr>
             {% endif %}
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">BF/0123456/22</a></td>
               <td class="govuk-table__cell">John Smith</td>
               <td class="govuk-table__cell">Border Force</td>
@@ -123,6 +161,12 @@
               <td class="govuk-table__cell">13 Oct 2022</td>
             </tr>
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">IEDET/0172129/22</a></td>
               <td class="govuk-table__cell">Penny Black</td>
               <td class="govuk-table__cell">IE Detention</td>
@@ -132,6 +176,12 @@
               <td class="govuk-table__cell">10 Oct 2022</td>
             </tr>
             <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation"></label>
+                </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">COMP/0123456/22</a></td>
               <td class="govuk-table__cell">Clarke Kent</td>
               <td class="govuk-table__cell">UKVI</td>
@@ -145,6 +195,39 @@
 
 
       </div>
+
+      <div class="govuk-grid-column-one-third">
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
+          
+          
+          
+          {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        classes: "govuk-!-font-size-19 govuk-!-font-weight-bold",
+        text: "Allocate to a team member"
+      },
+      items: [
+        {
+          value: "",
+          text: ""
+        },
+        {
+          value: "",
+          text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+        }
+      ]
+    }) }}
+          <input class="govuk-button" type="submit" name="allocate_to_team_member" value="Allocate"></div>
+
     </div>
 
 {% endblock %}
