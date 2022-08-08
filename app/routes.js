@@ -68,7 +68,7 @@ router.post('/psu-outcome-v0', function (req, res) {
 
 })
 
-// Run this code when a form is submitted to '/triage-decision' form on triage.html
+// Run this code when a form is submitted to '/triage-decision' form on PSU triage.html
 router.post('/triage-decision', function (req, res) {
 
   // Make a variable and give it the value from 'serious' radios

@@ -1,0 +1,51 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Complaint correspondents – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <!--<a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>-->
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint correspondents</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
+
+    <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
+    <p class="govuk-!-margin-bottom-7"><a class="govuk-link--no-visited-state" href="correspondents-add">Add a correspondent</a></p>
+
+    {{ govukButton({
+      text: "Continue",
+      href: "correspondents-error"
+    }) }}
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "border-force-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

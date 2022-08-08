@@ -1,4 +1,4 @@
-{% extends "layout-iedetention-v1.html" %}
+{% extends "layout-border-force-v1.html" %}
 
 {% block pageTitle %}
   Case – {{ serviceName }}
@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
+    <a class="govuk-back-link" href="/border-force-v1/index.html">Dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -28,16 +28,20 @@
 .timelineStage1 {display: none!important}
 .timelineStage2 {display: none!important}
 .complainant {display: none}
+button.govuk-accordion__show-all {display: none!important}
 </style>
 
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l">{{ data['IEDET-case-reference'] }}</h1>
+    <h1 class="govuk-heading-l">{{ data['BF-case-reference'] }}</h1>
     <h2 class="govuk-heading-m">Case details</h2>
 
+
+
+
     {% set accordianHtml %}
-      <h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>{{ data['current-date-digit'] }}</p>
+    <span class="govuk-body full-width"><strong>When was the correspondence received?: </strong>{{ data['current-date-digit'] }}</span>
     {% endset -%}
 
     {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
@@ -56,43 +60,40 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m">Allocate</h2>
-    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
-
     {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-    {{ govukSelect({
-      id: "sort",
-      name: "sort",
-      label: {
-        classes: "govuk-!-font-weight-bold",
-        text: "Allocate to a team member"
-      },
-      items: [
-        {
-          value: "",
-          text: ""
-        },
-        {
-          value: "",
-          text: "IE Detention user 2 (iedetuser2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "IE Detention user 3 (iedetuser3@homeoffice.gov.uk)"
-        }
-      ]
-    }) }}
+            {{ govukSelect({
+              id: "sort",
+              name: "sort",
+              label: {
+                classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+                text: "Allocate case to"
+              },
+              items: [
+                {
+                  value: "",
+                  text: "Me"
+                },
+                {
+                  value: "",
+                  text: "Border Force user 2 (bfuser2@homeoffice.gov.uk)"
+                },
+                {
+                  value: "",
+                  text: "Border Force user 3 (bfuser3@homeoffice.gov.uk)"
+                }
+              ]
+            }) }}
 
     {{ govukButton({
       text: "Allocate",
-      href: "#"
+      href: "correspondents"
     }) }}
 
   </div>
 
   <!-- Tabs and tabs content -->
-    {% include "iedetention-v1/includes/tabs.html" %}
+    {% include "border-force-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

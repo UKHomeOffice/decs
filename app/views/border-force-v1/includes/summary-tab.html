@@ -1,0 +1,91 @@
+<h2 class="govuk-heading-m">Active stage</h2>
+
+<h3 class="govuk-heading-s">Registration</h3>
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{% set userHtml %}
+  {{ data['BF-user1'] }}
+{% endset %}
+{% set teamHtml %}
+  {{ data['BF-team'] }}
+{% endset %}
+
+  {{ govukSummaryList({
+    classes: 'govuk-summary-list govuk-!-margin-left-3',
+    rows: [
+      {
+        key: {
+          text: "Team"
+        },
+        value: {
+          html: teamHtml
+        }
+      },
+      {
+        key: {
+          text: "User"
+        },
+        value: {
+          classes: "summary-tab-user",
+          html: userHtml
+        }
+      }
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m">Case</h2>
+  <h3 class="govuk-heading-s">Summary</h3>
+  {% set correspondentdatahtml %}
+      <p class="govuk-body">{{ data['fullname'] }}<br>{{ data['telephone'] }}<br>{{ data['email'] }}<br>{{ data['building'] }}<br>{{ data['referencesgiven'] }}</p>
+  {% endset %}
+
+  {% set todaydateHtml %}
+      {{ data['current-date-digit'] }}
+  {% endset %}
+
+  {% set 2weeksHtml %}
+      {{ data['2weeks-date-digit'] }}
+  {% endset %}
+
+  {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    {{ govukSummaryList({
+      classes: 'govuk-summary-list govuk-!-margin-left-3',
+      rows: [
+        {
+          key: {
+            text: "Created"
+          },
+          value: {
+            html: todaydateHtml
+          }
+        },
+        {
+          key: {
+            text: "Deadline"
+          },
+          value: {
+            html: 2weeksHtml
+          }
+        },
+        {
+          key: {
+            classes: 'summary-tab-correspondent-label',
+            text: "Primary correspondent"
+          },
+          value: {
+             classes: "summary-tab-correspondent-data",
+             html: correspondentdatahtml
+           }
+        },
+        {
+          key: {
+            text: "Correspondence received"
+          },
+          value: {
+            html: todaydateHtml
+          }
+        }
+      ]
+    }) }}

@@ -1,0 +1,76 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Complaint correspondents – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint correspondents</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
+
+    <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-form-group govuk-!-margin-top-2 govuk-!-margin-bottom-1">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="document1" name="documentlist" type="radio" value="document1" checked>
+              <label class="govuk-label govuk-radios__label" for="document1">{{ data['fullname'] }}</label>
+            </div>
+          </div>
+        </fieldset>
+        </div>
+      </div>
+      <div class="govuk-grid-column-one-half">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="correspondents-add">Edit</a></p>
+          </div>
+          <div class="govuk-grid-column-one-half">
+            <p class="govuk-body govuk-!-margin-top-4 govuk-!-text-align-right"><a class="govuk-link--no-visited-state" href="#">Remove</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="govuk-section-break govuk-section-break--s govuk-section-break--visible govuk-!-margin-bottom-4">
+
+    <p><a class="govuk-link--no-visited-state" href="#">Add a correspondent</a></p>
+
+    {{ govukButton({
+      text: "Continue",
+        classes: 'govuk-!-margin-top-6',
+      href: "complainant-details"
+    }) }}
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "border-force-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
