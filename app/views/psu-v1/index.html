@@ -21,7 +21,8 @@
 
 {% block content %}
 
-<div class="govuk-grid-row">
+
+  <div class="govuk-grid-row">
   <div class="govuk-grid-column-one-third">
     <form action="case-start" method="POST" enctype="multipart/form-data">
 
@@ -44,21 +45,6 @@
   </div>
 </div>
 
-<!-- DECS code
-<div class="govuk-grid-row">
-  <div µclass="govuk-grid-column-one-third">
-    <form action="/search/reference" method="POST" enctype="multipart/form-data">
-      <div class="govuk-form-group ">
-        <label for="case-reference" id="case-reference-label" class="govuk-label govuk-label--s">Load Case</label>
-        <span class="govuk-hint">For example ABC/1234567/12</span>
-        <div>
-          <input type="text" class="govuk-input" id="case-reference" name="case-reference" maxlength="4000" value="">
-        </div>
-      </div>
-    </form>
-  </div>
-</div>-->
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">Dashboard</h1>
@@ -68,11 +54,6 @@
           <span class="card__body">
             <span class="govuk-!-font-size-48">
               0
-              <!--{% if 'case-closed' in data %}
-                  3
-                  {% else %}
-                    4
-                  {% endif %}-->
             </span>
             <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></span>
 
@@ -83,29 +64,24 @@
         <ul class="govuk-grid-row dashboard__teams">
           <li class="card govuk-body govuk-grid-column-one-quarter">
             <a class="card__body" href="team-cases">
-
               {% if 'yes' in data['stillserious'] %}
+              <!--display case in investigation state-->
                 <span class="govuk-!-font-size-48">4</span>
               {% elif 'no' in data['stillserious'] %}
+              <!--display nothing-->
+                <span class="govuk-!-font-size-48">3</span>
+                {% elif 'sentback' in data['stillserious'] %}
+                <span class="govuk-!-font-size-48">3</span>
+                {% elif 'senttoteamnotondecs' in data['stillserious'] %}
                 <span class="govuk-!-font-size-48">3</span>
               {% else  %}
+              <!--starting state of case-->
                 <span class="govuk-!-font-size-48">4</span>
               {% endif %}
 
               <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
             </a>
-          <!--<div class="card__footer">
-            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">xxxx unallocated</span>
-          </div>-->
         </li>
-          <!--<li class="card govuk-body govuk-grid-column-one-quarter">
-            <a class="card__body" href="/workstack/team/241845c6-8fe4-4b0a-8409-c0613b5acae0">
-              <span class="govuk-!-font-size-48">1026</span>
-              <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a>
-              <div class="card__footer"><span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">885 Unallocated</span>
-                <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag dashboard__tag--red">917 Overdue</span>
-              </div>
-            </li>-->
           </ul>
         </div>
       </div>

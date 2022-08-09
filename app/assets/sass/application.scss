@@ -24,6 +24,9 @@ $govuk-page-width: 1800px;
 .border-bottom {border-bottom: 1px solid #b1b4b6;}
 .DECSquestion {color:red}
 
+
+.hods-alert {background-color: #000; color #fff}
+
 html, body, address, blockquote, div, dl, form, h1, h2, h3, h4, h5, h6, ol, p, pre, table, ul,
 dd, dt, li, tbody, td, tfoot, th, thead, tr, button, del, ins, map, object,
 a, abbr, acronym, b, bdo, big, br, cite, code, dfn, em, i, img, kbd, q, samp, small, span,
@@ -53,7 +56,6 @@ font-family: arial,helvetica,sans-serif!important;}
     //height: 175px;
     width: 33%;
   }
-}
 
 .card__body {
   font-weight: bold;
@@ -114,8 +116,6 @@ a.card__body {
 .dashboard__tag {
   box-sizing: border-box;
   margin-top: 0;
-  padding-bottom: govuk-spacing(1);
-  background-color: tint(#005EA5 ,20%);
 }
 
 .dashboard__tag--red {

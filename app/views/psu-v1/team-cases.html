@@ -44,7 +44,11 @@
                   <span class="govuk-!-font-size-48">4</span>
                 {% elif 'no' in data['stillserious'] %}
                   <span class="govuk-!-font-size-48">3</span>
-                {% else  %}
+                  {% elif 'sentback' in data['stillserious'] %}
+                  <span class="govuk-!-font-size-48">3</span>
+                  {% elif 'senttoteamnotondecs' in data['stillserious'] %}
+                  <span class="govuk-!-font-size-48">3</span>
+                {% else %}
                   <span class="govuk-!-font-size-48">4</span>
                 {% endif %}
                 <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
@@ -126,6 +130,10 @@
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
             </tr>
             {% elseif 'no' in data['stillserious'] %}
+              <!--display nothing-->
+              {% elif 'sentback' in data['stillserious'] %}
+              <!--display nothing-->
+              {% elif 'senttoteamnotondecs' in data['stillserious'] %}
               <!--display nothing-->
             {% else %}
               <!--starting state of case-->
