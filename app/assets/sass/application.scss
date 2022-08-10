@@ -150,7 +150,7 @@ a.card__body {
     [aria-sort=ascending] button:before, [aria-sort=descending] button:before {
         content: none;
     }
-    button:after {
+    [aria-sort] button:after {
         content: " ▲";
         font-size: .8em;
         position: absolute;
