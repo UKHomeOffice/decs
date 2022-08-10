@@ -1,4 +1,4 @@
-{% extends "layout-border-force-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
   Case created – {{ serviceName }}
@@ -20,7 +20,7 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% set panelHTML %}
-  Reference number<br><a href='case-start' class='govuk-link govuk-link--inverse'><strong>{{ data['BF-case-reference'] }}</strong></a>
+  Reference number<br><a href='case-start' class='govuk-link govuk-link--inverse'><strong>{{ data['UKVI-case-reference'] }}</strong></a>
 {% endset %}
 
 {% block content %}

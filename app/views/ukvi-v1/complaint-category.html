@@ -1,4 +1,4 @@
-{% extends "layout-border-force-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
   Complaint type – {{ serviceName }}
@@ -25,7 +25,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint category</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
 
     <p class="govuk-body">Select all that apply.</p>
 
@@ -170,7 +170,60 @@
           ]
         }) }}
 
-
+        {{ govukCheckboxes({
+          idPrefix: "exgratia",
+          name: "exgratia",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Ex-Gratia",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Chaser",
+              text: "Chaser"
+            },
+            {
+              value: "Complaint offer",
+              text: "Complaint offer"
+            },
+            {
+              value: "Litigation",
+              text: "Litigation"
+            },
+            {
+              value: "MPAM offer",
+              text: "MPAM offer"
+            },
+            {
+              value: "New Claim - C",
+              text: "New Claim - C"
+            },
+            {
+              value: "New Claim - SF",
+              text: "New Claim - SF"
+            },
+            {
+              value: "PHSO",
+              text: "PHSO"
+            },
+            {
+              value: "Project",
+              text: "Project"
+            },
+            {
+              value: "Reconsideration",
+              text: "Reconsideration"
+            },
+            {
+              value: "Stage3",
+              text: "Stage3"
+            }
+          ]
+        }) }}
 
       <button class="govuk-button" data-module="govuk-button" value="Complaint-category-button">Continue</button>
 
@@ -178,7 +231,7 @@
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "border-force-v1/includes/tabs.html" %}
+  {% include "UKVI-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

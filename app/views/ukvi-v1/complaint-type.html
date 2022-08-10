@@ -1,4 +1,4 @@
-{% extends "layout-border-force-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
   Complaint type – {{ serviceName }}
@@ -25,7 +25,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint type</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
 
     <form class="form" action="complaint-category" method="post">
 
@@ -41,6 +41,10 @@
           {
             value: "service",
             text: "Service"
+          },
+          {
+            value: "Ex-Gratia",
+            text: "Ex-Gratia"
           },
           {
             value: "minor",
@@ -59,7 +63,7 @@
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "border-force-v1/includes/tabs.html" %}
+  {% include "UKVI-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

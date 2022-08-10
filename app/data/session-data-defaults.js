@@ -19,16 +19,16 @@ Example usage:
 
 module.exports = {
 /*
-iedetention-v1
+iedetention-v1 BF and UKVI
 */
   "current-year": "2022",
   "current-month-digit": "8",
   "current-month-alpha": "August",
-  "current-day": "10",
-  "current-date-digit": "10/8/2022",
-  "current-date-alpha": "10 Aug 2022",
-  "2weeks-date-digit": "3/11/2022",
-  "2weeks-date-alpha": "3 Nov 2022",
+  "current-day": "11",
+  "current-date-digit": "11/8/2022",
+  "current-date-alpha": "11 Aug 2022",
+  "2weeks-date-digit": "11/11/2022",
+  "2weeks-date-alpha": "11 Nov 2022",
   "docname": "joseph-bloggs.pdf",
   "stillserious": "",
   "IEDET-case-reference": "IEDET/0172177/22",
@@ -37,6 +37,9 @@ iedetention-v1
   "BF-case-reference": "BF/0172177/22",
   "BF-user1": "BF user 1",
   "BF-team": "Border Force",
+  "UKVI-case-reference": "COMP/0172177/22",
+  "UKVI-user1": "UKVI user 1",
+  "UKVI-team": "UKVI",
   /*
   psu-v1
   */

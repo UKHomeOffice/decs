@@ -1,4 +1,4 @@
-{% extends "layout-border-force-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
   Complaint correspondents – {{ serviceName }}
@@ -31,7 +31,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint correspondents</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
 
     <h2 class="govuk-heading-m">Who is the primary correspondent?</h2>
     <p class="govuk-!-margin-bottom-7"><a class="govuk-link--no-visited-state" href="correspondents-add">Add a correspondent</a></p>
@@ -43,7 +43,7 @@
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "border-force-v1/includes/tabs.html" %}
+  {% include "UKVI-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

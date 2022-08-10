@@ -1,4 +1,4 @@
-{% extends "layout-border-force-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
   Create single case – {{ serviceName }}
@@ -21,7 +21,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Create single case</h1>
-      <form class="form" action="/border-force-v1/create-document" method="post">
+      <form class="form" action="create-document" method="post">
 
         {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
@@ -38,8 +38,12 @@
           },
           items: [
             {
-              value: "Border Force",
-              text: "Border Force"
+              value: "Complaint",
+              text: "Complaint"
+            },
+            {
+              value: "Treat Official",
+              text: "Treat Official"
             }
           ]
         }) }}

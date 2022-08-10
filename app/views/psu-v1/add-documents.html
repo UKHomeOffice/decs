@@ -1,4 +1,4 @@
-{% extends "layout-ukvi-v1.html" %}
+{% extends "layout-iedetention-v1.html" %}
 
 {% block pageTitle %}
   Create single case – {{ serviceName }}
@@ -21,7 +21,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Add documents</h1>
-      <form class="form" action="/iedetention-v1/case-start" method="post">
+      <form class="form" action="/psu-v1/case-start" method="post">
 
         {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
         {% from "govuk/components/select/macro.njk" import govukSelect %}
