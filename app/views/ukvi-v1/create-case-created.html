@@ -1,0 +1,35 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Case created – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set panelHTML %}
+  Reference number<br><a href='case-start' class='govuk-link govuk-link--inverse'><strong>{{ data['BF-case-reference'] }}</strong></a>
+{% endset %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{ govukPanel({
+        titleText: "Case created",
+        html: panelHTML
+      }) }}
+    </div>
+  </div>
+{% endblock %}

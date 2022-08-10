@@ -21,26 +21,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">Create single case</h1>
-      <form class="form" action="/iedetention-v1/create-case-created" method="post">
-
-        <!--Nunjucks date
-          {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
-
-        {{ govukDateInput({
-          id: "received",
-          namePrefix: "received",
-          fieldset: {
-            legend: {
-              text: "When was the correspondence received?",
-              isPageHeading: true,
-              classes: "govuk-fieldset__legend--s"
-            }
-          },
-          hint: {
-            text: "For example, 30 6 2022"
-          }
-        }) }}
-        -->
+      <form class="form" action="/border-force-v1/create-case-created" method="post">
 
         <!--HTML date-->
         <div class="govuk-form-group">
@@ -80,14 +61,8 @@
           </fieldset>
         </div>
 
-        <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-font-weight-bold" for="file-upload-1">
-          Are there any documents to include?
-        </label>
-        <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" value="fileUploaded">
-      </div>
 
-        <!--{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+        {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 
         {{ govukFileUpload({
           id: "file-upload-1",
@@ -96,7 +71,7 @@
             classes: "govuk-!-font-weight-bold",
             text: "Are there any documents to include?"
           }
-        }) }}-->
+        }) }}
 
         <button class="govuk-button" data-module="govuk-button">Create case</button>
       </form>

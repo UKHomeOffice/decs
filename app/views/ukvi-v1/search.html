@@ -1,0 +1,88 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Search – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          Search
+        </li>
+      </ol>
+    </div>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half"><h1 class="govuk-heading-l">Search</h1>
+
+  <form action="search-results" method="POST" enctype="multipart/form-data">
+    <div class="govuk-form-group ">
+      <label for="correspondent" id="correspondent-label" class="govuk-label govuk-label--s">Correspondent full name</label><div><input class="govuk-input" id="correspondent" type="text" name="correspondent" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentPostcode" id="correspondentPostcode-label" class="govuk-label govuk-label--s">Correspondent postcode</label><div><input class="govuk-input" id="correspondentPostcode" type="text" name="correspondentPostcode" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="correspondentEmail" id="correspondentEmail-label" class="govuk-label govuk-label--s">Correspondent email address</label><div><input class="govuk-input" id="correspondentEmail" type="text" name="correspondentEmail" maxlength="4000" value=""></div></div>
+
+  <div class="govuk-form-group"><fieldset id="ComplainantDOB" class="govuk-fieldset" role="group">
+    <legend class="govuk-fieldset__legend govuk-label--s">Complainant date of birth</legend>
+    <div id="passport-issued-hint" class="govuk-hint">
+      For example, 31 3 1980
+    </div>
+    <div class="govuk-date-input">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="ComplainantDOB-day">Day</label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="ComplainantDOB-day" name="ComplainantDOB-day" type="number" pattern="[0-9]*" min="1" max="31" value="">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="ComplainantDOB-month">Month</label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="ComplainantDOB-month" name="ComplainantDOB-month" type="number" pattern="[0-9]*" min="1" max="12" value="">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="ComplainantDOB-year">Year</label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4  " id="ComplainantDOB-year" name="ComplainantDOB-year" type="number" pattern="[0-9]*" min="1900" max="2122" value="">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+<div class="govuk-form-group "><label for="reference" id="reference-label" class="govuk-label govuk-label--s">Case reference</label><div><input class="govuk-input" id="reference" type="text" name="reference" maxlength="4000" value=""></div></div><div class="govuk-form-group "><label for="ComplainantHORef" id="ComplainantHORef-label" class="govuk-label govuk-label--s">Complainant Home Office Reference</label><div><input class="govuk-input" id="ComplainantHORef" type="text" name="ComplainantHORef" maxlength="4000" value=""></div></div><div class="govuk-form-group"><fieldset id="caseTypes" class="govuk-fieldset "><legend id="caseTypes-legend" class="govuk-fieldset__legend"><span class="govuk-fieldset__heading govuk-label--s"></span></legend>
+
+  <div class="govuk-checkboxes govuk-checkboxes--small">
+    <div class="govuk-checkboxes__item">
+      <input id="caseTypes_COMP" type="checkbox" name="caseTypes" class="govuk-checkboxes__input" value="COMP">
+      <label class="govuk-label govuk-checkboxes__label" for="caseTypes_COMP">Complaint Case</label>
+    </div>
+    <div class="govuk-checkboxes__item"><input id="caseTypes_IEDET" type="checkbox" name="caseTypes" class="govuk-checkboxes__input" value="IEDET">
+      <label class="govuk-label govuk-checkboxes__label" for="caseTypes_IEDET">IE Detention Case</label>
+    </div>
+  </div>
+</fieldset>
+</div>
+
+<input class="govuk-button" type="submit" value="Search">
+</form>
+</div>
+</div>
+{% endblock %}

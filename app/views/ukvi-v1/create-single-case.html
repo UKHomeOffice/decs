@@ -1,0 +1,53 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Create single case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+  },
+  html: ''
+}) }}
+  <a class="govuk-back-link" href="/border-force-v1/">Dashboard</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Create single case</h1>
+      <form class="form" action="/border-force-v1/create-document" method="post">
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          idPrefix: "what-type-of-correspondence",
+          name: "what-type-of-correspondence",
+          fieldset: {
+            legend: {
+              text: "What type of correspondence do you have?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Border Force",
+              text: "Border Force"
+            }
+          ]
+        }) }}
+
+        <button class="govuk-button" data-module="govuk-button">Next</button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout-border-force-v1.html" %}
+
+{% block pageTitle %}
+  Dashboard – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          text: "Load case",
+          classes: "govuk-label--m",
+          isPageHeading: true
+        },
+        hint: {
+          text: "For example ABC/1234567/12"
+        },
+        id: "event-name",
+        name: "event-name"
+      }) }}
+    </form>
+  </div>
+</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Dashboard</h1>
+      <h2 class="govuk-heading-m">My Cases</h2>
+      <ul class="govuk-grid-row dashboard__teams">
+        <li class="card govuk-body govuk-grid-column-one-quarter">
+          <span class="card__body" href="#">
+            <span class="govuk-!-font-size-48">0</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></span>
+          </li>
+        </ul>
+
+        <h2 class="govuk-heading-m">Team Cases</h2>
+        <ul class="govuk-grid-row dashboard__teams">
+          <li class="card govuk-body govuk-grid-column-one-quarter">
+            <span class="card__body" href="#">
+            <span class="govuk-!-font-size-48">0</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Border Force</span></span>
+          </li>
+
+          <li class="card govuk-body govuk-grid-column-one-quarter"><span class="card__body" href="/workstack/team/09770343-0f0d-46da-b983-b6ed92bd7cec"><span class="govuk-!-font-size-48">0</span><span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Border Force (Stage 2)</span></span></li></ul></div></div>
+
+        </ul> 
+        </div>
+      </div>
+
+{% endblock %}
