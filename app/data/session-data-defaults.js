@@ -37,9 +37,11 @@ iedetention-v1 BF and UKVI
   "BF-case-reference": "BF/0172177/22",
   "BF-user1": "BF user 1",
   "BF-team": "Border Force",
+  "BF-docname": "jane-smith.msg",
   "UKVI-case-reference": "COMP/0172177/22",
   "UKVI-user1": "UKVI user 1",
   "UKVI-team": "UKVI",
+  "UKVI-docname": "jane-smith.msg",
   /*
   psu-v1
   */
