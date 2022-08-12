@@ -59,10 +59,6 @@
           },
           {
             value: "",
-            text: "HMPOTRT"
-          },
-          {
-            value: "",
             text: "Letter"
           },
           {
@@ -89,29 +85,13 @@
         }
       }) }}
 
-
-
-      {{ govukSelect({
-        id: "owningcsu",
-        name: "owningcsu",
+      {{ govukInput({
         label: {
-          classes: "govuk-!-font-weight-bold",
-          text: "Owning CSU"
+          text: "Previous UKVI Complaint Ref",
+          classes: "govuk-label--s"
         },
-        items: [
-          {
-            value: "",
-            text: ""
-          },
-          {
-            value: "",
-            text: "UKVI"
-          },
-          {
-            value: "",
-            text: "IE Detention"
-          }
-        ]
+        id: "PreviousUKVIComplaintRef",
+        name: "PreviousUKVIComplaintRef"
       }) }}
 
       {{ govukInput({
@@ -123,14 +103,6 @@
         name: "thirdpartyreference"
       }) }}
 
-      {{ govukInput({
-        label: {
-          text: "Previous UKVI Complaint Ref",
-          classes: "govuk-label--s"
-        },
-        id: "PreviousUKVIComplaintRef",
-        name: "PreviousUKVIComplaintRef"
-      }) }}
 
       {% if 'serious' in data['complainttype'] %}
         <button class="govuk-button" data-module="govuk-button">Finish and escalate to PSU</button>
