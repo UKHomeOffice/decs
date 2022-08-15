@@ -1,0 +1,42 @@
+{% set triageHtml %}
+<span class="govuk-body full-width"><strong>When was the correspondence received?: </strong>{{ data['current-date-digit'] }}</span><br><br>
+<span class="govuk-body full-width"><strong>Which is the primary correspondent?: </strong>Joseph Bloggs</span><br><br>
+<span class="govuk-body full-width"><strong>Date of Birth: </strong>14/05/1984</span><br><br>
+<span class="govuk-body full-width"><strong>Gender: </strong>Male</span><br><br>
+<span class="govuk-body full-width"><strong>Nationality: </strong>Ethiopia</span><br><br>
+<span class="govuk-body full-width"><strong>Home Office reference: </strong>66389</span><br><br>
+<span class="govuk-body full-width"><strong>Complaint type: </strong>Serious misconduct</span><br><br>
+<span class="govuk-body full-width"><strong>Poor communication: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Rudeness: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Assault: </strong>Yes</span><br><br>
+<span class="govuk-body full-width"><strong>Channel: </strong>DCF9 Complaint Form</span><br><br>
+<span class="govuk-body full-width"><strong>Complaint origin: </strong>IRC - Brook House</span><br><br>
+<span class="govuk-body full-width"><strong>Owning CSU: </strong>IE Detention</span><br><br>
+<span class="govuk-body full-width"><strong>Case summary: </strong>Alleged assault</span>
+{% endset -%}
+
+{% set refHtml %}
+<span class="govuk-body full-width"><strong>PSU reference: </strong>{{ data['psu-internal-ref'] | default("157410") }}</span><br><br>
+{% endset -%}
+
+{{ govukAccordion({
+  id: "accordion-default",
+  items: [
+    {
+      heading: {
+        text: "IE Detention registration"
+      },
+      content: {
+        html: triageHtml
+      }
+    },
+    {
+      heading: {
+        text: "Registration"
+      },
+      content: {
+        html: refHtml
+      }
+    }
+  ]
+}) }}

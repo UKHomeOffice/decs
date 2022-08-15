@@ -1,0 +1,59 @@
+{% extends "layout-psu-v2.html" %}
+
+{% block pageTitle %}
+  Category test – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.timelineStagePSU1  {display: none!important}
+.timelineStagePSU2  {display: none!important}
+.timelineStagePSU3  {display: none!important}
+
+.summaryPSU2  {display: none!important}
+.summaryPSU3  {display: none!important}
+.summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Test - Display categories</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <h2 class="govuk-heading-m">Complaint categories</h2>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+    
+    <p>{{ data['reclassify-serious-serious'] }}<br>
+        {{ data['reclassify-serious-minor'] }}<br>
+        {{ data['reclassify-serious-service'] }}
+    </p>
+    <p></p>
+
+    </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+    {% include "psu-v2/includes/tabs.html" %}
+  <!-- end -->
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "layout-psu-v2.html" %}
+
+{% block pageTitle %}
+  Triage complaint – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.timelineStagePSU2  {display: none!important}
+.timelineStagePSU3  {display: none!important}
+
+.summaryPSU1  {display: none!important}
+.summaryPSU3  {display: none!important}
+.summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Triage complaint</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+    
+    <form class="form" action="/triage-decision-v2" method="post">
+
+    {{ govukRadios({
+      classes: "govuk-radios--small",
+      idPrefix: "serious",
+      name: "stillserious",
+      fieldset: {
+        legend: {
+         text: "Is this a serious misconduct case for PSU to investigate?",
+         isPageHeading: false,
+         classes: "govuk-fieldset__legend--m"
+       }
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Yes"
+        },
+        {
+          value: "sendback",
+          text: "No – send back to IE Detention"
+        },
+        {
+          value: "senttoteamnotondecs",
+          text: "No – send to team not on DECS"
+        }
+      ]
+    }) }}
+
+    <button class="govuk-button" data-module="govuk-button">Submit</button>
+    
+  </form>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v2/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+
+</div>
+
+{% endblock %}

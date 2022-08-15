@@ -68,7 +68,7 @@ router.post('/psu-outcome-v0', function (req, res) {
 
 })
 
-// Run this code when a form is submitted to '/triage-decision' form on PSU triage.html
+// Run this code when a form is submitted to '/triage-decision' form on PSU-v1 triage.html
 router.post('/triage-decision', function (req, res) {
 
   // Make a variable and give it the value from 'serious' radios
@@ -88,6 +88,29 @@ router.post('/triage-decision', function (req, res) {
 
 })
 
+// Run this code when a form is submitted to '/triage-decision-v2' form on PSU-v2 triage.html
+router.post('/triage-decision-v2', function (req, res) {
+
+  // Make a variable and give it the value from 'serious' radios
+  var triageDecision = req.session.data['stillserious']
+  
+  // Check whether the variable matches a condition.
+
+  // If 'yes it's serious' - go to review categories 
+  if (triageDecision == "yes"){
+    res.redirect('/psu-v2/is-serious-categories')
+  
+  // If 'no - send back' send user back to dashboard  
+  } else if (triageDecision == "sendback"){
+    res.redirect('/psu-v2/')
+
+   // If 'no - send to Team not on DECS' send user back to dashboard  
+  } else {
+    res.redirect('/psu-v2/index')
+  }
+
+})
+
 // Run this code when a form is submitted to '/psu-outcome' on outcome.html
 router.post('/psu-outcome', function (req, res) {
 
@@ -101,6 +124,23 @@ router.post('/psu-outcome', function (req, res) {
   } else {
     // Send user to final-response.html
     res.redirect('/psu-v1/final-response')
+  }
+
+})
+
+// Run this code when a form is submitted to '/psu-outcome-v2' on PSU-v2 outcome.html
+router.post('/psu-outcome-v2', function (req, res) {
+
+  // Make a variable and give it the value from 'psu-outcome' radios
+  var psuOutcome = req.session.data['stillserious']
+
+  // Check whether the variable matches a condition.
+  if (psuOutcome == "notserious"){
+    // Send user to index
+    res.redirect('/psu-v2/')
+  } else {
+    // Send user to final-response.html
+    res.redirect('/psu-v2/final-response')
   }
 
 })

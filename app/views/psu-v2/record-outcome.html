@@ -1,0 +1,123 @@
+{% extends "layout-psu-v2.html" %}
+
+{% block pageTitle %}
+  Record outcome – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+  .timelineStagePSU3  {display: none!important}
+
+  .summaryPSU1  {display: none!important}
+  .summaryPSU2  {display: none!important}
+  .summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Record outcome</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <h2 class="govuk-heading-m">Case details</h2>
+
+    <!-- Accordian -->
+    {% include "psu-v2/includes/accordian-outcome.html" %}
+    <!-- end -->
+
+
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
+            text: "Allocate case to"
+          },
+          items: [
+            {
+              value: "",
+              text: "Me"
+            },
+            {
+              value: "",
+              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
+<!--
+
+
+    <h2 class="govuk-heading-m">Allocate</h2>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
+
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Allocate to a team member"
+      },
+      items: [
+        {
+          value: "",
+          text: ""
+        },
+        {
+          value: "",
+          text: "Team member 1 (teammember1@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 2 (teammember2@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 3 (teammember3@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "Team member 4 (teammember4@homeoffice.gov.uk)"
+        }
+      ]
+    }) }}
+-->
+    {{ govukButton({
+      text: "Allocate",
+      href: "outcome"
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v2/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+  
+</div>
+
+{% endblock %}
