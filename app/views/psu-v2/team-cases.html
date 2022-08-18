@@ -34,7 +34,9 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">Serious misconduct cases</h1>
-        <div class="govuk-grid-row">
+        
+      <!--
+      <div class="govuk-grid-row">
           
           <ul class="govuk-grid-row dashboard__teams">
             <li class="card govuk-body govuk-grid-column-one-quarter">
@@ -71,13 +73,15 @@
             }) }}
           </div>
         </div>
+        -->
+
 
         {% if 'yes' in data['stillserious'] %}
-        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>4</strong> of <strong>4</strong> cases</p>
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">4 items</p>
         {% elseif 'no' in data['stillserious'] %}
-        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>3</strong> of <strong>3</strong> cases</p>
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">3 items</p>
         {% else %}
-        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">Showing <strong>1</strong> to <strong>4</strong> of <strong>4</strong> cases</p>
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">4 items</p>
         {% endif %}
 
 
@@ -222,11 +226,28 @@
           </tbody>
         </table>
 
-
       </div>
 
       <div class="govuk-grid-column-one-third">
+
+        {% if 'yes' in data['stillserious'] %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">4 items</p>
+        {% elseif 'no' in data['stillserious'] %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">3 items</p>
+        {% else %}
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">4 items</p>
+        {% endif %}
+
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        <!--make the link add the case to team cases-->
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+
+        {% else %}
+        <!--all other cases - link is visible but doesn't work-->
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+        {% endif %}
+
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
           
           

@@ -51,14 +51,25 @@
       <h2 class="govuk-heading-m">My cases</h2>
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
-          <span class="card__body">
+          {% if 'yes' in data['stillserious'] %}
+          <!--display case in investigation / allocated to me state -->
+          <a href="my-cases" class="card__body">
+            <span class="govuk-!-font-size-48">
+              1
+            </span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Case</span>
+          </a>
+          {% else %}
+          <!--display no cases allocated to me-->
+          <a href="my-cases" class="card__body">
             <span class="govuk-!-font-size-48">
               0
             </span>
-            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></span>
-
-          </li>
-        </ul>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span>
+          </a>
+          {% endif %}
+        </li>
+      </ul>
 
         <h2 class="govuk-heading-m">Team cases</h2>
         <ul class="govuk-grid-row dashboard__teams">
@@ -86,8 +97,17 @@
 
               <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
             </a>
-        </li>
-          </ul>
+            <div class="card__footer">
+              {% if 'yes' in data['stillserious'] %}
+              <!--display case in investigation / allocated to me state -->
+              <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">0 unallocated</span>
+              {% else %}
+              <!--display no cases allocated to me-->
+              <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">1 unallocated</span>
+              {% endif %}
+            </div>
+          </li>
+        </ul>
         </div>
       </div>
 

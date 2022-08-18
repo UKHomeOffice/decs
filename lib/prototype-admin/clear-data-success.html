@@ -14,8 +14,12 @@
     The session data has been cleared.
   </p>
 
-  <p class="govuk-body">Go back to:</p>
+  {{ govukButton({
+    text: "Start again",
+    href: "/"
+  }) }}
 
+  <!--
   {{ govukButton({
     text: "IE Detention",
     href: "/iedetention-v1/"
@@ -35,5 +39,5 @@
     text: "UKVI",
     href: "/ukvi-v1/"
   }) }}
-  
+  -->
 {% endblock %}
