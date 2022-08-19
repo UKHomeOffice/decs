@@ -101,6 +101,35 @@
       ]
     }) }}
 
+    {{ govukCheckboxes({
+      idPrefix: "allocated-to-me",
+      name: "allocated-to-me",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+
+    {{ govukCheckboxes({
+      idPrefix: "finished",
+      name: "finished",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "yes",
+          text: "yes",
+          checked: true
+        }
+      ]
+    }) }}
   </div>
 
   <div class="govuk-grid-column-two-thirds">

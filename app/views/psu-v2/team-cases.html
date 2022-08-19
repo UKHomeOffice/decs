@@ -31,50 +31,27 @@
 
 {% block content %}
 
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">Serious misconduct cases</h1>
-        
-      <!--
       <div class="govuk-grid-row">
-          
-          <ul class="govuk-grid-row dashboard__teams">
-            <li class="card govuk-body govuk-grid-column-one-quarter">
-              <a class="card__body" href="team-cases">
-  
-                {% if 'yes' in data['stillserious'] %}
-                  <span class="govuk-!-font-size-48">4</span>
-                {% elif 'no' in data['stillserious'] %}
-                  <span class="govuk-!-font-size-48">3</span>
-                  {% elif 'sentback' in data['stillserious'] %}
-                  <span class="govuk-!-font-size-48">3</span>
-                  {% elif 'senttoteamnotondecs' in data['stillserious'] %}
-                  <span class="govuk-!-font-size-48">3</span>
-                {% else %}
-                  <span class="govuk-!-font-size-48">4</span>
-                {% endif %}
-                <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
-              </a>
-          </li>
-            </ul>
+        <div class="govuk-grid-column-one-third">
+          {% from "govuk/components/input/macro.njk" import govukInput %}
 
-          <div class="govuk-grid-column-one-third">
-            {% from "govuk/components/input/macro.njk" import govukInput %}
-
-            {{ govukInput({
-              label: {
-                text: "Case filter",
-                classes: "govuk-label--s",
-                isPageHeading: false
-              },
-              id: "case-filter",
-              name: "case-filter",
-              autocomplete: "off"
-            }) }}
-          </div>
+          {{ govukInput({
+            label: {
+              text: "Case filter",
+              classes: "govuk-label--s",
+              isPageHeading: false
+            },
+            id: "case-filter",
+            name: "case-filter",
+            autocomplete: "off"
+          }) }}
         </div>
-        -->
-
+      </div>
 
         {% if 'yes' in data['stillserious'] %}
         <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">4 items</p>
@@ -104,35 +81,59 @@
               <button type="button" data-index="3">Current stage</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-              <button type="button" data-index="4">PSU reference</button>
+              <button type="button" data-index="4">PSU ref</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="4">Owner</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
               <button type="button" data-index="5">Received</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-              <button type="button" data-index="6">Response due</button>
+              <button type="button" data-index="6">Deadline</button>
             </th>
           </tr>
 
           <tbody class="govuk-table__body">
 
-            {% if 'yes' in data['stillserious'] %}
-              <!--display case in investigation state-->
+            {% if (data['stillserious'] == 'yes') and (data['allocated-to-me'] == 'no') %}
+              <!--display case in unallocated investigation state-->
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
                   <label class="govuk-label govuk-checkboxes__label" for="organisation">
                   </label>
-                </div></td>
+                </div>
+              </td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
+              <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
             </tr>
+            {% elseif (data['stillserious'] == 'yes') and (data['allocated-to-me'] == 'yes') %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div>
+              </td>
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="outcome">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
+              <td class="govuk-table__cell">{{ data['PSU-PSU-username'] }}</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+
             {% elseif 'no' in data['stillserious'] %}
               <!--display nothing - case finished-->
 
@@ -151,12 +152,14 @@
                     <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
                     <label class="govuk-label govuk-checkboxes__label" for="organisation">
                     </label>
-                  </div></td>
+                  </div>
+                </td>
                 <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="allocation-triage">{{ data['case-ref-psu'] }}</a></td>
                 <td class="govuk-table__cell">Joseph Bloggs</td>
                 <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
                 <td class="govuk-table__cell">Triage</td>
                 <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
+                <td class="govuk-table__cell">-</td>
                 <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
                 <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
               </tr>
@@ -168,11 +171,13 @@
                   <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
                   <label class="govuk-label govuk-checkboxes__label" for="organisation">
                   </label>
-                </div></td>
+                </div>
+              </td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="allocation-registration">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Registration</td>
+              <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">-</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
               <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
@@ -190,6 +195,7 @@
               <td class="govuk-table__cell">Border Force</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">15739</td>
+              <td class="govuk-table__cell">PSU user 2</td>
               <td class="govuk-table__cell">21 Jul 2022</td>
               <td class="govuk-table__cell">13 Oct 2022</td>
             </tr>
@@ -205,6 +211,7 @@
               <td class="govuk-table__cell">IE Detention</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">15737</td>
+              <td class="govuk-table__cell">PSU user 2</td>
               <td class="govuk-table__cell">18 Jul 2022</td>
               <td class="govuk-table__cell">10 Oct 2022</td>
             </tr>
@@ -220,6 +227,7 @@
               <td class="govuk-table__cell">UKVI</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">15732</td>
+              <td class="govuk-table__cell">PSU user 2</td>
               <td class="govuk-table__cell">15 Jul 2022</td>
               <td class="govuk-table__cell">7 Oct 2022</td>
             </tr>
@@ -241,43 +249,60 @@
         {% if 'yes' in data['stillserious'] %}
         <!--display case in investigation state-->
         <!--make the link add the case to team cases-->
-        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+
+        <form class="form" action="" method="post">
+        {{ govukCheckboxes({
+          idPrefix: "allocated-to-me",
+          name: "allocated-to-me",
+          classes: "govuk-checkboxes--small js-hidden",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "yes",
+              text: "yes",
+              checked: true
+            }
+          ]
+        }) }}
+
+        <button class="govuk-button button-looks-like-link" data-module="">Allocate selected to me</button>
 
         {% else %}
         <!--all other cases - link is visible but doesn't work-->
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+        
         {% endif %}
 
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
           
-          
-          
-          {% from "govuk/components/select/macro.njk" import govukSelect %}
+      
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-    {{ govukSelect({
-      id: "sort",
-      name: "sort",
-      label: {
-        classes: "govuk-!-font-size-19 govuk-!-font-weight-bold",
-        text: "Allocate to a team member"
-      },
-      items: [
-        {
-          value: "",
-          text: ""
-        },
-        {
-          value: "",
-          text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
-        },
-        {
-          value: "",
-          text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
-        }
-      ]
-    }) }}
-          <input class="govuk-button" type="submit" name="allocate_to_team_member" value="Allocate"></div>
-
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-19 govuk-!-font-weight-bold",
+            text: "Allocate to a team member"
+          },
+          items: [
+            {
+              value: "",
+              text: ""
+            },
+            {
+              value: "",
+              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
+        <input class="govuk-button" type="submit" name="allocate_to_team_member" value="Allocate"></div>
+      </form>
     </div>
 
 {% endblock %}

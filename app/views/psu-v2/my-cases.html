@@ -92,7 +92,7 @@
 
           <tbody class="govuk-table__body">
 
-            {% if 'yes' in data['stillserious'] %}
+            {% if 'yes' in data['allocated-to-me'] %}
               <!--display case in investigation / allocated to me state -->
             <tr class="govuk-table__row">
               <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
@@ -101,7 +101,7 @@
                   <label class="govuk-label govuk-checkboxes__label" for="organisation">
                   </label>
                 </div></td>
-              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="record-outcome">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="outcome">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
               <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Investigation</td>

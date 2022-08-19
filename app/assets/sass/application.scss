@@ -36,6 +36,26 @@ font-family: arial,helvetica,sans-serif!important;}
     margin-bottom: 0;
 }
 
+button.govuk-button.button-looks-like-link {
+  background-color: #fff;
+  border: 0;
+  font: normal 19px arial,helvetica,sans-serif;
+  padding: 0;
+  color: #1d70b8;
+  text-decoration: underline;	
+  border-bottom: 3px solid #fff;
+  box-shadow: 0 0 0 #002d18;
+  line-height: 17px;
+  margin-bottom: 20px;
+}
+
+button.govuk-button.button-looks-like-link:hover {
+  text-decoration: none;	
+  border-bottom: 3px solid #002d18;
+  box-shadow: 0 2 0 #002d18!important;
+}
+
+
 .dashboard__teams {
     list-style-type: none;
     padding: 0;

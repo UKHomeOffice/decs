@@ -51,21 +51,30 @@
       <h2 class="govuk-heading-m">My cases</h2>
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
-          {% if 'yes' in data['stillserious'] %}
-          <!--display case in investigation / allocated to me state -->
-          <a href="my-cases" class="card__body">
-            <span class="govuk-!-font-size-48">
-              1
-            </span>
-            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Case</span>
-          </a>
-          {% else %}
-          <!--display no cases allocated to me-->
+          {% if (data['stillserious'] == '') or (data['stillserious'] == 'sendback') or (data['stillserious'] == 'senttoteamnotondecs') or (data['stillserious'] == 'notserious') or (data['finished'] == 'yes') %}
+          
+          <!--display there is not a case in team cases -->
           <a href="my-cases" class="card__body">
             <span class="govuk-!-font-size-48">
               0
             </span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Case</span>
+          </a>
+          {% elseif 'yes' in data['allocated-to-me'] %}
+          <!--display there is a case allocated to me-->
+          <a href="my-cases" class="card__body">
+            <span class="govuk-!-font-size-48">
+              1
+            </span>
             <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span>
+          </a>
+          {% else %}
+          <!--display there is not a case in team cases -->
+          <a href="my-cases" class="card__body">
+            <span class="govuk-!-font-size-48">
+              0
+            </span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Case</span>
           </a>
           {% endif %}
         </li>
@@ -76,7 +85,8 @@
           <li class="card govuk-body govuk-grid-column-one-quarter">
             <a class="card__body" href="/psu-v2/team-cases">
               
-              {% if 'yes' in data['stillserious'] %}
+              {% if (data['stillserious'] == 'yes') %}
+
               <!--display case in investigation state-->
                 <span class="govuk-!-font-size-48">4</span>
               
@@ -98,7 +108,8 @@
               <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
             </a>
             <div class="card__footer">
-              {% if 'yes' in data['stillserious'] %}
+
+              {% if (data['allocated-to-me'] == 'yes') or (data['stillserious'] == 'sendback') or (data['stillserious'] == 'senttoteamnotondecs') or (data['stillserious'] == 'notserious') or (data['finished'] == 'yes') %}
               <!--display case in investigation / allocated to me state -->
               <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">0 unallocated</span>
               {% else %}

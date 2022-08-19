@@ -30,7 +30,6 @@ iedetention-v1 BF and UKVI
   "2weeks-date-digit": "16/11/2022",
   "2weeks-date-alpha": "16 Nov 2022",
   "docname": "joseph-bloggs.pdf",
-  "stillserious": "",
   "IEDET-case-reference": "IEDET/0172177/22",
   "IEDET-user1": "IEDET user 1",
   "IEDET-team": "IE Detention",
@@ -51,4 +50,8 @@ iedetention-v1 BF and UKVI
   "PSU-IE-username": "IEDET user 1",
   "PSU-PSU-username": "PSU user 1",
   "PSU-origin-team": "IE Detention",
+  
+  "stillserious": "",
+  "allocated-to-me": "no",
+  "finished": "no",
 }
