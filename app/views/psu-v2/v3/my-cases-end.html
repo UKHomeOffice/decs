@@ -1,0 +1,131 @@
+{% extends "layout-psu-v2.html" %}
+
+{% block pageTitle %}
+  My cases – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index-end">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          My cases
+        </li>
+      </ol>
+    </div>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">My cases</h1>
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-one-third">
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+
+            {{ govukInput({
+              label: {
+                text: "Case filter",
+                classes: "govuk-label--s",
+                isPageHeading: false
+              },
+              id: "case-filter",
+              name: "case-filter",
+              autocomplete: "off"
+            }) }}
+          </div>
+        </div>
+
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation / allocated to me state -->
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">1 item</p>
+        {% else %}
+        <!--display no cases allocated to me-->
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">0 items</p>
+        {% endif %}
+
+
+
+        <table class="govuk-table" data-module="moj-sortable-table">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              Select
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="0">Reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="1">Name</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="2">Sent by</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="3">Current stage</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="4">PSU reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="5">Received</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="6">Response due</button>
+            </th>
+          </tr>
+
+          <tbody class="govuk-table__body">
+
+              <!--display case in investigation / allocated to me state -->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="outcome">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">16000</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+            
+          </tbody>
+        </table>
+
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation / allocated to me state -->
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">1 item</p>
+        {% else %}
+        <!--display no cases allocated to me-->
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">0 items</p>
+        {% endif %}
+
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
+
+    </div>
+
+{% endblock %}
