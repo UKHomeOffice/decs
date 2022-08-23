@@ -13,7 +13,7 @@
       },
       html: ''
     }) }}
-    <a class="govuk-back-link" href="index">Dashboard</a>
+    <a class="govuk-back-link" href="index-2nd">Dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -83,35 +83,37 @@
 }) }}
     <!-- end -->
 
+    <h2 class="govuk-heading-m">Allocate</h2>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="triage">Allocate to me</a></p>
 
     {% from "govuk/components/select/macro.njk" import govukSelect %}
 
-        {{ govukSelect({
-          id: "sort",
-          name: "sort",
-          label: {
-            classes: "govuk-!-font-size-24 govuk-!-font-weight-bold",
-            text: "Allocate case to"
-          },
-          items: [
-            {
-              value: "",
-              text: "Me"
-            },
-            {
-              value: "",
-              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
-            },
-            {
-              value: "",
-              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
-            }
-          ]
-        }) }}
+    {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Allocate to a team member"
+      },
+      items: [
+        {
+          value: "",
+          text: ""
+        },
+        {
+          value: "",
+          text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+        }
+      ]
+    }) }}
 
     {{ govukButton({
       text: "Allocate",
-      href: "triage"
+      href: "#"
     }) }}
 
 

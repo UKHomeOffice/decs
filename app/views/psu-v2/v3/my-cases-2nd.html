@@ -16,7 +16,7 @@
     <div class="govuk-breadcrumbs">
       <ol class="govuk-breadcrumbs__list">
         <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="index-end">Dashboard</a>
+          <a class="govuk-breadcrumbs__link" href="index-2nd">Dashboard</a>
         </li>
         <li class="govuk-breadcrumbs__list-item">
           My cases
@@ -52,8 +52,8 @@
           </div>
         </div>
 
-        {% if 'yes' in data['stillserious'] %}
-        <!--display case in investigation / allocated to me state -->
+        {% if 'yes' in data['allocated-investigation'] %}
+            <!--display case in investigation and allocated state-->
         <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">1 item</p>
         {% else %}
         <!--display no cases allocated to me-->
@@ -92,9 +92,27 @@
 
           <tbody class="govuk-table__body">
 
-              <!--display case in investigation / allocated to me state -->
-            
-            
+            {% if 'yes' in data['allocated-investigation'] %}
+            <!--display case in investigation and allocated state-->
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                  <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                  </label>
+                </div></td>
+              <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="outcome">{{ data['case-ref-psu'] }}</a></td>
+              <td class="govuk-table__cell">Joseph Bloggs</td>
+              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
+              <td class="govuk-table__cell">Investigation</td>
+              <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
+              <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
+              <td class="govuk-table__cell">{{ data['2weeks-date-alpha'] }}</td>
+            </tr>
+            % else %}
+            <!--don't display-->
+
+            {% endif %}
           </tbody>
         </table>
 
@@ -102,8 +120,8 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        {% if 'yes' in data['stillserious'] %}
-        <!--display case in investigation / allocated to me state -->
+        {% if 'yes' in data['allocated-investigation'] %}
+            <!--display case in investigation and allocated state-->
         <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">1 item</p>
         {% else %}
         <!--display no cases allocated to me-->

@@ -1,0 +1,103 @@
+{% extends "layout-psu-v2.html" %}
+
+{% block pageTitle %}
+  PSU dashboard – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-third">
+    <form action="#" method="POST" enctype="multipart/form-data">
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+
+      {{ govukInput({
+        label: {
+          text: "Load case",
+          classes: "govuk-label--m",
+          isPageHeading: false
+        },
+        hint: {
+          text: "For example ABC/1234567/12"
+        },
+        id: "event-name",
+        name: "event-name",
+        autocomplete: "off"
+      }) }}
+    </form>
+  </div>
+</div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">Dashboard</h1>
+      <h2 class="govuk-heading-m">My cases</h2>
+      <ul class="govuk-grid-row dashboard__teams">
+        <li class="card govuk-body govuk-grid-column-one-quarter">
+          {% if 'yes' in data['allocated-investigation'] %}
+            <!--display case in investigation and allocated state-->
+            <a href="my-cases-2nd" class="card__body">
+              <span class="govuk-!-font-size-48">
+                1
+              </span>
+              <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Case</span>
+            </a>
+            {% else %}
+            <!--display case in triage and unallocated state-->
+            <a href="my-cases-2nd" class="card__body">
+              <span class="govuk-!-font-size-48">
+                0
+              </span>
+              <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span>
+            </a>
+            {% endif %}
+
+          
+          
+        </li>
+      </ul>
+
+        <h2 class="govuk-heading-m">Team cases</h2>
+        <ul class="govuk-grid-row dashboard__teams">
+          <li class="card govuk-body govuk-grid-column-one-quarter">
+            <a class="card__body" href="team-case-2nd">
+              {% if 'yes' in data['allocated-investigation'] %}
+            <!--display case in investigation and allocated state-->
+            <span class="govuk-!-font-size-48">4</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
+          </a>
+          <div class="card__footer">
+            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">0 unallocated</span>  
+
+            {% else %}
+            <!--display case in triage and unallocated state-->
+            <span class="govuk-!-font-size-48">4</span>
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
+          </a>
+          <div class="card__footer">
+            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">1 unallocated</span> 
+            {% endif %}  
+            </div>
+          </li>
+        </ul>
+        </div>
+      </div>
+
+{% endblock %}
