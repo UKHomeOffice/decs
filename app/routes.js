@@ -169,5 +169,24 @@ router.post('/is-serious-categories-v3', function (req, res) {
 
 })
 
+// Run this code when a form is submitted to '/outcome-v3' form on PSU-v3 outcome.html
+router.post('/outcome-v3', function (req, res) {
+
+  // Make a variable and give it the value from 'serious' radios
+  var triageDecision = req.session.data['stillserious']
+  
+  // Check whether the variable matches a condition.
+
+  // If 'yes it's serious' - go to review categories 
+  if (triageDecision == "yes"){
+    res.redirect('/psu-v2/v3/final-response')
+
+   // If 'no - send to Team not on DECS' send user back to dashboard  
+  } else {
+    res.redirect('/psu-v2/v3/index-end')
+  }
+
+})
+
 
 module.exports = router
