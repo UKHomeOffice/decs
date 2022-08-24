@@ -1,4 +1,4 @@
-{% extends "layout-psu-v2.html" %}
+{% extends "layout-psu-v3.html" %}
 
 {% block pageTitle %}
   Registration – {{ serviceName }}
@@ -6,7 +6,6 @@
 
 {% block beforeContent %}
 
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
     text: "prototype"
