@@ -1,7 +1,7 @@
 
-<div class="summaryPSU1">
-  <!--Triage - not allocated-->
-<h2 class="govuk-heading-m">Active stage – Triage</h2>
+<div class="summaryPSU1a">
+  <!--Registration - not allocated-->
+<h2 class="govuk-heading-m">Active stage – PSU registration</h2>
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -23,9 +23,57 @@
 </dl>
 </div>
 
-<div class="summaryPSU2">
+<div class="summaryPSU1b">
+  <!--Registration - allocated-->
+<h2 class="govuk-heading-m">Active stage – PSU registration</h2>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{ data['PSU-PSU-username'] }}
+    </dd>
+  </div>
+</dl>
+</div>
+
+<div class="summaryPSU2a">
+  <!--Triage - not allocated-->
+<h2 class="govuk-heading-m">Active stage – PSU triage</h2>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Team
+    </dt>
+    <dd class="govuk-summary-list__value">
+      PSU
+    </dd>
+  </div>
+
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      User
+    </dt>
+    <dd class="govuk-summary-list__value">
+      -
+    </dd>
+  </div>
+</dl>
+</div>
+
+<div class="summaryPSU2b">
   <!--Triage - allocated-->
-<h2 class="govuk-heading-m">Active stage – Triage</h2>
+  <h2 class="govuk-heading-m">Active stage – PSU triage</h2>
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -48,8 +96,8 @@
 </div>
 
 <div class="summaryPSU3">
-  <!--Triage - completed - not allocated-->
-<h2 class="govuk-heading-m">Active stage – Triage completed</h2>
+  <!--Investigation - allocated-->
+<h2 class="govuk-heading-m">Active stage – PSU investigation</h2>
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -65,7 +113,7 @@
       User
     </dt>
     <dd class="govuk-summary-list__value">
-      -
+      {{ data['PSU-PSU-username'] }}
     </dd>
   </div>
 </dl>
