@@ -73,9 +73,6 @@
               <button type="button" data-index="1">Name</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-              <button type="button" data-index="2">Sent by</button>
-            </th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">
               <button type="button" data-index="3">Current stage</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
@@ -102,7 +99,6 @@
                 </div></td>
               <td class="govuk-table__cell"><a class="govuk-link govuk-link--no-visited-state" href="outcome">{{ data['case-ref-psu'] }}</a></td>
               <td class="govuk-table__cell">Joseph Bloggs</td>
-              <td class="govuk-table__cell">{{ data['PSU-origin-team'] }}</td>
               <td class="govuk-table__cell">Investigation</td>
               <td class="govuk-table__cell">{{ data['psu-internal-ref'] | default("157410") }}</td>
               <td class="govuk-table__cell">{{ data['current-date-alpha'] }}</td>
