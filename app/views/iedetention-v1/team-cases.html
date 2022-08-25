@@ -1,0 +1,253 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Team cases - IE Detention – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <div class="govuk-breadcrumbs">
+      <ol class="govuk-breadcrumbs__list">
+        <li class="govuk-breadcrumbs__list-item">
+          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+        </li>
+        <li class="govuk-breadcrumbs__list-item">
+          Team cases
+        </li>
+      </ol>
+    </div>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">IE Detention</h1>
+
+      <ul class="govuk-grid-row dashboard__teams">
+        <li class="card govuk-body govuk-grid-column-one-quarter">
+          <a class="card__body" href="#">
+          <span class="govuk-!-font-size-48">5</span>
+          <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a>
+        <div class="card__footer">
+          <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">3 Unallocated</span>
+        </div>
+      </li>
+        </ul>
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+
+          
+          {% from "govuk/components/input/macro.njk" import govukInput %}
+
+          {{ govukInput({
+            label: {
+              text: "Case filter",
+              classes: "govuk-label--s",
+              isPageHeading: false
+            },
+            id: "case-filter",
+            name: "case-filter",
+            autocomplete: "off"
+          }) }}
+        </div>
+      </div>
+
+
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">5 items</p>
+
+
+        <table class="govuk-table teamcases" data-module="moj-sortable-table">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              Select
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+                <button type="button" data-index="2">Reference</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="3">Current stage</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+                <button type="button" data-index="3">Complaint type</button>
+              </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="4">Owner</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+            <button type="button" data-index="6">Deadline</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+              <button type="button" data-index="7">Allocated to</button>
+              </th>
+          </tr>
+
+          <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">IEDET/0172177/22</a></td>
+                <td class="govuk-table__cell contentpadding">IE Detention Registration</td>
+                <td class="govuk-table__cell contentpadding">Service</td>
+                <td class="govuk-table__cell contentpadding">Leave outside of the rules</td>
+                <td class="govuk-table__cell contentpadding">11 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">IEDET username1</td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell contentpadding">
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172165/22</a><strong class="govuk-tag govuk-tag--red">PSU</strong>
+                </td>
+                <td class="govuk-table__cell contentpadding">IE Detention Triage</td>
+                <td class="govuk-table__cell contentpadding"></td>
+                <td class="govuk-table__cell contentpadding">Detention Services</td>
+                <td class="govuk-table__cell contentpadding">12 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding"></td>
+              </tr>
+            
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">IEDET/0172143/22</a></td>
+                <td class="govuk-table__cell contentpadding">IE Detention Dispatch</td>
+                <td class="govuk-table__cell contentpadding">Minor</td>
+                <td class="govuk-table__cell contentpadding">Asylum</td>
+                <td class="govuk-table__cell contentpadding">13 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding"></td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell contentpadding">
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172129/22</a><strong class="govuk-tag govuk-tag--red">PSU</strong>
+                </td>
+                <td class="govuk-table__cell contentpadding">IE Detention Triage</td>
+                <td class="govuk-table__cell contentpadding"></td>
+                <td class="govuk-table__cell contentpadding">IRC - Brook House</td>
+                <td class="govuk-table__cell contentpadding">14 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding"></td>
+              </tr>
+
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell"><div class="govuk-checkboxes govuk-checkboxes--small govuk-!-margin-bottom-7" data-module="govuk-checkboxes">
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="" name="" type="checkbox" value="">
+                    <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                    </label>
+                  </div>
+                </td>
+                <td class="govuk-table__cell contentpadding">
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172121/22</a><strong class="govuk-tag govuk-tag--red">PSU</strong>
+                </td>
+                <td class="govuk-table__cell contentpadding">IE Detention Dispatch</td>
+                <td class="govuk-table__cell contentpadding">Minor</td>
+                <td class="govuk-table__cell contentpadding">IRC - Colnbrook</td>
+                <td class="govuk-table__cell contentpadding">14 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">IEDET username1</td>
+              </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="govuk-grid-column-one-third">
+
+        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">5 items</p>
+
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        <!--make the link add the case to team cases-->
+
+        <form class="form" action="" method="post">
+        {{ govukCheckboxes({
+          idPrefix: "allocated-to-me",
+          name: "allocated-to-me",
+          classes: "govuk-checkboxes--small js-hidden",
+          fieldset: {
+          },
+          items: [
+            {
+              value: "yes",
+              text: "yes",
+              checked: true
+            }
+          ]
+        }) }}
+
+        <button class="govuk-button button-looks-like-link" data-module="">Allocate selected to me</button>
+
+        {% else %}
+        <!--all other cases - link is visible but doesn't work-->
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
+        
+        {% endif %}
+
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
+          
+      
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-19 govuk-!-font-weight-bold",
+            text: "Allocate to a team member"
+          },
+          items: [
+            {
+              value: "",
+              text: ""
+            },
+            {
+              value: "",
+              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
+        <input class="govuk-button" type="submit" name="allocate_to_team_member" value="Allocate"></div>
+      </form>
+    </div>
+
+{% endblock %}

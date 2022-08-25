@@ -1,0 +1,149 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Accept complaint – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+}) }}
+    <!--<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>-->
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.govuk-accordion__show-all-text {display: none;}
+.govuk-accordion-nav__chevron govuk-accordion-nav__chevron--down {display: none;}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Accept complaint</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['IEDET-case-reference'] }}</span>
+
+    {% set accordianHtml %}
+      <h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>{{ data['current-date-digit'] }}</p>
+    {% endset -%}
+
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "Case details"
+          },
+          content: {
+            html: accordianHtml
+          }
+        }
+      ]
+    }) }}
+
+    <form class="form" action="complaint-category" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "serious",
+        name: "stillserious",
+        fieldset: {
+          legend: {
+           text: "Can your team respond to this complaint?",
+           isPageHeading: false,
+           classes: "govuk-fieldset__legend--m"
+         }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes - transferred to third party supplier"
+          },
+          {
+            value: "yes",
+            text: "Yes - transferred to IE Detention compliance team"
+          },
+          {
+            value: "yes",
+            text: "Yes - transferred to DETMU"
+          },
+          {
+            value: "no",
+            text: "No - transferred to CCH"
+          },
+          {
+            value: "no",
+            text: "No - escalate to PSU"
+          },
+          {
+            value: "no",
+            text: "No - close the case"
+          }
+        ]
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+<!--
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "serious",
+        name: "stillserious",
+        fieldset: {
+          legend: {
+           text: "What has happened?",
+           isPageHeading: false,
+           classes: "govuk-fieldset__legend--m"
+         }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Transferred to third party supplier"
+          },
+          {
+            value: "yes",
+            text: "Transferred to IE Detention compliance team"
+          },
+          {
+            value: "yes",
+            text: "Transferred to DETMU"
+          },
+          {
+            value: "no",
+            text: "Transferred to CCH"
+          },
+          {
+            value: "no",
+            text: "Escalate to PSU"
+          },
+          {
+            value: "no",
+            text: "Close the case"
+          }
+        ]
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+-->
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "iedetention-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
