@@ -1,0 +1,140 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Assign complaint – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+button.govuk-accordion__show-all {display: none!important}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Assign complaint</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['IEDET-case-reference'] }}</span>
+
+    {% set accordianHtml %}
+    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+    {{ govukCharacterCount({
+      name: "casesummary",
+      id: "casesummary",
+      maxlength: 4000,
+      label: {
+        text: "Case summary",
+        classes: "govuk-label--s",
+        isPageHeading: true
+      },
+      value: "Alleged assault"
+    }) }}
+    {% endset -%}
+
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "Case details"
+          },
+          content: {
+            html: accordianHtml
+          }
+        }
+      ]
+    }) }}
+
+    <form class="form" action="allocate-outcome" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "action",
+        name: "action",
+        fieldset: {
+          legend: {
+           text: "Who will investigate the complaint?",
+           isPageHeading: false,
+           classes: "govuk-fieldset__legend--m"
+         }
+        },
+        items: [
+          {
+            value: "supplier",
+            text: "Third party supplier"
+          },
+          {
+            value: "compliance",
+            text: "IE Detention compliance team"
+          },
+          {
+            value: "depmu",
+            text: "DEPMU"
+          },
+          {
+            value: "cch",
+            text: "Send to CCH"
+          }
+        ]
+      }) }}
+<!--
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-label--s" for="sort">
+          Business area
+        </label>
+        <select class="govuk-select" id="sort" name="sort">
+            <option value=""></option>
+            <option value="">Aberdeen</option>
+            <option value="">Becket House</option>
+            <option value="">Birmingham Airport</option>
+            <option value="">Capital Building</option>
+        </select>
+        </div>
+      -->
+
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "casenote",
+        id: "casenote",
+        maxlength: 4000,
+        label: {
+          text: "Case note",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        }
+      }) }}
+
+    
+      <button class="govuk-button" data-module="govuk-button">Submit</button>
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "iedetention-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

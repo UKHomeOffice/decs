@@ -35,6 +35,46 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-l">Serious misconduct cases</h1>
+
+      <ul class="govuk-grid-row dashboard__teams">
+        <li class="card govuk-body govuk-grid-column-one-quarter">
+          <a class="card__body" href="team-case-start">
+            
+            {% if (data['stillserious'] == 'yes') %}
+
+            <!--display case in investigation state-->
+              <span class="govuk-!-font-size-48">4</span>
+            
+              {% elif 'no' in data['stillserious'] %}
+            <!--display nothing-->
+              <span class="govuk-!-font-size-48">3</span>
+            
+              {% elif 'sendback' in data['stillserious'] %}
+              <span class="govuk-!-font-size-48">3</span>
+              
+              {% elif 'senttoteamnotondecs' in data['stillserious'] %}
+              <span class="govuk-!-font-size-48">3</span>
+            
+              {% else  %}
+            <!--starting state of case-->
+              <span class="govuk-!-font-size-48">4</span>
+            {% endif %}
+
+            <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Serious misconduct cases</span>
+          </a>
+          <div class="card__footer">
+
+            {% if (data['allocated-to-me'] == 'yes') or (data['stillserious'] == 'sendback') or (data['stillserious'] == 'senttoteamnotondecs') or (data['stillserious'] == 'notserious') or (data['finished'] == 'yes') %}
+            <!--display case in investigation / allocated to me state -->
+            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">0 unallocated</span>
+            {% else %}
+            <!--display no cases allocated to me-->
+            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">1 unallocated</span>
+            {% endif %}
+          </div>
+        </li>
+      </ul>
+      
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -102,7 +142,7 @@
                 </td>
                 <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="allocation-registration">{{ data['case-ref-psu'] }}</a></td>
                 <td class="govuk-table__cell contentpadding">Joseph Bloggs</td>
-                <td class="govuk-table__cell contentpadding">PSU registration</td>
+                <td class="govuk-table__cell contentpadding">PSU Registration</td>
                 <td class="govuk-table__cell contentpadding"></td>
                 <td class="govuk-table__cell contentpadding"></td>
                 <td class="govuk-table__cell contentpadding">{{ data['current-date-alpha'] }}</td>
@@ -119,7 +159,7 @@
                 </div></td>
               <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">BF/0123456/22</a></td>
               <td class="govuk-table__cell contentpadding">John Smith</td>
-              <td class="govuk-table__cell contentpadding">PSU triage</td>
+              <td class="govuk-table__cell contentpadding">PSU Triage</td>
               <td class="govuk-table__cell contentpadding">15739</td>
               <td class="govuk-table__cell contentpadding">PSU user 2</td>
               <td class="govuk-table__cell contentpadding">21 Jul 2022</td>
@@ -135,7 +175,7 @@
                 </div></td>
               <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">IEDET/0172129/22</a></td>
               <td class="govuk-table__cell contentpadding">Penny Black</td>
-              <td class="govuk-table__cell contentpadding">PSU investigation</td>
+              <td class="govuk-table__cell contentpadding">PSU Outcome</td>
               <td class="govuk-table__cell contentpadding">15737</td>
               <td class="govuk-table__cell contentpadding">PSU user 2</td>
               <td class="govuk-table__cell contentpadding">18 Jul 2022</td>
@@ -151,7 +191,7 @@
               </td>
               <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#" style="cursor:default">COMP/0123456/22</a></td>
               <td class="govuk-table__cell contentpadding">Clarke Kent</td>
-              <td class="govuk-table__cell contentpadding">PSU investigation</td>
+              <td class="govuk-table__cell contentpadding">PSU Outcome</td>
               <td class="govuk-table__cell contentpadding">15732</td>
               <td class="govuk-table__cell contentpadding">PSU user 2</td>
               <td class="govuk-table__cell contentpadding">15 Jul 2022</td>

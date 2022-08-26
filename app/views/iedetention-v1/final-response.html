@@ -1,0 +1,73 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Record outcome – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Upload final response</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['IEDET-case-reference'] }}</span>
+
+    <form class="form" action="#" method="post">
+
+
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+      {{ govukFileUpload({
+        id: "file-upload-1",
+        name: "file-upload-1",
+        label: {
+          classes: "govuk-!-font-weight-bold",
+          text: "Upload a file"
+        }
+      }) }}
+
+      {{ govukDateInput({
+        id: "date-of-birth",
+        namePrefix: "date-of-birth",
+        fieldset: {
+          legend: {
+            text: "Final response sent",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "For example, 30 6 2022"
+        }
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Close case</button>
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "iedetention-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
