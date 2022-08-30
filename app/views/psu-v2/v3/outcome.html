@@ -67,6 +67,19 @@
       ]
     }) }}
 
+    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "casenote",
+        id: "casenote",
+        maxlength: 4000,
+        label: {
+          text: "Why has the complaint been been withdrawn?",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        }
+      }) }}
+
     {{ govukButton({
       text: "Submit",
       value: data['case-closed']
