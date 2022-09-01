@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">Add documents </h1>
+      <form class="form" action="/juggling-balls-answer" method="post">
+
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-weight-bold",
+            text: "Document type"
+          },
+          items: [
+            {
+              value: "",
+              text: ""
+            },
+            {
+              value: "",
+              text: "Additional documents"
+            },
+            {
+              value: "",
+              text: "Contribution request"
+            },
+            {
+              value: "",
+              text: "Contribution response"
+            },
+            {
+              value: "",
+              text: "Decision notice"
+            },
+            {
+              value: "",
+              text: "Draft response"
+            },
+            {
+              value: "",
+              text: "Final response"
+            },
+            {
+              value: "",
+              text: "First-tier Tribunal request"
+            },
+            {
+              value: "",
+              text: "First-tier Tribunal response"
+            },
+            {
+              value: "",
+              text: "ICO request"
+            },
+            {
+              value: "",
+              text: "ICO response"
+            },
+            {
+              value: "",
+              text: "Initial appeal"
+            }
+          ]
+        }) }}
+
+        {% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  label: {
+    classes: "govuk-!-font-weight-bold",
+    text: "Documents"
+  }
+}) }}
+
+        <button class="govuk-button" data-module="govuk-button">Add</button>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
