@@ -1,0 +1,246 @@
+<style>
+.govuk-summary-list {margin-left: 40px; width: 96%}
+h3 {margin-left: 20px;}
+</style>
+  
+  <div class="summaryPSU1b">
+    <!--Registration - allocated-->
+  <h2 class="govuk-heading-m">Active stage</h2>
+  <h3>PSU Registration</h3>
+  <dl class="govuk-summary-list">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Team
+      </dt>
+      <dd class="govuk-summary-list__value">
+        PSU
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        User
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['PSU-PSU-username'] }}
+      </dd>
+    </div>
+  </dl>
+  </div>
+  
+  
+  
+  <h2 class="govuk-heading-m">Case</h2>
+  <h3 class="govuk-heading-s">Deadline</h3>
+  <dl class="govuk-summary-list">
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Complaint received
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['current-date-alpha'] }}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Case created
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['current-date-alpha'] }}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Response due
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['2weeks-date-alpha'] }}
+      </dd>
+    </div>
+  </dl>
+  
+  <h3 class="govuk-heading-s">Complaint details</h3>
+  
+  <dl class="govuk-summary-list">
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Complaint type
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Serious misconduct
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Category
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        {% for item in data['reclassify-serious-serious'] %}
+          <p class="govuk-body">{{item}}</p>
+        {% endfor %}
+        {% else %}
+        <!--starting state of case-->
+        Assault
+        {% endif %}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Other categories selected
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation state-->
+  
+        {% for item in data['reclassify-serious-minor'] %}
+          <p class="govuk-body">{{item}} (minor misconduct)</p>
+        {% endfor %}
+  
+        {% for item in data['reclassify-serious-service'] %}
+          <p class="govuk-body">{{item}} (service)</p>
+        {% endfor %}
+  
+        {% else %}
+        <!--starting state of case-->
+        Rudeness (minor misconduct)<br>Poor communication (service)
+        {% endif %}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        PSU reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {% if 'yes' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        {{ data['psu-internal-ref'] }}
+  
+        {% elif 'registrationdone' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        {{ data['psu-internal-ref'] }}
+  
+        {% elif 'no' in data['stillserious'] %}
+        <!--display case in investigation state-->
+        {{ data['psu-internal-ref'] }}
+        
+        {% else %}
+        <!--starting state of case-->
+        
+        {% endif %}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Owning CSU
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['PSU-origin-team'] }}
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Complaint origin
+      </dt>
+      <dd class="govuk-summary-list__value">
+        IRC – Brook House
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Home office reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        66389
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Port reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        
+      </dd>
+    </div>
+  </dl>
+  
+  <h3 class="govuk-heading-s">Complainant</h3>
+  
+  <dl class="govuk-summary-list">
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Name
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Joseph Bloggs
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Date of birth
+      </dt>
+      <dd class="govuk-summary-list__value">
+        14 May 1984
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Gender
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Male
+      </dd>
+    </div>
+  
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Nationality
+      </dt>
+      <dd class="govuk-summary-list__value">
+        Ethiopian
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email
+        </dt>
+        <dd class="govuk-summary-list__value">
+          joseph@email.com
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Phone number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          0777788888
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          
+        </dd>
+      </div>
+  </dl>
+  
+  
+  
+  
