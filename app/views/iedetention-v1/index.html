@@ -9,9 +9,9 @@
 {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    text: "prototype"
+      },
+      html: ''
 }) }}
 {% endblock %}
 
@@ -49,7 +49,7 @@
       <h2 class="govuk-heading-m">My cases</h2>
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
-          <a class="card__body" href="#">
+          <a class="card__body" href="my-cases">
             <span class="govuk-!-font-size-48">0</span>
             <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Cases</span></a>
           </li>
