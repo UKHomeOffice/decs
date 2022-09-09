@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint type</h1>
+    <h1 class="govuk-heading-l margin-0">Complaint details</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
 
     <form class="form" action="index" method="post">
@@ -45,10 +45,6 @@
           }
         },
         items: [
-          {
-            value: "",
-            text: "Not applicable"
-          },
           {
             value: "",
             text: "Telephone"
@@ -72,22 +68,9 @@
         ]
       }) }}
 
-      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-      {{ govukCharacterCount({
-        name: "casesummary",
-        id: "casesummary",
-        maxlength: 4000,
-        label: {
-          text: "Case summary",
-          classes: "govuk-label--s",
-          isPageHeading: true
-        }
-      }) }}
-
       {{ govukInput({
         label: {
-          text: "Previous UKVI Complaint Ref",
+          text: "Previous UKVI complaint reference",
           classes: "govuk-label--s"
         },
         id: "PreviousUKVIComplaintRef",
@@ -107,7 +90,7 @@
       {% if 'serious' in data['complainttype'] %}
         <button class="govuk-button" data-module="govuk-button">Finish and escalate to PSU</button>
       {% else %}
-        <button class="govuk-button" data-module="govuk-button">Finish</button>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
       {% endif %}
 
     </form>

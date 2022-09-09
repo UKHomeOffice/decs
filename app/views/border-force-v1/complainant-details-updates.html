@@ -1,4 +1,4 @@
-{% extends "layout-ukvi-v1.html" %}
+{% extends "layout-border-force-v1.html" %}
 
 {% block pageTitle %}
   Case – {{ serviceName }}
@@ -25,7 +25,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complainant details</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
 
     <form class="form" action="complaint-type" method="post">
       {% from "govuk/components/input/macro.njk" import govukInput %}
@@ -45,7 +45,7 @@
           text: "For example, 30 1 2001"
         }
       }) }}
-
+<!--
       {{ govukRadios({
         classes: "govuk-radios--small",
         idPrefix: "gender",
@@ -68,6 +68,8 @@
           }
         ]
       }) }}
+
+      -->
       <div class="govuk-form-group">
         <label class="govuk-label govuk-label--s" for="sort">
           Nationality
@@ -354,7 +356,7 @@
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "ukvi-v1/includes/tabs.html" %}
+  {% include "border-force-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

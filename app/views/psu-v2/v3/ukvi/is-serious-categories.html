@@ -1,0 +1,127 @@
+{% extends "layout-psu-v3.html" %}
+
+{% block pageTitle %}
+  Review complaint categories – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+  .timelineStagePSU2  {display: none!important}
+  .timelineStagePSU3  {display: none!important}
+
+  .summaryPSU1a  {display: none!important}
+  .summaryPSU1b  {display: none!important}
+  .summaryPSU2a  {display: none!important}
+ 
+  .summaryPSU3  {display: none!important}
+
+  .summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+
+    <h1 class="govuk-heading-l margin-0">Review complaint categories</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">COMP/0172177/22</span>
+
+    <form class="form" action="outcome" method="post">
+
+    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+    <p class="govuk-body">Current categories are selected – recategorise if necessary before submitting.</p>
+
+    {{ govukCheckboxes({
+      idPrefix: "reclassify-serious-serious",
+      name: "reclassify-serious-serious",
+      classes: "govuk-checkboxes--small",
+      fieldset: {
+        legend: {
+          text: "Serious misconduct",
+          classes: "govuk-fieldset__legend--s"
+        }
+      },
+      items: [
+        {
+          value: "theft",
+          text: "Theft"
+        },
+        {
+          value: "assault",
+          text: "Assault",
+          checked: true
+        },
+        {
+          value: "sexualassault",
+          text: "Sexual assault"
+        },
+        {
+          value: "fraud",
+          text: "Fraud / corruption"
+        },
+        {
+          value: "racism",
+          text: "Racism / discrimination"
+        },
+        {
+            value: "rudeness",
+            text: "Rudeness"
+          },
+          {
+            value: "unfair",
+            text: "Unfair treatment"
+          },
+          {
+            value: "other",
+            text: "Other unprofessionalism"
+          }
+      ]
+    }) }}
+
+
+    <button class="govuk-button" data-module="govuk-button">Submit</button>
+
+    <!-- this works out the decisons and status-->
+    {{ govukCheckboxes({
+      idPrefix: "allocated-investigation",
+      name: "allocated-investigation",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "yes",
+          text: "yes",
+          checked: true
+        }
+      ]
+    }) }}
+
+    </form>
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v2/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+
+</div>
+
+{% endblock %}

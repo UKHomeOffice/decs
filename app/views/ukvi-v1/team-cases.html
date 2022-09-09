@@ -1,27 +1,28 @@
-{% extends "layout-iedetention-v1.html" %}
+{% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
-  Team cases - IE Detention – {{ serviceName }}
+  Team cases – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
 
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
-    text: "prototype"
-      },
-      html: ''
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-    <div class="govuk-breadcrumbs">
-      <ol class="govuk-breadcrumbs__list">
-        <li class="govuk-breadcrumbs__list-item">
-          <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
-        </li>
-        <li class="govuk-breadcrumbs__list-item">
-          Team cases
-        </li>
-      </ol>
-    </div>
+<div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="index">Dashboard</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        Team cases
+      </li>
+    </ol>
+  </div>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -29,20 +30,21 @@
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 
 {% block content %}
-  <div class="govuk-grid-row">
+
+<div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <h1 class="govuk-heading-l">IE Detention</h1>
+      <h1 class="govuk-heading-l">Minor misconduct</h1>
 
       <ul class="govuk-grid-row dashboard__teams">
         <li class="card govuk-body govuk-grid-column-one-quarter">
           <a class="card__body" href="#">
           <span class="govuk-!-font-size-48">5</span>
-          <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">IE Detention</span></a>
-          <div class="card__footer">
-            <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">3 Unallocated</span>
-          </div>
-        </li>
-      </ul>
+          <span class="govuk-!-font-size-19 govuk-!-font-weight-bold">Complaint cases</span></a>
+        <div class="card__footer">
+          <span class="govuk-!-font-size-16 govuk-!-font-weight-bold govuk-tag dashboard__tag">2 unallocated</span>
+        </div>
+      </li>
+        </ul>
 
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
@@ -76,16 +78,19 @@
                 <button type="button" data-index="2">Reference</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-              <button type="button" data-index="3">Current stage</button>
+                <button type="button" data-index="3">Current stage</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-                <button type="button" data-index="3">Complaint type</button>
-              </th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">
-              <button type="button" data-index="4">Business area</button>
+                <button type="button" data-index="3">Contributions</button>
             </th>
             <th scope="col" class="govuk-table__header" aria-sort="none">
-            <button type="button" data-index="6">Deadline</button>
+                <button type="button" data-index="4">Owner</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+                <button type="button" data-index="6">Deadline</button>
+            </th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">
+                <button type="button" data-index="6">Severity</button>
             </th>
           </tr>
 
@@ -99,11 +104,12 @@
                     </label>
                   </div>
                 </td>
-                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">IEDET/0172177/22</a></td>
-                <td class="govuk-table__cell contentpadding">IE Detention Registration</td>
+                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">COMP/0172177/22</a></td>
+                <td class="govuk-table__cell contentpadding">UKVI Minor misconduct Draft</td>
                 <td class="govuk-table__cell contentpadding"></td>
-                <td class="govuk-table__cell contentpadding">Capital Building</td>
+                <td class="govuk-table__cell contentpadding"></td>
                 <td class="govuk-table__cell contentpadding">11 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">3 medium</td>
               </tr>
 
               <tr class="govuk-table__row">
@@ -115,12 +121,13 @@
                   </div>
                 </td>
                 <td class="govuk-table__cell contentpadding">
-                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172165/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">COMP/0172165/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
                 </td>
-                <td class="govuk-table__cell contentpadding">IE Detention Triage</td>
-                <td class="govuk-table__cell contentpadding">Serious misconduct</td>
-                <td class="govuk-table__cell contentpadding">Heathrow Airport</td>
+                <td class="govuk-table__cell contentpadding">UKVI Minor misconduct Triage</td>
+                <td class="govuk-table__cell contentpadding">Due</td>
+                <td class="govuk-table__cell contentpadding">UKVIusername1</td>
                 <td class="govuk-table__cell contentpadding">12 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">1 very high</td>
               </tr>
             
               <tr class="govuk-table__row">
@@ -131,11 +138,12 @@
                     </label>
                   </div>
                 </td>
-                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">IEDET/0172143/22</a></td>
-                <td class="govuk-table__cell contentpadding">IE Detention Outcome</td>
-                <td class="govuk-table__cell contentpadding">Minor misconduct</td>
-                <td class="govuk-table__cell contentpadding">Killingham</td>
+                <td class="govuk-table__cell contentpadding"><a class="govuk-link govuk-link--no-visited-state" href="#">COMP/0172143/22</a></td>
+                <td class="govuk-table__cell contentpadding">UKVI Minor misconduct Outcome</td>
+                <td class="govuk-table__cell contentpadding">Received</td>
+                <td class="govuk-table__cell contentpadding">UKVIusername2</td>
                 <td class="govuk-table__cell contentpadding">13 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">5 very low</td>
               </tr>
 
               <tr class="govuk-table__row">
@@ -147,12 +155,13 @@
                   </div>
                 </td>
                 <td class="govuk-table__cell contentpadding">
-                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172129/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">COMP/0172129/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
                 </td>
-                <td class="govuk-table__cell contentpadding">IE Detention Triage</td>
-                <td class="govuk-table__cell contentpadding">Serious misconduct</td>
-                <td class="govuk-table__cell contentpadding">IRC Brook House</td>
+                <td class="govuk-table__cell contentpadding">UKVI Minor misconduct Triage</td>
+                <td class="govuk-table__cell contentpadding">Due</td>
+                <td class="govuk-table__cell contentpadding"></td>
                 <td class="govuk-table__cell contentpadding">14 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">1 very high</td>
               </tr>
 
               <tr class="govuk-table__row">
@@ -164,12 +173,13 @@
                   </div>
                 </td>
                 <td class="govuk-table__cell contentpadding">
-                    <a class="govuk-link govuk-!-margin-right-3" href="#">IEDET/0172121/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
+                    <a class="govuk-link govuk-!-margin-right-3" href="#">COMP/0172121/22</a><strong class="govuk-tag govuk-tag--red">rejected by PSU</strong>
                 </td>
-                <td class="govuk-table__cell contentpadding">IE Detention Outcome</td>
-                <td class="govuk-table__cell contentpadding">Minor misconduct</td>
-                <td class="govuk-table__cell contentpadding">IRC Colnbrook</td>
+                <td class="govuk-table__cell contentpadding">UKVI Minor misconduct Outcome</td>
+                <td class="govuk-table__cell contentpadding">Received</td>
+                <td class="govuk-table__cell contentpadding">UKVIusername3</td>
                 <td class="govuk-table__cell contentpadding">14 Sep 2022</td>
+                <td class="govuk-table__cell contentpadding">1 very high</td>
               </tr>
           </tbody>
         </table>
@@ -180,37 +190,9 @@
 
         <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">5 items</p>
 
-        {% if 'yes' in data['stillserious'] %}
-        <!--display case in investigation state-->
-        <!--make the link add the case to team cases-->
-
-        <form class="form" action="" method="post">
-        {{ govukCheckboxes({
-          idPrefix: "allocated-to-me",
-          name: "allocated-to-me",
-          classes: "govuk-checkboxes--small js-hidden",
-          fieldset: {
-          },
-          items: [
-            {
-              value: "yes",
-              text: "yes",
-              checked: true
-            }
-          ]
-        }) }}
-
-        <button class="govuk-button button-looks-like-link" data-module="">Allocate selected to me</button>
-
-        {% else %}
         <!--all other cases - link is visible but doesn't work-->
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
-        
-        {% endif %}
-
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
-          
-      
         {% from "govuk/components/select/macro.njk" import govukSelect %}
 
         {{ govukSelect({
