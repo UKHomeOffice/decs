@@ -46,7 +46,7 @@ iedetention-v1 BF and UKVI
   */
   "serious-triage": "",
   "case-ref-psu": "IEDET/0172177/22",
-  "case-ref-psu-new": "COMP/0172177/22",
+  "case-ref-psu-new": "BF/0172177/22",
   "psu-internal-ref": "",
   "PSU-IE-username": "IEDET username 1",
   "PSU-PSU-username": "PSU username 1",

@@ -24,9 +24,10 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint category</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
-
+    <h1 class="govuk-heading-l">Complaint category
+      <span class="govuk-caption-l">{{ data['UKVI-case-reference'] }}</span>
+    </h1>
+    
     <p class="govuk-body">Select all that apply.</p>
 
     <form class="form" action="complaint-type-channel" method="post">
@@ -44,6 +45,9 @@
           classes: "govuk-checkboxes--small",
           fieldset: {
             legend: {
+              text: "Complaint category",
+              classes: "govuk-!-display-none",
+              isPageHeading: false
             }
           },
           items: [

@@ -1,0 +1,162 @@
+{% extends "layout-psu-v3.html" %}
+
+{% block pageTitle %}
+  Complaint outcome – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+    }) }}
+    <a class="govuk-back-link" href="index-2nd">Back to dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summaryPSU1a  {display: none!important}
+.summaryPSU1b  {display: none!important}
+.summaryPSU2a  {display: none!important}
+.summaryPSU2b  {display: none!important}
+
+</style>
+
+<div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-one-third">
+  
+      <form class="form" action="complaint-category" method="post">
+  
+          <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                      <h1 class="govuk-fieldset__heading">Complaint type</h1>
+                      <span class="govuk-caption-l">IEDET/0172177/22</span>
+                  </legend>
+                  
+                  <div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index-2nd'>exit the case</a> and come back later
+                  </div>
+                  
+                  <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">  
+                      
+                      <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="complainttype" name="complainttype" type="radio" value="service">
+                          <label class="govuk-label govuk-radios__label" for="complainttype">Service</label>
+                      </div>
+  
+                      <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="complainttype-2" name="complainttype" type="radio" value="minor">
+                          <label class="govuk-label govuk-radios__label" for="complainttype-2">Minor misconduct</label>
+                      </div>
+  
+                      <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="complainttype-3" name="complainttype" type="radio" value="serious">
+                          <label class="govuk-label govuk-radios__label" for="complainttype-3">Serious misconduct</label>
+                      </div>
+  
+                  </div>
+              </fieldset>
+          </div>
+        
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+  
+      </form>
+    </div>
+  
+    <!-- Tabs and tabs content -->
+    {% include "iedetention-v1/includes/tabs.html" %}
+    <!-- end -->
+  
+  </div>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu'] }}</span>
+
+    <div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index-2nd'>exit the case</a> and come back later
+    </div>
+
+    <form class="form" action="/outcome-v3" method="post">
+      {% set withdrawnHtml %}
+      {{ govukInput({
+        id: "contact-by-text",
+        name: "contact-by-text",
+        type: "tel",
+        autocomplete: "tel",
+        classes: "govuk-!-width-one-third",
+        label: {
+          text: "Mobile phone number"
+        }
+      }) }}
+      {% endset -%}
+      {{ govukRadios({
+      classes: "govuk-radios--small",
+      idPrefix: "stillserious",
+      name: "stillserious",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "yes",
+          text: "Substantiated"
+        },
+        {
+          value: "yes",
+          text: "Partially substantiated"
+        },
+        {
+          value: "yes",
+          text: "Unsubstantiated"
+        },
+        {
+          value: "yes",
+          text: "Withdrawn",
+          conditional: {
+            html: withdrawnHtml
+          }
+        },
+        {
+          value: "notserious",
+          text: "Not serious – send back to IE Detention"
+        }
+      ]
+    }) }}
+<!--
+    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "casenote",
+        id: "casenote",
+        maxlength: 4000,
+        label: {
+          text: "Why has the complaint been been withdrawn?",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        }
+      }) }}
+-->
+
+    {{ govukButton({
+      text: "Submit",
+      value: data['case-closed']
+    }) }}
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v2/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+  
+</div>
+
+{% endblock %}

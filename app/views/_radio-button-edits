@@ -1,0 +1,94 @@
+<fieldset id="BfTriageAccept" class="govuk-fieldset ">
+    <legend id="BfTriageAccept-legend" class="govuk-fieldset__legend"><span class="govuk-fieldset__heading govuk-label--s">Can your team respond to this complaint?</span></legend>
+    <div id="BfTriageAccept-radios" class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+            <input id="BfTriageAccept-0" type="radio" name="BfTriageAccept" data-aria-controls="conditional-BfTriageAccept-0" class="govuk-radios__input" value="Yes">
+            <label class="govuk-label govuk-radios__label" for="BfTriageAccept-0">Yes – accept the complaint</label>
+        </div>
+        <div class="govuk-radios__item">
+            <input id="BfTriageAccept-1" type="radio" name="BfTriageAccept" data-aria-controls="conditional-BfTriageAccept-1" class="govuk-radios__input" value="No">
+            <label class="govuk-label govuk-radios__label" for="BfTriageAccept-1">No – transfer the complaint to CCH</label>
+        </div>
+        <div class="govuk-radios__item">
+            <input id="BfTriageAccept-1" type="radio" name="BfTriageAccept" data-aria-controls="conditional-BfTriageAccept-1" class="govuk-radios__input" value="No">
+            <label class="govuk-label govuk-radios__label" for="BfTriageAccept-1">No – escalate to PSU</label>
+        </div>
+    </div>
+</fieldset>
+
+
+<div id="BFTriageResult-radios" class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+        <input id="BFTriageResult-0" type="radio" name="BFTriageResult" data-aria-controls="conditional-BFTriageResult-0" class="govuk-radios__input" value="Pending">
+        <label class="govuk-label govuk-radios__label" for="BFTriageResult-0">Save changes</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="BFTriageResult-1" type="radio" name="BFTriageResult" data-aria-controls="conditional-BFTriageResult-1" class="govuk-radios__input" value="Draft">
+        <label class="govuk-label govuk-radios__label" for="BFTriageResult-1">All information collected - case ready for drafting</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="BFTriageResult-2" type="radio" name="BFTriageResult" data-aria-controls="conditional-BFTriageResult-2" class="govuk-radios__input" value="Escalate">
+        <label class="govuk-label govuk-radios__label" for="BFTriageResult-2">Escalate case to WFM</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="BFTriageResult-2" type="radio" name="BFTriageResult" data-aria-controls="conditional-BFTriageResult-2" class="govuk-radios__input" value="Escalate">
+        <label class="govuk-label govuk-radios__label" for="BFTriageResult-2">Escalate case to PSU</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="BFTriageResult-3" type="radio" name="BFTriageResult" data-aria-controls="conditional-BFTriageResult-3" class="govuk-radios__input" value="Complete">
+        <label class="govuk-label govuk-radios__label" for="BFTriageResult-3">No response - complete the case (close permanently)</label>
+    </div>
+</div>
+
+
+<div id="BfQaResult-radios" class="govuk-radios govuk-radios--conditional" data-module="govuk-radios"><div class="govuk-radios__item">
+    <input id="BfQaResult-0" type="radio" name="BfQaResult" data-aria-controls="conditional-BfQaResult-0" class="govuk-radios__input" value="Accept">
+    <label class="govuk-label govuk-radios__label" for="BfQaResult-0">Accept - send response to complainant</label>
+</div>
+<div class="govuk-radios__item">
+    <input id="BfQaResult-1" type="radio" name="BfQaResult" data-aria-controls="conditional-BfQaResult-1" class="govuk-radios__input" value="RejectToDraft">
+    <label class="govuk-label govuk-radios__label" for="BfQaResult-1">Reject - return to draft</label>
+</div>
+<div class="govuk-radios__item">
+    <input id="BfQaResult-2" type="radio" name="BfQaResult" data-aria-controls="conditional-BfQaResult-2" class="govuk-radios__input" value="RejectToTriage"><label class="govuk-label govuk-radios__label" for="BfQaResult-2">Reject - return to triage</label>
+</div>
+<div class="govuk-radios__item">
+    <input id="BfQaResult-2" type="radio" name="BfQaResult" data-aria-controls="conditional-BfQaResult-2" class="govuk-radios__input" value="RejectToTriage"><label class="govuk-label govuk-radios__label" for="BfQaResult-2">Escalate to PSU</label>
+</div>
+</div>
+
+
+<div id="CctQaResult-radios" class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+        <input id="CctQaResult-0" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-0" class="govuk-radios__input" value="Accept">
+        <label class="govuk-label govuk-radios__label" for="CctQaResult-0">Accept - send response to complainant</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="CctQaResult-1" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-1" class="govuk-radios__input" value="Reject">
+        <label class="govuk-label govuk-radios__label" for="CctQaResult-1">Reject - return response to draft</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="CctQaResult-1" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-1" class="govuk-radios__input" value="Reject">
+        <label class="govuk-label govuk-radios__label" for="CctQaResult-1">Escalate case to PSU</label>
+    </div>
+</div>
+
+
+
+<div id="CctEscalateResult-radios" class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+    <div class="govuk-radios__item">
+        <input id="CctEscalateResult-0" type="radio" name="CctEscalateResult" data-aria-controls="conditional-CctEscalateResult-0" class="govuk-radios__input" value="Pending">
+        <label class="govuk-label govuk-radios__label" for="CctEscalateResult-0">Save changes</label>
+    </div>
+    <div class="govuk-radios__item"><input id="CctEscalateResult-1" type="radio" name="CctEscalateResult" data-aria-controls="conditional-CctEscalateResult-1" class="govuk-radios__input" value="Triage">
+        <label class="govuk-label govuk-radios__label" for="CctEscalateResult-1">Return case to triage</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="CctEscalateResult-2" type="radio" name="CctEscalateResult" data-aria-controls="conditional-CctEscalateResult-2" class="govuk-radios__input" value="Draft">
+        <label class="govuk-label govuk-radios__label" for="CctEscalateResult-2">Case ready for drafting</label>
+    </div>
+    <div class="govuk-radios__item">
+        <input id="CctEscalateResult-2" type="radio" name="CctEscalateResult" data-aria-controls="conditional-CctEscalateResult-2" class="govuk-radios__input" value="Draft">
+        <label class="govuk-label govuk-radios__label" for="CctEscalateResult-2">Escalate to PSU</label>
+    </div>
+</div>

@@ -12,7 +12,7 @@
   },
   html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-    <a class="govuk-back-link" href="index-2nd">Back to dashboard</a>
+    <a class="govuk-back-link" href="index-2nd">Dashboard</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -33,9 +33,6 @@
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
     <span class="govuk-caption-l govuk-!-margin-bottom-6">BF/0172177/22</span>
-
-    <div class="govuk-inset-text">If you aren't ready to record an outcome <a class='govuk-link govuk-link--no-visited-state' href='index-2nd'>exit the case</a> and come back later
-    </div>
 
     <form class="form" action="/outcome-v3" method="post">
       {% set withdrawnHtml %}
@@ -79,7 +76,7 @@
         }
       ]
     }) }}
-
+<!--
     {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
 
       {{ govukCharacterCount({
@@ -92,7 +89,7 @@
           isPageHeading: true
         }
       }) }}
-
+-->
 
     {{ govukButton({
       text: "Submit",

@@ -24,9 +24,10 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint type</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
-
+    <h1 class="govuk-heading-l">Complaint type
+      <span class="govuk-caption-l">{{ data['BF-case-reference'] }}</span>
+    </h1>
+    
     <form class="form" action="complaint-category" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
@@ -36,6 +37,11 @@
         idPrefix: "complainttype",
         name: "complainttype",
         fieldset: {
+          legend: {
+            text: "Complaint type",
+            classes: "govuk-!-display-none",
+            isPageHeading: false
+          }
         },
         items: [
           {

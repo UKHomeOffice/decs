@@ -38,81 +38,70 @@
 
   <div class="govuk-grid-column-one-third">
 
-    <h1 class="govuk-heading-l margin-0">Review complaint categories</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">BF/0172177/22</span>
+    <form class="form" action="complaint-category" method="post">
 
-    <form class="form" action="outcome" method="post">
-
-    {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
-
-    <p class="govuk-body">Current categories are selected – recategorise if necessary before submitting.</p>
-    
-    {{ govukCheckboxes({
-      idPrefix: "serious",
-      name: "Serious",
-      classes: "govuk-checkboxes--small",
-      fieldset: {
-        legend: {}
-      },
-      items: [
-        {
-          value: "theft",
-          text: "Theft"
-        },
-        {
-          value: "assault",
-          text: "Assault",
-          checked: true
-        },
-        {
-          value: "sexualassault",
-          text: "Sexual assault"
-        },
-        {
-          value: "fraud",
-          text: "Fraud / corruption"
-        },
-        {
-          value: "racism",
-          text: "Racism / discrimination"
-        },
-        {
-            value: "rudeness",
-            text: "Rudeness"
-          },
-          {
-            value: "unfair",
-            text: "Unfair treatment"
-          },
-          {
-            value: "other",
-            text: "Other unprofessionalism"
-          },
-          {
-            value: "detained",
-            text: "Detainee on detainee"
-          }
-      ]
-    }) }}
-
-
-    <button class="govuk-button" data-module="govuk-button">Submit</button>
-
-    <!-- this works out the decisons and status-->
-    {{ govukCheckboxes({
-      idPrefix: "allocated-investigation",
-      name: "allocated-investigation",
-      classes: "govuk-checkboxes--small js-hidden",
-      fieldset: {
-      },
-      items: [
-        {
-          value: "yes",
-          text: "yes",
-          checked: true
-        }
-      ]
-    }) }}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">Review complaint categories</h1>
+              <span class="govuk-caption-l">{{ data['BF-case-reference'] }}</span>
+          </legend>
+          <p class="govuk-body">Current categories are selected – recategorise if necessary before submitting.</p>
+          <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category" name="category" type="checkbox" value="assault" checked>
+              <label class="govuk-label govuk-checkboxes__label" for="category">
+                Assault
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-2" name="category" type="checkbox" value="fraud">
+              <label class="govuk-label govuk-checkboxes__label" for="category-2">
+                Fraud / corruption
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-3" name="category" type="checkbox" value="other">
+              <label class="govuk-label govuk-checkboxes__label" for="category-3">
+                Other unprofessionalism
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-4" name="category" type="checkbox" value="racism">
+              <label class="govuk-label govuk-checkboxes__label" for="category-4">
+                Racism / discrimination
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-5" name="category" type="checkbox" value="rudeness">
+              <label class="govuk-label govuk-checkboxes__label" for="category-5">
+                Rudeness
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-6" name="category" type="checkbox" value="sexualassault">
+              <label class="govuk-label govuk-checkboxes__label" for="category-6">
+                Sexual assault
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-7" name="category" type="checkbox" value="theft">
+              <label class="govuk-label govuk-checkboxes__label" for="category-7">
+                Theft
+              </label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="category-8" name="category" type="checkbox" value="theft">
+              <label class="govuk-label govuk-checkboxes__label" for="category-8">
+                Unfair treatment
+              </label>
+            </div>
+          </div>
+      
+        </fieldset>
+      </div>
+      
+      <button class="govuk-button" data-module="govuk-button">Submit</button>
 
     </form>
   </div>
@@ -124,5 +113,6 @@
   </div>
 
 </div>
+
 
 {% endblock %}

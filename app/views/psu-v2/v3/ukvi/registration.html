@@ -1,0 +1,87 @@
+{% extends "layout-psu-v3.html" %}
+
+{% block pageTitle %}
+  Registration – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+    <a class="govuk-back-link" href="index">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.timelineStagePSU2  {display: none!important}
+.timelineStagePSU3  {display: none!important}
+
+.summaryPSU1a  {display: none!important}
+
+.summaryPSU2a  {display: none!important}
+.summaryPSU2b  {display: none!important}
+.summaryPSU3  {display: none!important}
+
+.summaryPSU4  {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Registration</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu-new'] }}</span>
+    
+    <form class="form" action="index-2nd" method="post">
+    {{ govukInput({
+      id: "psu-internal-ref",
+      name: "psu-internal-ref",
+      type: "text",
+      autocomplete: "off",
+      spellcheck: false,
+      classes: "govuk-!-width-full",
+      value: data['psu-internal-ref'],
+      label: {
+        classes: "govuk-label--m",
+        text: "PSU reference"
+      }
+    }) }}
+
+    <button class="govuk-button" data-module="govuk-button">Submit</button>
+
+    <!-- this works out the decisons and status-->
+    {{ govukCheckboxes({
+      idPrefix: "stillserious",
+      name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "registrationdone",
+          text: "registrationdone",
+          checked: true
+        }
+      ]
+    }) }}
+    
+  </form>
+
+  </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Tabs and tabs content -->
+      {% include "psu-v2/includes/tabs.html" %}
+    <!-- end -->
+  </div>
+
+</div>
+
+{% endblock %}
