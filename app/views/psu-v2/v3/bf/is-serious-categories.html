@@ -41,12 +41,20 @@
     <form class="form" action="complaint-category" method="post">
 
       <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">Review complaint categories</h1>
-              <span class="govuk-caption-l">{{ data['BF-case-reference'] }}</span>
-          </legend>
-          <p class="govuk-body">Current categories are selected – recategorise if necessary before submitting.</p>
+        
+
+          <h1 class="govuk-heading-l">Review complaint categories<span class="govuk-caption-l">{{ data['BF-case-reference'] }}</span>
+          </h1>
+              
+
+          
+          <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-!-display-none">Review complaint categories</legend>
+
+          <div id="review-hint" class="govuk-hint">
+            Current categories are selected – recategorise if necessary before submitting.
+          </div>
+
           <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes__item">
               <input class="govuk-checkboxes__input" id="category" name="category" type="checkbox" value="assault" checked>

@@ -27,8 +27,6 @@
     <h1 class="govuk-heading-l">Complaint category
       <span class="govuk-caption-l">{{ data['UKVI-case-reference'] }}</span>
     </h1>
-    
-    <p class="govuk-body">Select all that apply.</p>
 
     <form class="form" action="complaint-type-channel" method="post">
 
@@ -49,6 +47,9 @@
               classes: "govuk-!-display-none",
               isPageHeading: false
             }
+          },
+          hint: {
+            text: "Select all that apply."
           },
           items: [
           {
