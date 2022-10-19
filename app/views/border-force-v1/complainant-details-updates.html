@@ -28,23 +28,7 @@
     <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['BF-case-reference'] }}</span>
 
     <form class="form" action="complaint-type" method="post">
-      {% from "govuk/components/input/macro.njk" import govukInput %}
-      {% from "govuk/components/radios/macro.njk" import govukRadios %}
-
-      {{ govukDateInput({
-        id: "date-of-birth",
-        namePrefix: "date-of-birth",
-        fieldset: {
-          legend: {
-            text: "Date of birth",
-            isPageHeading: true,
-            classes: "govuk-fieldset__legend--s"
-          }
-        },
-        hint: {
-          
-        }
-      }) }}
+      
 <!--
       {{ govukRadios({
         classes: "govuk-radios--small",

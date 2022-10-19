@@ -32,6 +32,16 @@ strong, sub, sup, tt, var, legend, fieldset, label, .govuk-input, textarea {
 font-family: arial,helvetica,sans-serif!important;}
 .js-enabled .js-hidden {display: none;}
 
+.standard--alert {
+border-color: #2b8cc4;
+    background-color: #dbeff9;
+}
+
+.warning--alert {
+border-color: #c42b2b;
+background-color: #f3dede;
+}
+
 .govuk-table.teamcases td.govuk-table__cell.contentpadding {padding-top: 0.84em;}
 
 .govuk-back-link {

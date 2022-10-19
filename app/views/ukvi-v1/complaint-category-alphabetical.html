@@ -1,0 +1,237 @@
+{% extends "layout-ukvi-v1.html" %}
+
+{% block pageTitle %}
+  Complaint type – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint category</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
+
+    <p class="govuk-body">Select all that apply.</p>
+
+    <form class="form" action="complaint-type-channel" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Service",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+          {
+            value: "admin",
+            text: "Admin / process error"
+          },
+          {
+            value: "availability",
+            text: "Availability of service"
+          },
+          {
+            value: "complainthandling",
+            text: "Complaint Handling"
+          },
+          {
+              value: "delay",
+              text: "Delay"
+            },
+            {
+                value: "physical",
+                text: "Physical environment"
+              },
+            {
+              value: "poor",
+              text: "Poor communication"
+            },
+            {
+                value: "property",
+                text: "Property or documents - lost"
+              },
+              
+              {
+                value: "propertystolen",
+                text: "Property or documents - stolen"
+              },
+              {
+                value: "propertywitheld",
+                text: "Property or documents - withheld"
+              },
+              {
+                value: "minors",
+                text: "Provision for minors"
+              },
+            {
+              value: "wrong",
+              text: "Wrong information"
+            }
+            
+            
+            
+            
+            
+          ]
+        }) }}
+
+        <!-- Damage. Custody.-->
+
+        {{ govukCheckboxes({
+          idPrefix: "minor",
+          name: "minor",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Serious and minor misconduct",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+          {
+            value: "other",
+            text: "Other unprofessionalism"
+          },
+          {
+              value: "rudeness",
+              text: "Rudeness"
+            },
+            {
+              value: "unfair",
+              text: "Unfair treatment"
+            }
+            
+          ]
+        }) }}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "serious",
+          name: "Serious",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Serious misconduct",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+          {
+            value: "assault",
+            text: "Assault"
+          },
+          {
+            value: "fraud",
+            text: "Fraud / corruption"
+          },
+          {
+            value: "racism",
+            text: "Racism / discrimination"
+          },
+          {
+            value: "sexualassault",
+            text: "Sexual assault"
+          },
+          {
+              value: "theft",
+              text: "Theft"
+            }
+           
+            
+            
+          ]
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "exgratia",
+          name: "exgratia",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Ex-Gratia",
+              isPageHeading: false,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Chaser",
+              text: "Chaser"
+            },
+            {
+              value: "Complaint offer",
+              text: "Complaint offer"
+            },
+            {
+              value: "Litigation",
+              text: "Litigation"
+            },
+            {
+              value: "MPAM offer",
+              text: "MPAM offer"
+            },
+            {
+              value: "New Claim - C",
+              text: "New Claim - C"
+            },
+            {
+              value: "New Claim - SF",
+              text: "New Claim - SF"
+            },
+            {
+              value: "PHSO",
+              text: "PHSO"
+            },
+            {
+              value: "Project",
+              text: "Project"
+            },
+            {
+              value: "Reconsideration",
+              text: "Reconsideration"
+            },
+            {
+              value: "Stage3",
+              text: "Stage3"
+            }
+          ]
+        }) }}
+
+      <button class="govuk-button" data-module="govuk-button" value="Complaint-category-button">Continue</button>
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "ukvi-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
