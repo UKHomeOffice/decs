@@ -92,3 +92,11 @@
         <label class="govuk-label govuk-radios__label" for="CctEscalateResult-2">Escalate to PSU</label>
     </div>
 </div>
+
+
+
+
+<div data-module="govuk-radios" class="govuk-radios govuk-radios--conditional" id="CctQaResult-radios"><div class="govuk-radios__item"><input id="CctQaResult-0" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-0" class="govuk-radios__input" value="Accept"><label class="govuk-label govuk-radios__label" for="CctQaResult-0">Accept - send response to complainant</label></div><div class="govuk-radios__item"><input id="CctQaResult-1" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-1" class="govuk-radios__input" value="Reject"><label class="govuk-label govuk-radios__label" for="CctQaResult-1">Reject - return response to draft</label></div>
+
+<div class="govuk-radios__item"><input id="CctQaResult-1" type="radio" name="CctQaResult" data-aria-controls="conditional-CctQaResult-1" class="govuk-radios__input" value="Reject"><label class="govuk-label govuk-radios__label" for="CctQaResult-1">Escalate case to PSU</label></div>
+</div>

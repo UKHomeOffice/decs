@@ -1,0 +1,97 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Complaint category – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint category</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['IEDET-case-reference'] }}</span>
+
+    <form class="form" action="complaint-type-channel" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+        {{ govukCheckboxes({
+          idPrefix: "service",
+          name: "service",
+          classes: "govuk-checkboxes--small",
+          fieldset: {
+            legend: {
+              text: "Serious misconduct",
+              isPageHeading: true,
+              classes: "js-hidden"
+            }
+          },
+          hint: {
+            text: "Select all that apply."
+          },
+          items: [
+        {
+            value: "Assault",
+            text: "Assault"
+        },
+        {
+            value: "Fraud / corruption",
+            text: "Fraud / corruption"
+        },
+        {
+            value: "Other unprofessionalism",
+            text: "Other unprofessionalism"
+        },
+        {
+            value: "Racism / discrimination",
+            text: "Racism / discrimination"
+        },
+        {
+            value: "Rudeness",
+            text: "Rudeness"
+        },
+        {
+            value: "Sexual assault",
+            text: "Sexual assault"
+        },
+        {
+            value: "Theft",
+            text: "Theft"
+        },
+        {
+            value: "Unfair treatment",
+            text: "Unfair treatment"
+        } 
+      ]
+        }) }}
+
+      <button class="govuk-button" data-module="govuk-button" value="Complaint-category-button">Continue</button>
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "iedetention-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

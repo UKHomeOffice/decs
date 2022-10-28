@@ -44,10 +44,12 @@
             </fieldset>
         </div>
 
-        <div id="stage2alert" class="govuk-inset-text warning--alert js-hidden">
-          <h2 class="govuk-heading-m">Warning</h2>
-          <p>Only continue if you are creating a case relating to Sopra Steria.</p>
-          <p>For all other UKVI stage 2 complaints escalate an existing case.</p>
+        <div id="stage2alert" class="govuk-error-summary js-hidden" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
+            <h2 class="govuk-error-summary__title" id="error-summary-title">Warning</h2>
+            <ul class="govuk-list govuk-error-summary__list">
+                <p>Only continue if you are creating a case relating to Sopra Steria.</p>
+                <p>For all other UKVI stage 2 complaints escalate an existing case.</p>
+            </ul>
         </div>
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>

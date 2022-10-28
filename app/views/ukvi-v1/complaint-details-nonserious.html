@@ -68,6 +68,54 @@
         ]
       }) }}
 
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "casesummary",
+        id: "casesummary",
+        maxlength: 4000,
+        label: {
+          text: "Case summary",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        }
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "Severity",
+        name: "Severity",
+        fieldset: {
+          legend: {
+            text: "Severity",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Very high"
+          },
+          {
+            value: "",
+            text: "High"
+          },
+          {
+            value: "",
+            text: "Medium"
+          },
+          {
+            value: "",
+            text: "Low"
+          },
+          {
+            value: "",
+            text: "Very low"
+          }
+        ]
+      }) }}
+
       {{ govukInput({
         label: {
           text: "Previous UKVI complaint reference",
@@ -88,16 +136,16 @@
 
 
       {% if 'serious' in data['complainttype'] %}
-        <button class="govuk-button" data-module="govuk-button">Finish</button>
+        <button class="govuk-button" data-module="govuk-button">Finish and escalate to PSU</button>
       {% else %}
-        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        <button class="govuk-button" data-module="govuk-button">Finish</button>
       {% endif %}
 
     </form>
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "ukvi-v1/includes/tabs-blank.html" %}
+  {% include "ukvi-v1/includes/tabs.html" %}
   <!-- end -->
 
 </div>

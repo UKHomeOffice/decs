@@ -1,7 +1,7 @@
 {% extends "layout-ukvi-v1.html" %}
 
 {% block pageTitle %}
-  Complaint type – {{ serviceName }}
+Triage case details – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,46 +24,64 @@
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint type</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
+    <h1 class="govuk-heading-l">Triage case details
+      <span class="govuk-caption-l">{{ data['UKVI-case-reference'] }}</span>
+    </h1>
 
-    <form class="form" action="complaint-category" method="post">
+    <form class="form" action="complaint-type-channel" method="post">
 
       {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+
+
+        <!-- Damage. Custody.-->
+
+
+        {% from "govuk/components/radios/macro.njk" import govukRadios %}
 
       {{ govukRadios({
         classes: "govuk-radios--small",
         idPrefix: "complainttype",
         name: "complainttype",
         fieldset: {
+          legend: {
+            text: "Severity",
+            classes: "govuk-fieldset__legend--s",
+            isPageHeading: false
+          }
         },
         items: [
           {
             value: "service",
-            text: "Service"
+            text: "Very high"
           },
           {
-            value: "Ex gratia",
-            text: "Ex-Gratia"
+            value: "Ex-Gratia",
+            text: "High"
           },
           {
             value: "minor",
-            text: "Minor misconduct"
+            text: "Medium"
           },
           {
             value: "serious",
-            text: "Serious misconduct"
+            text: "Low"
+          },
+          {
+            value: "serious",
+            text: "Very low"
           }
         ]
       }) }}
 
-      <button class="govuk-button" data-module="govuk-button">Submit</button>
+      
+      <button class="govuk-button" data-module="govuk-button" value="Complaint-category-button">Continue</button>
 
     </form>
   </div>
 
   <!-- Tabs and tabs content -->
-  {% include "ukvi-v1/includes/tabs.html" %}
+  {% include "ukvi-v1/includes/tabs-blank.html" %}
   <!-- end -->
 
 </div>

@@ -1,0 +1,123 @@
+{% extends "layout-ukvi-v1.html" %}
+
+{% block pageTitle %}
+  Case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-user {display:none;}
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage1 {display: none!important}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">{{ data['UKVI-case-reference'] }}</h1>
+    <h2 class="govuk-heading-m">Case details</h2>
+
+    {% set accordianHtml %}
+      <h3 class='govuk-heading-s'>Correspondence received</h3><p class='govuk-body'>{{ data['current-date-digit'] }}</p>
+    {% endset -%}
+
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "UKVI Registration"
+          },
+          content: {  
+          } 
+        },
+        {
+            heading: {
+              text: "PSU Registration"
+            },
+            content: {  
+            }
+        },
+        {
+            heading: {
+              text: "PSU Triage"
+            },
+            content: {  
+            }
+          },
+          {
+            heading: {
+              text: "UKVI Recategorise"
+            },
+            content: {  
+            }
+          }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Allocate</h2>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="registration">Allocate to me</a></p>
+
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    classes: "govuk-!-font-weight-bold",
+    text: "Allocate to a team member"
+  },
+  items: [
+    {
+      value: "",
+      text: ""
+    },
+    {
+      value: "",
+      text: "UKVI user 2 (ukviuser2@homeoffice.gov.uk)"
+    },
+    {
+      value: "",
+      text: "UKVI user 3 (ukviuser3@homeoffice.gov.uk)"
+    }
+  ]
+}) }}
+
+{{ govukButton({
+text: "Allocate",
+href: "correspondents"
+}) }}
+
+  </div>
+<!-- Tabs and tabs content -->
+{% include "ukvi-v1/includes/tabs.html" %}
+<!-- end -->
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}

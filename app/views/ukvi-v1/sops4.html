@@ -33,7 +33,7 @@
                         <input class="govuk-radios__input" id="what-type-of-correspondence-2" name="what-type-of-correspondence" type="radio" value="Sopra Steria complaint" aria-describedby="what-type-of-correspondence-2-item-hint">
                         <label class="govuk-label govuk-radios__label" for="what-type-of-correspondence-2">UKVI complaint (stage 2)</label>
                         <div id="what-type-of-correspondence-2-item-hint" class="govuk-hint govuk-radios__hint">
-                          Only use this option to create a case relating to Sopra Steria. For all other UKVI stage 2 complaints escalate an existing case.
+                          Only use this option to create a case relating to Sopra Steria. 
                         </div>
                     </div>
                     <div class="govuk-radios__item">
@@ -44,11 +44,21 @@
             </fieldset>
         </div>
 
-        <div id="stage2alert" class="govuk-inset-text warning--alert js-hidden">
-          <h2 class="govuk-heading-m">Warning</h2>
-          <p>Only continue if you are creating a case relating to Sopra Steria.</p>
-          <p>For all other UKVI stage 2 complaints escalate an existing case.</p>
-        </div>
+
+        <div  id="stage2alert" class="govuk-notification-banner js-hidden" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            <div class="govuk-notification-banner__header">
+              <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                Warning
+              </h2>
+            </div>
+            <div class="govuk-notification-banner__content">
+                <p >Only continue if you are creating a case relating to Sopra Steria.</p>
+                <p>For all other UKVI stage 2 complaints escalate an existing case.</p>
+
+            </div>
+          </div>
+
+        
 
         <button class="govuk-button" data-module="govuk-button">Continue</button>
       </form>
