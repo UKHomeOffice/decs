@@ -1,0 +1,79 @@
+{% extends "layout-ukvi-v1.html" %}
+
+{% block pageTitle %}
+  Complaint origin – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <!--<a class="govuk-back-link" href="/border-force-v1/index.html">Dashboard</a>-->
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-user {display:none;}
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage1 {display: none!important}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+button.govuk-accordion__show-all {display: none!important}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">Complaint origin point<span class="govuk-caption-l">COMP2/0172177/22</span></h1>
+
+    {{ govukInsetText({
+        text: "Only use this option to create a case relating to Sopra Steria. For all other UKVI stage 2 complaints escalate an existing case"
+      }) }}
+
+    {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "channel",
+        name: "channel",
+        fieldset: {
+          legend: {
+            text: "Did this complaint originate from Sopra Steria?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Yes - accept the complaint"
+          },
+          {
+            value: "",
+            text: "No - close the complaint"
+          }
+        ]
+      }) }}
+
+    {{ govukButton({
+      text: "Continue",
+      href: "correspondents"
+    }) }}
+
+  </div>
+
+  <!-- Tabs and tabs content -->
+    {% include "ukvi-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

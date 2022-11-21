@@ -115,16 +115,40 @@
       </div>
 
       <div class="govuk-grid-column-one-third">
-        {% if 'yes' in data['allocated-investigation'] %}
+        
             <!--display case in investigation and allocated state-->
         <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">1 item</p>
-        {% else %}
+        
         <!--display no cases allocated to me-->
-        <p class="govuk-body govuk-!-margin-top-3 govuk-!-margin-bottom-6">0 items</p>
-        {% endif %}
-
+        
+       
+        <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Allocate selected to me</a></p>
         <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Unallocate selected</a></p>
+        {% from "govuk/components/select/macro.njk" import govukSelect %}
 
+        {{ govukSelect({
+          id: "sort",
+          name: "sort",
+          label: {
+            classes: "govuk-!-font-size-19 govuk-!-font-weight-bold",
+            text: "Allocate to a team member"
+          },
+          items: [
+            {
+              value: "",
+              text: ""
+            },
+            {
+              value: "",
+              text: "PSU user 2 (psu-user2@homeoffice.gov.uk)"
+            },
+            {
+              value: "",
+              text: "PSU user 3 (psu-user3@homeoffice.gov.uk)"
+            }
+          ]
+        }) }}
+        <input class="govuk-button" type="submit" name="allocate_to_team_member" value="Allocate"></div>
     </div>
 
 {% endblock %}

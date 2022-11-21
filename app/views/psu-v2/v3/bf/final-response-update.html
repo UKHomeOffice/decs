@@ -1,18 +1,18 @@
 {% extends "layout-psu-v3.html" %}
 
 {% block pageTitle %}
-  Complaint outcome – {{ serviceName }}
+  Upload final response – {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
 {{ govukPhaseBanner({
-  tag: {
-    text: "beta"
-  },
-  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-}) }}
-    <!--<a class="govuk-back-link" href="index-2nd">Dashboard</a>-->
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -25,77 +25,116 @@
 .summaryPSU1b  {display: none!important}
 .summaryPSU2a  {display: none!important}
 .summaryPSU2b  {display: none!important}
-
 </style>
-
 <div class="govuk-grid-row">
 
   <div class="govuk-grid-column-one-third">
-    <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">BF/0172177/22</span>
+    <h1 class="govuk-heading-l margin-0">Upload final response</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu-new'] }}</span>
 
-    <form class="form" action="/outcome-v3" method="post">
-      {% set withdrawnHtml %}
-      {{ govukInput({
-        id: "contact-by-text",
-        name: "contact-by-text",
-        type: "tel",
-        autocomplete: "tel",
-        classes: "govuk-!-width-one-third",
-        label: {
-          text: "Mobile phone number"
-        }
-      }) }}
-      {% endset -%}
-      {{ govukRadios({
-      classes: "govuk-radios--small",
+
+    <form class="form" action="index-end" method="post">
+
+        <div class="govuk-form-group">
+            <fieldset id="FinalResponseDocument" class="govuk-fieldset ">
+                <legend id="FinalResponseDocument-legend" class="govuk-fieldset__legend">
+                    <span class="govuk-fieldset__heading govuk-label--s">Final response</span>
+                </legend>
+                <table class="govuk-table">
+                    <tbody class="govuk-table__body"><br>
+                        <a class="govuk-body govuk-link" href="#">Add a document</a>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>    
+
+  <!--HTML date-->
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
+          Final response sent
+      </legend>
+      <div id="passport-issued-hint" class="govuk-hint">
+        For example, 30 6 2022
+      </div>
+      <div class="govuk-date-input" id="passport-issued">
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+              Day
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+              Month
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
+          </div>
+        </div>
+        <div class="govuk-date-input__item">
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+              Year
+            </label>
+            <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+    {{ govukButton({
+      text: "Close case",
+      value: data['case-closed']
+    }) }}
+
+    {{ govukCheckboxes({
       idPrefix: "stillserious",
       name: "stillserious",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+
+    {{ govukCheckboxes({
+      idPrefix: "allocated-to-me",
+      name: "allocated-to-me",
+      classes: "govuk-checkboxes--small js-hidden",
+      fieldset: {
+      },
+      items: [
+        {
+          value: "no",
+          text: "no",
+          checked: true
+        }
+      ]
+    }) }}
+
+    {{ govukCheckboxes({
+      idPrefix: "finished",
+      name: "finished",
+      classes: "govuk-checkboxes--small js-hidden",
       fieldset: {
       },
       items: [
         {
           value: "yes",
-          text: "Substantiated"
-        },
-        {
-          value: "yes",
-          text: "Partially substantiated"
-        },
-        {
-          value: "yes",
-          text: "Unsubstantiated"
-        },
-        {
-          value: "yes",
-          text: "Withdrawn"
-        },
-        {
-          value: "notserious",
-          text: "Not serious – send back to Border Force"
+          text: "yes",
+          checked: true
         }
       ]
     }) }}
-
-    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
-      {{ govukCharacterCount({
-        name: "casenote",
-        id: "casenote",
-        maxlength: 4000,
-        label: {
-          text: "Why has the complaint been been withdrawn?",
-          classes: "govuk-label--s",
-          isPageHeading: true
-        }
-      }) }}
-
-
-    {{ govukButton({
-      text: "Submit",
-      value: data['case-closed']
-    }) }}
-
   </div>
 
   <div class="govuk-grid-column-two-thirds">

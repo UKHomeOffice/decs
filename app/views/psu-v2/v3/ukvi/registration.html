@@ -12,7 +12,7 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-    <a class="govuk-back-link" href="index">Dashboard</a>
+    <!--<a class="govuk-back-link" href="index">Dashboard</a>-->
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -37,7 +37,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Registration</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu-new'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">COMP/0172177/22</span>
     
     <form class="form" action="index-2nd" method="post">
     {{ govukInput({
@@ -77,9 +77,57 @@
   </div>
 
   <div class="govuk-grid-column-two-thirds">
-    <!-- Tabs and tabs content -->
-      {% include "psu-v2/includes/tabs.html" %}
-    <!-- end -->
+    {% from "govuk/components/tabs/macro.njk" import govukTabs %}
+    {% from "govuk/components/table/macro.njk" import govukTable %}
+
+    {% set documentsHtml %}
+      {% include "ukvi-v1/includes/documents-tab.html" %}
+    {% endset -%}
+
+    {% set summaryHtml %}
+      {% include "ukvi-v1/includes/summary-tab.html" %}
+    {% endset -%}
+
+    {% set timelineHtml %}
+      {% include "ukvi-v1/includes/timeline-tab.html" %}
+    {% endset -%}
+
+    {% set peopleHtml %}
+      {% include "ukvi-v1/includes/people-tab.html" %}
+    {% endset -%}
+
+    {{ govukTabs({
+    items: [
+      {
+        label: "Documents",
+        id: "documents",
+        panel: {
+          html: documentsHtml
+        }
+      },
+      {
+        label: "Summary",
+        id: "summary",
+        panel: {
+          html: summaryHtml
+        }
+      },
+      {
+        label: "Timeline",
+        id: "timeline",
+        panel: {
+          html: timelineHtml
+        }
+      },
+      {
+        label: "People",
+        id: "actions",
+        panel: {
+          html: peopleHtml
+        }
+      }
+    ]
+    }) }}
   </div>
 
 </div>

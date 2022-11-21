@@ -12,7 +12,7 @@
   },
   html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-    <a class="govuk-back-link" href="index-2nd">Dashboard</a>
+    <!--<a class="govuk-back-link" href="index-2nd">Dashboard</a>-->
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
@@ -32,7 +32,7 @@
 
   <div class="govuk-grid-column-one-third">
     <h1 class="govuk-heading-l margin-0">Complaint outcome</h1>
-    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['case-ref-psu-new'] }}</span>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
 
     <form class="form" action="/outcome-v3" method="post">
       {% set withdrawnHtml %}
@@ -77,8 +77,6 @@
       ]
     }) }}
 
-    {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
-
       {{ govukCharacterCount({
         name: "casenote",
         id: "casenote",
@@ -98,11 +96,9 @@
 
   </div>
 
-  <div class="govuk-grid-column-two-thirds">
-    <!-- Tabs and tabs content -->
-      {% include "psu-v2/includes/tabs.html" %}
-    <!-- end -->
-  </div>
+  <!-- Tabs and tabs content -->
+  {% include "ukvi-v1/includes/tabs.html" %}
+  <!-- end -->
   
 </div>
 

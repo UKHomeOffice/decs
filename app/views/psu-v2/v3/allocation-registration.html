@@ -6,13 +6,14 @@
 
 {% block beforeContent %}
 
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
 {{ govukPhaseBanner({
   tag: {
-    text: "prototype"
-      },
-      html: ''
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
 }) }}
-    <a class="govuk-back-link" href="index">Dashboard</a>
+<!--<a class="govuk-back-link" href="index">Dashboard</a>-->
 {% endblock %}
 
 {% set mainClasses = "govuk-main-wrapper--l" %}
