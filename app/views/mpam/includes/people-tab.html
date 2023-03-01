@@ -1,0 +1,60 @@
+
+<p class="govuk-body"><a class="govuk-link--no-visited-state" href="#">Manage people</a></p>
+
+<div class="complainant">
+  <h2 class="govuk-heading-m">Complainant (primary)</h2>
+
+  <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Name
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['fullname'] }}
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Organisation
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['organisation'] }}
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Address
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['building'] }}<br>{{ data['street'] }}<br>{{ data['town'] }}<br>{{ data['postcode'] }}
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Telephone
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['telephone'] }}
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Email address
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['email'] }}
+      </dd>
+    </div>
+
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Reference
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ data['referencesgiven'] }}
+      </dd>
+    </div>
+  </dl>
+</div>

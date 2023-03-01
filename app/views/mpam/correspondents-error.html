@@ -1,0 +1,67 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Complaint correspondents – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+}) }}
+    <!--<a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>-->
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">MPAM Correspondents details</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['MPAM-case-reference'] }}</span>
+
+    {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+    {{ govukErrorSummary({
+      titleText: "There is a problem",
+      errorList: [
+        {
+          text: "Primary correspondent is required",
+          href: "#Correspondents"
+        }
+      ]
+    }) }}
+
+    <div class="govuk-form-group govuk-form-group--error">
+      <fieldset id="Correspondents" class="govuk-fieldset ">
+        <legend id="Correspondents-legend" class="govuk-fieldset__legend">
+          <span class="govuk-fieldset__heading govuk-label--m">Who is the primary correspondent?</span></legend>
+          <span id="Correspondents-error" class="govuk-error-message">Primary correspondent is required</span>
+          <p><a class="govuk-link--no-visited-state" href="correspondents-add">Add a correspondent</a></p></fieldset></div>
+
+    {{ govukButton({
+      text: "Move to triage",
+      href: "#"
+    }) }}
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "mpam/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

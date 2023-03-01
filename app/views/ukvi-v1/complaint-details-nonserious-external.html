@@ -1,0 +1,175 @@
+{% extends "layout-ukvi-v1.html" %}
+
+{% block pageTitle %}
+  Complaint details – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "beta"
+  },
+  html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Complaint details</h1>
+    <span class="govuk-caption-l govuk-!-margin-bottom-6">{{ data['UKVI-case-reference'] }}</span>
+
+    <form class="form" action="index" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+      {% from "govuk/components/input/macro.njk" import govukInput %}
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "External",
+        name: "External",
+        fieldset: {
+          legend: {
+            text: "External provider the complaint is about",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Sopra Steria"
+          },
+          {
+            value: "",
+            text: "Migrant Help"
+          }
+        ]
+      }) }}
+      
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "channel",
+        name: "channel",
+        fieldset: {
+          legend: {
+            text: "Channel",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Telephone"
+          },
+          {
+            value: "",
+            text: "Email"
+          },
+          {
+            value: "",
+            text: "Letter"
+          },
+          {
+            value: "",
+            text: "Face to face"
+          },
+          {
+            value: "",
+            text: "Webform"
+          }
+        ]
+      }) }}
+
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "casesummary",
+        id: "casesummary",
+        maxlength: 4000,
+        label: {
+          text: "Case summary",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        }
+      }) }}
+
+      {{ govukRadios({
+        classes: "govuk-radios--small",
+        idPrefix: "Severity",
+        name: "Severity",
+        fieldset: {
+          legend: {
+            text: "Severity",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        items: [
+          {
+            value: "",
+            text: "Very high"
+          },
+          {
+            value: "",
+            text: "High"
+          },
+          {
+            value: "",
+            text: "Medium"
+          },
+          {
+            value: "",
+            text: "Low"
+          },
+          {
+            value: "",
+            text: "Very low"
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Previous UKVI complaint reference",
+          classes: "govuk-label--s"
+        },
+        id: "PreviousUKVIComplaintRef",
+        name: "PreviousUKVIComplaintRef"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Third party reference",
+          classes: "govuk-label--s"
+        },
+        id: "thirdpartyreference",
+        name: "thirdpartyreference"
+      }) }}
+
+      {% if 'serious' in data['complainttype'] %}
+        <button class="govuk-button" data-module="govuk-button">Finish and escalate to PSU</button>
+      {% else %}
+        <button class="govuk-button" data-module="govuk-button">Finish</button>
+      {% endif %}
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "ukvi-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

@@ -56,4 +56,6 @@ iedetention-v1 BF and UKVI
   "allocated-to-me": "no",
   "finished": "no",
   "allocated-investigation": "no",
+
+  "MPAM-case-reference": "MPAM/0123456/23",
 }

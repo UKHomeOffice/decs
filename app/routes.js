@@ -188,5 +188,23 @@ router.post('/outcome-v3', function (req, res) {
 
 })
 
+// Run this code when a form is submitted to '/is-correspondent-mp' form on mpam correspondents-is-mp-question.html
+router.post('/is-correspondent-mp', function (req, res) {
+
+  // Make a variable and give it the value from 'is-mp' radios
+  var isMp = req.session.data['is-mp']
+  
+  // Check whether the variable matches a condition.
+
+  // If 'yes' - go to add mp page 
+  if (isMp == "yes"){
+    res.redirect('/mpam/correspondents-mp-add')
+
+   // If 'no' go add correspondent page  
+  } else {
+    res.redirect('/mpam/correspondents-add')
+  }
+
+})
 
 module.exports = router

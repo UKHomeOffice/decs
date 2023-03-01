@@ -1,0 +1,189 @@
+{% extends "layout-mpam.html" %}
+
+{% block pageTitle %}
+  Record correspondent details – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+}) }}
+    <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">Record correspondent details</h1>
+
+    <form class="form" action="correspondents-added" method="post">
+
+        {{ govukRadios({
+          classes: "govuk-radios--small",
+          idPrefix: "Correspondent type",
+          name: "Correspondent type",
+          fieldset: {
+            legend: {
+              text: "What type of correspondence do you have?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "Complainant",
+              text: "Complainant"
+            },
+            {
+              value: "Third party representative",
+              text: "Third party representative"
+            }
+          ]
+        }) }}
+
+
+      {{ govukInput({
+        label: {
+          text: "Full name",
+          classes: "govuk-label--s"
+        },
+        id: "fullname",
+        name: "fullname",
+        value: data['fullname']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Organisation",
+          classes: "govuk-label--s"
+        },
+        id: "organisation",
+        name: "organisation",
+        value: data['organisation']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Address line 1",
+          classes: "govuk-label--s"
+        },
+        id: "addressLine1",
+        name: "addressLine1",
+        value: data['addressLine1']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Address line 2",
+          classes: "govuk-label--s"
+        },
+        id: "addressLine2",
+        name: "addressLine2",
+        value: data['addressLine2']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Town or city",
+          classes: "govuk-label--s"
+        },
+        id: "town",
+        name: "town",
+        value: data['town']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Postcode",
+          classes: "govuk-label--s"
+        },
+        id: "postode",
+        name: "postcode",
+        value: data['postcode']
+      }) }}
+
+      {{ govukSelect({
+        id: "country",
+        name: "country",
+        label: {
+          classes: "govuk-!-font-weight-bold",
+          text: "Country"
+        },
+        items: [
+          {
+            value: "",
+            text: ""
+          },
+          {
+            value: "unitedkingdom",
+            text: "United Kingdom"
+          },
+          {
+            value: "other",
+            text: "Other"
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Telephone",
+          classes: "govuk-label--s"
+        },
+        id: "telephone",
+        name: "telephone",
+        value: data['telephone']
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Email",
+          classes: "govuk-label--s"
+        },
+        id: "email",
+        name: "email",
+        value: data['email']
+      }) }}
+
+      {% from "govuk/components/character-count/macro.njk" import govukCharacterCount %}
+
+      {{ govukCharacterCount({
+        name: "referencesgiven",
+        id: "with-hint",
+        maxlength: 4000,
+        label: {
+          text: "Enter any references given",
+          classes: "govuk-label--s",
+          isPageHeading: true
+        },
+        value: data['referencesgiven']
+      }) }}
+
+      <button class="govuk-button" data-module="govuk-button">Add</button>
+
+    </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "mpam/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}

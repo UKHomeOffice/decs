@@ -1,0 +1,53 @@
+{% extends "layout-mpam.html" %}
+
+{% block pageTitle %}
+  Add MP – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+}) }}
+<a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l margin-0">Add MP<span class="govuk-caption-l govuk-!-margin-bottom-6"><!--{{ data['MPAM-case-reference'] }}--></span></h1>
+    
+
+    <form class="form" action="" method="post">
+
+        MP
+
+
+        
+
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+  </div>
+
+  <!-- Tabs and tabs content -->
+  {% include "mpam/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
