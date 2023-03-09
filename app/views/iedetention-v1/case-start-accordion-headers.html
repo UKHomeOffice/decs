@@ -1,0 +1,115 @@
+{% extends "layout-iedetention-v1.html" %}
+
+{% block pageTitle %}
+  Case – {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{{ govukPhaseBanner({
+  tag: {
+    text: "prototype"
+      },
+      html: ''
+}) }}
+    <a class="govuk-back-link" href="/iedetention-v1/">Dashboard</a>
+{% endblock %}
+
+{% set mainClasses = "govuk-main-wrapper--l" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+<style>
+.summary-tab-user {display:none;}
+.summary-tab-correspondent-label {display: none;}
+.summary-tab-correspondent-data {display: none;}
+.timelineStage1 {display: none!important}
+.timelineStage2 {display: none!important}
+.complainant {display: none}
+</style>
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-one-third">
+    <h1 class="govuk-heading-l">{{ data['IEDET-case-reference'] }}</h1>
+    <h2 class="govuk-heading-m">Case details</h2>
+
+    {% set accordianHtml %}
+      <h3 class='govuk-heading-s govuk-!-margin-bottom-2'>Business area</h3>
+      <p class='govuk-body govuk-!-margin-bottom-2'>BF</p>
+      <p class='govuk-body'><a href="#" class="govuk-link">Change business area</a></p>
+
+      <h3 class='govuk-heading-s govuk-!-margin-bottom-2'>Does this correspondence need a Ministerial response?</h3>
+      <p class='govuk-body govuk-!-margin-bottom-2'>Yes (Ministerial)</p>
+      <p class='govuk-body'><a href="#" class="govuk-link">Change business area</a></p>
+
+      <h3 class='govuk-heading-s govuk-!-margin-bottom-2'>Ministerial sign off team</h3>
+      <p class='govuk-body'>Director General (Border Force)</p>
+
+      <h3 class='govuk-heading-s govuk-!-margin-bottom-2'>Addressee</h3>
+      <p class='govuk-body'>Urgency</p>
+
+      <h3 class='govuk-heading-s govuk-!-margin-bottom-2'>Channel received</h3>
+      <p class='govuk-body'>Email</p>
+    {% endset -%}
+
+    {% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+
+    {{ govukAccordion({
+      id: "accordion-default",
+      items: [
+        {
+          heading: {
+            text: "Registration"
+          },
+          content: {
+            html: accordianHtml
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Allocate</h2>
+    <p class="govuk-body"><a class="govuk-link--no-visited-state" href="correspondents">Allocate to me</a></p>
+
+    {% from "govuk/components/select/macro.njk" import govukSelect %}
+
+    {{ govukSelect({
+      id: "sort",
+      name: "sort",
+      label: {
+        classes: "govuk-!-font-weight-bold",
+        text: "Allocate to a team member"
+      },
+      items: [
+        {
+          value: "",
+          text: ""
+        },
+        {
+          value: "",
+          text: "IE Detention user 2 (iedetuser2@homeoffice.gov.uk)"
+        },
+        {
+          value: "",
+          text: "IE Detention user 3 (iedetuser3@homeoffice.gov.uk)"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({
+      text: "Allocate",
+      href: "#"
+    }) }}
+
+  </div>
+
+  <!-- Tabs and tabs content -->
+    {% include "iedetention-v1/includes/tabs.html" %}
+  <!-- end -->
+
+</div>
+
+{% endblock %}
